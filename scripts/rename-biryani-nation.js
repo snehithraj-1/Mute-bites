@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 function getDbUrl() {
   const envText = fs.readFileSync(path.resolve(__dirname, '../.env'), 'utf8');
   const match = envText.match(/^\s*DATABASE_URL\s*=\s*(.+)$/m);
-  return match ? match[1].trim() : 'postgresql://neondb_owner:npg_3O6tHydAMuSg@ep-soft-flower-a5yk954q-pooler.us-east-2.aws.neon.tech/clgbites?sslmode=require&channel_binding=require';
+  return match ? match[1].trim() : 'postgresql://neondb_owner:npg_3O6tHydAMuSg@ep-soft-flower-a5yk954q-pooler.us-east-2.aws.neon.tech/Mutebites?sslmode=require&channel_binding=require';
 }
 
 async function renameRestaurant() {

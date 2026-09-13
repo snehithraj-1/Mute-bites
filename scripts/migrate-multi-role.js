@@ -1,6 +1,6 @@
 import { neon } from '@neondatabase/serverless';
 
-const dbUrl = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_3O6tHydAMuSg@ep-soft-flower-a5yk954q-pooler.us-east-2.aws.neon.tech/clgbites?sslmode=require&channel_binding=require';
+const dbUrl = process.env.DATABASE_URL || 'postgresql://neondb_owner:npg_3O6tHydAMuSg@ep-soft-flower-a5yk954q-pooler.us-east-2.aws.neon.tech/Mutebites?sslmode=require&channel_binding=require';
 const sql = neon(dbUrl);
 
 async function runMigration() {
