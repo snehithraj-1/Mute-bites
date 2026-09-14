@@ -273,7 +273,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ error: 'Order must contain items and a valid total amount.' });
       }
 
-      const orderId = body.id || ('CB-' + Math.floor(100000 + Math.random() * 900000));
+      const orderId = body.id || ('MB-' + Math.floor(100000 + Math.random() * 900000));
       const itemsJson = JSON.stringify(items);
       const nowIso = new Date().toISOString();
 

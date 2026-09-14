@@ -1383,7 +1383,7 @@ app.post('/api/orders', async (req, res) => {
     }
   }
 
-  const orderId = orderData.id || `CB-${Math.floor(100000 + Math.random() * 900000)}`;
+  const orderId = orderData.id || `MB-${Math.floor(100000 + Math.random() * 900000)}`;
   const nowIso = new Date().toISOString();
 
   const newOrder = {

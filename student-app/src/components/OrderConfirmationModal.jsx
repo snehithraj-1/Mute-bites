@@ -86,7 +86,7 @@ export default function OrderConfirmationModal({
     setIsSubmitting(true);
     setStatusMessage('Saving order in Supabase...');
 
-    const orderId = 'CB-' + Math.floor(100000 + Math.random() * 900000);
+    const orderId = 'MB-' + Math.floor(100000 + Math.random() * 900000);
     const nowIso = new Date().toISOString();
 
     const orderPayload = {
