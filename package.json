@@ -9,7 +9,7 @@
     "dev": "node scripts/dev.js",
     "dev:student": "vite student-app --config student-app/vite.config.js --port 5173 --host",
     "dev:admin": "vite admin-app --config admin-app/vite.config.js --port 5174 --host",
-    "build": "npm run build:student",
+    "build": "npm run build:all",
     "build:all": "vite build student-app --config student-app/vite.config.js --outDir ../dist --emptyOutDir && vite build admin-app --config admin-app/vite.config.js --base /admin/ --outDir ../dist/admin && node scripts/sync_dist_assets.js",
     "build:student": "vite build student-app --config student-app/vite.config.js --outDir ../dist --emptyOutDir",
     "build:admin": "vite build admin-app --config admin-app/vite.config.js --base /admin/ --outDir ../dist/admin"
