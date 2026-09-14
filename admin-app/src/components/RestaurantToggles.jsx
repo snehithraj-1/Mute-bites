@@ -25,7 +25,7 @@ export default function RestaurantToggles({ restaurants, orderingEnabled, onRest
       await fetch(`/api/restaurants/${restaurant.id}/toggle`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ is_open: nextState })
+        body: JSON.stringify({ id: restaurant.id, restaurantId: restaurant.id, is_open: nextState })
       });
 
       // 2. Also sync to Supabase if configured
