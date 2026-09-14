@@ -150,7 +150,7 @@ export function CartProvider({ children }) {
 
   // Price calculations
   const subtotal = items.reduce((acc, item) => acc + (parseFloat(item.price) * item.quantity), 0);
-  const platformFee = items.length > 0 ? 5 : 0;
+  const platformFee = 0; // FREE: 0 platform fee for students
   const deliveryFee = 0; // FREE campus delivery
   const totalAmount = subtotal + platformFee + deliveryFee;
   const totalItemsCount = items.reduce((acc, item) => acc + item.quantity, 0);
