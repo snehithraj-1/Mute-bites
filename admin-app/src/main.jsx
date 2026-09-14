@@ -15,11 +15,11 @@ const getBackendUrl = () => {
       return '';
     }
     // Unified domain: relative /api hits the integrated backend directly
-    if (host === 'clg-bites-srm.vercel.app') {
+    if (host === 'mutebites-std.vercel.app' || host.includes('mutebites-std')) {
       return '';
     }
     // Standalone deployment on Vercel: target live student backend
-    return 'https://clg-bites-srm.vercel.app';
+    return 'https://mutebites-std.vercel.app';
   }
   return '';
 };

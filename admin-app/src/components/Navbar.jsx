@@ -64,7 +64,7 @@ export default function Navbar({
 
           {/* View Live Student Portal */}
           <a
-            href={typeof window !== 'undefined' && window.location.hostname === 'clg-bites-srm.vercel.app' ? '/' : 'https://clg-bites-srm.vercel.app'}
+            href={typeof window !== 'undefined' && (window.location.hostname === 'mutebites-std.vercel.app' || window.location.hostname.includes('mutebites-std')) ? '/' : 'https://mutebites-std.vercel.app'}
             target="_blank"
             rel="noopener noreferrer"
             title="Open Live Student Portal"

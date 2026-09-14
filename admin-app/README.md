@@ -18,7 +18,7 @@ If you want a dedicated URL for the Admin Portal (e.g., `clg-bites-admin.vercel.
    - **Output Directory**: `dist`
 5. Click **Deploy**.
 
-> **Note**: No environment variables are required! The portal is pre-configured with reverse-proxy rules in `vercel.json` and client fallbacks in `src/main.jsx` that automatically connect to the live backend at `https://clg-bites-srm.vercel.app`.
+> **Note**: No environment variables are required! The portal is pre-configured with reverse-proxy rules in `vercel.json` and client fallbacks in `src/main.jsx` that automatically connect to the live backend at `https://mutebites-std.vercel.app`.
 
 ---
 
@@ -32,5 +32,5 @@ If you want a dedicated URL for the Admin Portal (e.g., `clg-bites-admin.vercel.
 ## ⚡ Unified Access (Default Deployment)
 
 The admin portal is also integrated into the main deployment at:
-- **Live Student Portal**: [https://clg-bites-srm.vercel.app/](https://clg-bites-srm.vercel.app/)
-- **Live Integrated Admin**: [https://clg-bites-srm.vercel.app/admin](https://clg-bites-srm.vercel.app/admin)
+- **Live Student Portal**: [https://mutebites-std.vercel.app/](https://mutebites-std.vercel.app/)
+- **Live Integrated Admin**: [https://mutebites-std.vercel.app/admin](https://mutebites-std.vercel.app/admin)
