@@ -17,19 +17,24 @@ export default async function handler(req, res) {
     return res.status(200).end();
   }
 
-  // DELETE /api/orders or POST /api/orders/delete
-  const isDeleteRequest = req.method === 'DELETE' || 
-    (req.method === 'POST' && (
-      req.url.includes('delete') || 
-      req.body?.action === 'delete' || 
-      (req.body?.orderId && !req.body?.items)
-    ));
+  const rawUrl = req.headers['x-forwarded-uri'] || req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'] || req.url || '';
+  const [pathOnly] = rawUrl.split('?');
+  const pathname = pathOnly.replace(/\/$/, '') || '/';
+  const query = req.query || {};
+  const body = req.body || {};
 
-  if (isDeleteRequest) {
-    const orderId = req.query.id || req.query.orderId || req.body?.orderId || req.body?.id;
-    if (orderId === 'all' || req.query.all === 'true') {
+  // ----------------------------------------------------
+  // 1. DELETE ORDER
+  // ----------------------------------------------------
+  const isDelete = req.method === 'DELETE' || 
+    pathname.endsWith('/delete') || 
+    body.action === 'delete' ||
+    query.action === 'delete';
+
+  if (isDelete) {
+    const orderId = query.id || query.orderId || body.orderId || body.id;
+    if (orderId === 'all' || query.all === 'true') {
       try {
-        await sql`DELETE FROM order_items;`;
         await sql`DELETE FROM orders;`;
         return res.status(200).json({ success: true, message: 'All orders permanently deleted.' });
       } catch (err) {
@@ -38,72 +43,96 @@ export default async function handler(req, res) {
     }
 
     if (!orderId) {
-      return res.status(400).json({ success: false, error: 'Order ID is required' });
+      return res.status(400).json({ success: false, error: 'Order ID is required.' });
     }
 
     try {
-      await sql`DELETE FROM order_items WHERE order_id = ${orderId};`;
       await sql`DELETE FROM orders WHERE id = ${orderId} OR id LIKE ${orderId + '%'};`;
+      console.log(`[Neon DB] Order #${orderId} deleted.`);
       return res.status(200).json({ success: true, message: `Order #${orderId} permanently deleted.` });
     } catch (err) {
+      console.error('[Orders Delete Error]:', err.message);
       return res.status(500).json({ success: false, error: err.message });
     }
   }
 
-  // PATCH /api/orders (Status update)
-  const isStatusUpdate = req.method === 'PATCH' || 
-    (req.method === 'POST' && (
-      req.url.includes('status') || 
-      req.body?.action === 'status' || 
-      (req.body?.status && !req.body?.items)
-    ));
+  // ----------------------------------------------------
+  // 2. STATUS UPDATE
+  // ----------------------------------------------------
+  const isStatusUpdate = req.method === 'PATCH' ||
+    pathname.endsWith('/status') ||
+    body.action === 'status' ||
+    query.action === 'status' ||
+    (Boolean(body.status) && !body.items && Boolean(body.orderId || body.id || query.id || query.orderId));
 
   if (isStatusUpdate) {
-    const orderId = req.params?.id || req.query.id || req.query.orderId || req.body?.orderId || req.body?.id;
-    const rawStatus = (req.body?.status || '').toUpperCase().trim();
-    const status = rawStatus === 'DELIVERED' ? 'COMPLETED' : rawStatus;
+    let urlOrderId = null;
+    const match = pathname.match(/\/api\/orders\/([^/?]+)(?:\/status)?/i);
+    if (match && match[1] && match[1] !== 'status' && match[1] !== 'delete' && match[1] !== 'student') {
+      urlOrderId = decodeURIComponent(match[1]);
+    }
 
-    if (!orderId || !status) {
-      return res.status(400).json({ success: false, error: 'Order ID and status are required' });
+    const orderId = body.orderId || body.id || query.id || query.orderId || urlOrderId;
+    const rawStatus = (body.status || query.status || '').toUpperCase().trim();
+    const cleanStatus = (rawStatus === 'DELIVERED' || rawStatus === 'COMPLETED') ? 'COMPLETED' : (rawStatus === 'CANCELLED' ? 'CANCELLED' : 'CONFIRMED');
+
+    if (!orderId) {
+      return res.status(400).json({ success: false, error: 'Order ID is required for status update.' });
     }
 
     try {
       let result;
-      if (status === 'COMPLETED') {
+      if (cleanStatus === 'COMPLETED') {
         result = await sql`
           UPDATE orders 
-          SET status = ${status}, completed_at = NOW(), updated_at = NOW() 
+          SET status = ${cleanStatus}, completed_at = NOW(), updated_at = NOW() 
           WHERE id = ${orderId} OR id LIKE ${orderId + '%'}
           RETURNING *;
         `;
-      } else if (status === 'CANCELLED') {
+      } else if (cleanStatus === 'CANCELLED') {
         result = await sql`
           UPDATE orders 
-          SET status = ${status}, cancelled_at = NOW(), updated_at = NOW() 
+          SET status = ${cleanStatus}, cancelled_at = NOW(), updated_at = NOW() 
           WHERE id = ${orderId} OR id LIKE ${orderId + '%'}
           RETURNING *;
         `;
       } else {
         result = await sql`
           UPDATE orders 
-          SET status = ${status}, updated_at = NOW() 
+          SET status = ${cleanStatus}, updated_at = NOW() 
           WHERE id = ${orderId} OR id LIKE ${orderId + '%'}
           RETURNING *;
         `;
       }
-      if (result && result.length > 0) {
-        return res.status(200).json({ success: true, order: result[0] });
-      }
-      return res.status(404).json({ success: false, error: 'Order not found' });
+
+      console.log(`[Neon DB] Order #${orderId} status updated to: ${cleanStatus}`);
+      return res.status(200).json({ success: true, orderId, status: cleanStatus, order: result?.[0] });
     } catch (err) {
+      console.error('[Orders Status Update Error]:', err.message);
       return res.status(500).json({ success: false, error: err.message });
     }
   }
 
-  // GET /api/orders
+  // ----------------------------------------------------
+  // 3. GET ORDERS
+  // ----------------------------------------------------
   if (req.method === 'GET') {
     try {
-      const orderId = req.query.id || req.query.orderId;
+      // Check if student history requested via URL path: /api/orders/student/:identifier
+      let studentFromPath = null;
+      const studentMatch = pathname.match(/\/api\/orders\/student\/([^/?]+)/i);
+      if (studentMatch && studentMatch[1]) {
+        studentFromPath = decodeURIComponent(studentMatch[1]).trim().toLowerCase();
+      }
+
+      // Check if single order requested via URL path: /api/orders/:id
+      let orderIdFromPath = null;
+      const idMatch = pathname.match(/\/api\/orders\/([^/?]+)/i);
+      if (idMatch && idMatch[1] && idMatch[1] !== 'student' && idMatch[1] !== 'status' && idMatch[1] !== 'delete') {
+        orderIdFromPath = decodeURIComponent(idMatch[1]);
+      }
+
+      const orderId = query.id || query.orderId || orderIdFromPath;
       if (orderId) {
         const singleRow = await sql`
           SELECT * FROM orders 
@@ -129,22 +158,22 @@ export default async function handler(req, res) {
         return res.status(404).json({ success: false, error: 'Order not found' });
       }
 
-      const studentEmail = req.query.studentEmail || req.query.email || req.query.student_email;
-      const restaurantId = req.query.restaurantId || req.query.restaurant_id || req.query.restaurant;
+      const studentEmail = query.studentEmail || query.email || query.student_email || studentFromPath;
+      const restaurantId = query.restaurantId || query.restaurant_id || query.restaurant;
       let rows = [];
 
       if (studentEmail && restaurantId && restaurantId !== 'all') {
         const cleanEmail = studentEmail.trim().toLowerCase();
         rows = await sql`
           SELECT * FROM orders 
-          WHERE LOWER(student_email) = ${cleanEmail} AND restaurant_id = ${restaurantId}
+          WHERE (LOWER(student_email) = ${cleanEmail} OR student_phone = ${cleanEmail} OR user_id = ${cleanEmail}) AND restaurant_id = ${restaurantId}
           ORDER BY created_at DESC;
         `;
       } else if (studentEmail) {
         const cleanEmail = studentEmail.trim().toLowerCase();
         rows = await sql`
           SELECT * FROM orders 
-          WHERE LOWER(student_email) = ${cleanEmail} 
+          WHERE (LOWER(student_email) = ${cleanEmail} OR student_phone = ${cleanEmail} OR user_id = ${cleanEmail})
           ORDER BY created_at DESC;
         `;
       } else if (restaurantId && restaurantId !== 'all') {
@@ -176,14 +205,13 @@ export default async function handler(req, res) {
         const studentEmailVal = r.student_email || '';
         const deliveryLocation = r.delivery_location || 'Vit-ap Campus';
         const restaurantName = r.restaurant_name || 'Campus Kitchen';
-        const restaurantIdVal = r.restaurant_id || 'local-home-kitchen';
+        const restaurantIdVal = r.restaurant_id || 'bheemasena-restaurant';
         const partnerName = r.delivery_partner_name || null;
         const partnerPhone = r.delivery_partner_phone || null;
         const partnerId = r.delivery_partner_id || null;
 
         return {
           id: r.id,
-          // Snake case keys
           student_name: studentName,
           student_email: studentEmailVal,
           student_phone: studentPhone,
@@ -200,7 +228,6 @@ export default async function handler(req, res) {
           updated_at: r.updated_at,
           items: itemsList,
 
-          // Camel case keys
           studentName,
           studentEmail: studentEmailVal,
           studentPhone,
@@ -221,66 +248,21 @@ export default async function handler(req, res) {
 
       return res.status(200).json(formatted);
     } catch (err) {
-      console.error('[Student Orders GET Error]:', err.message);
+      console.error('[Orders GET Error]:', err.message);
       return res.status(500).json({ error: 'Failed to fetch orders: ' + err.message });
     }
   }
 
-  // POST /api/orders/status or query action=status
-  if (req.method === 'POST' && (req.query.action === 'status' || (req.body && req.body.orderId && req.body.status))) {
-    try {
-      const { orderId, status } = req.body;
-      const cleanStatus = (status === 'COMPLETED' || status === 'DELIVERED') ? 'COMPLETED' : (status === 'CANCELLED' ? 'CANCELLED' : 'CONFIRMED');
-      if (cleanStatus === 'COMPLETED') {
-        await sql`
-          UPDATE orders
-          SET status = ${cleanStatus}, completed_at = NOW(), updated_at = NOW()
-          WHERE id = ${orderId} OR id LIKE ${orderId + '%'};
-        `;
-      } else if (cleanStatus === 'CANCELLED') {
-        await sql`
-          UPDATE orders
-          SET status = ${cleanStatus}, cancelled_at = NOW(), updated_at = NOW()
-          WHERE id = ${orderId} OR id LIKE ${orderId + '%'};
-        `;
-      } else {
-        await sql`
-          UPDATE orders
-          SET status = ${cleanStatus}, updated_at = NOW()
-          WHERE id = ${orderId} OR id LIKE ${orderId + '%'};
-        `;
-      }
-      return res.status(200).json({ success: true, orderId, status: cleanStatus });
-    } catch (err) {
-      console.error('[Orders Status Update Error]:', err.message);
-      return res.status(500).json({ error: 'Failed to update order status: ' + err.message });
-    }
-  }
-
-  // POST /api/orders/delete or query action=delete
-  if (req.method === 'POST' && (req.query.action === 'delete' || (req.body && req.body.orderId && !req.body.items && !req.body.student_name && !req.body.studentName))) {
-    try {
-      const { orderId } = req.body;
-      await sql`
-        DELETE FROM orders
-        WHERE id = ${orderId} OR id LIKE ${orderId + '%'};
-      `;
-      return res.status(200).json({ success: true, deletedOrderId: orderId });
-    } catch (err) {
-      console.error('[Orders Delete Error]:', err.message);
-      return res.status(500).json({ error: 'Failed to delete order: ' + err.message });
-    }
-  }
-
-  // POST /api/orders (Create Order)
+  // ----------------------------------------------------
+  // 4. CREATE ORDER (POST /api/orders)
+  // ----------------------------------------------------
   if (req.method === 'POST') {
     try {
-      const body = req.body || {};
       const studentName = body.student_name || body.studentName || 'Student';
       const studentPhone = body.student_phone || body.studentPhone || '';
       const studentEmail = (body.student_email || body.studentEmail || '').trim().toLowerCase();
       const deliveryLocation = body.delivery_location || body.deliveryLocation || 'Vit-ap Campus';
-      const restaurantId = body.restaurant_id || body.restaurantId || 'local-home-kitchen';
+      const restaurantId = body.restaurant_id || body.restaurantId || 'bheemasena-restaurant';
       const restaurantName = body.restaurant_name || body.restaurantName || 'Campus Kitchen';
       const totalAmount = Number(body.total_amount ?? body.totalAmount) || 0;
       const items = Array.isArray(body.items) ? body.items : [];

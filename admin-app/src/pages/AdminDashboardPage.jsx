@@ -392,25 +392,30 @@ export default function AdminDashboardPage() {
 
 
   // Action: Cancel Order
-  const handleCancelOrder = async (order) => {
-    if (!order) return;
-    await handleUpdateStatus(order.id, 'CANCELLED');
+  const handleCancelOrder = async (orderOrId) => {
+    if (!orderOrId) return;
+    const targetId = typeof orderOrId === 'object' ? orderOrId.id : orderOrId;
+    if (!targetId) return;
+    await handleUpdateStatus(targetId, 'CANCELLED');
   };
 
   // Action: Permanently Delete Order (after confirmation)
-  const handleConfirmDelete = async (orderId) => {
+  const handleConfirmDelete = async (orderOrId) => {
+    if (!orderOrId) return;
+    const targetId = typeof orderOrId === 'object' ? orderOrId.id : orderOrId;
+    if (!targetId) return;
     setIsDeleting(true);
 
     // Optimistic remove
-    setOrders((prev) => prev.filter((o) => o.id !== orderId));
-    if (inspectingOrder?.id === orderId) setInspectingOrder(null);
+    setOrders((prev) => prev.filter((o) => o.id !== targetId));
+    if (inspectingOrder?.id === targetId) setInspectingOrder(null);
 
     // 1. Delete from Shared Backend API
     try {
       await fetch('/api/orders/delete', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ orderId })
+        body: JSON.stringify({ orderId: targetId })
       });
     } catch (e) {
       console.warn('[Delete Order Error]:', e.message);
@@ -419,7 +424,7 @@ export default function AdminDashboardPage() {
     // 2. Delete from Supabase
     if (isSupabaseConfigured() && supabase) {
       try {
-        await supabase.from('orders').delete().eq('id', orderId);
+        await supabase.from('orders').delete().eq('id', targetId);
       } catch (err) {
         console.warn('Delete order error:', err);
       }
@@ -428,7 +433,7 @@ export default function AdminDashboardPage() {
     // 3. Fallback local delete
     try {
       const stored = JSON.parse(localStorage.getItem('cb_shared_orders') || '[]');
-      const updated = stored.filter((o) => o.id !== orderId);
+      const updated = stored.filter((o) => o.id !== targetId);
       localStorage.setItem('cb_shared_orders', JSON.stringify(updated));
     } catch {}
 
