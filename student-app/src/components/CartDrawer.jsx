@@ -244,19 +244,6 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                       className="w-full px-3 py-2 rounded-lg bg-white border border-[#FFE4E6] text-xs font-medium text-[#1C1917] focus:outline-none focus:border-[#E11D48]"
                     />
                   </div>
-
-                  <div>
-                    <label className="block text-[10px] font-bold text-slate-500 mb-1">
-                      Cooking Notes / Special Instructions
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. Less spicy, extra onions"
-                      value={deliveryDetails.instructions}
-                      onChange={(e) => setDeliveryDetails({ ...deliveryDetails, instructions: e.target.value })}
-                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#FFE4E6] text-xs text-[#1C1917] focus:outline-none focus:border-[#E11D48]"
-                    />
-                  </div>
                 </div>
 
                 {/* Pricing Summary */}
