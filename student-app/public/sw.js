@@ -1,12 +1,16 @@
 // Vit: Mute Bites Service Worker for PWA & Push Notifications
-const CACHE_NAME = 'vit-mute-bites-v1';
+const CACHE_NAME = 'vit-mute-bites-v2';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
 });
 
 // Push notification receiver
@@ -24,8 +28,8 @@ self.addEventListener('push', (event) => {
   const title = data.title || 'Vit: Mute Bites';
   const options = {
     body: data.body || 'Your order has been confirmed.',
-    icon: '/icon-192.svg',
-    badge: '/icon-192.svg',
+    icon: '/mutebites-logo.png',
+    badge: '/mutebites-logo.png',
     vibrate: [200, 100, 200],
     data: data.url || '/'
   };

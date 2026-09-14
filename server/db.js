@@ -247,7 +247,7 @@ export async function createOrderInDb({
     };
   });
 
-  const platformFee = 5;
+  const platformFee = 0;
   const deliveryFee = 0;
   const verifiedTotal = verifiedSubtotal + platformFee + deliveryFee;
 
