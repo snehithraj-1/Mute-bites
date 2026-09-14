@@ -232,12 +232,12 @@ export default function OrderConfirmationModal({
       <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm" />
 
       {/* Modal Card with Spring Scale Animation */}
-      <div className="relative bg-white w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#F1EAE4] space-y-6 text-center animate-scale-in">
+      <div className="relative bg-white w-full max-w-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-[#FFE4E6] space-y-6 text-center animate-scale-in">
         
         {/* Header Title */}
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2">
-            <Clock size={13} className="text-[#FF5722]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF1F2] text-[#9F1239] border border-[#FECDD3] text-xs font-bold uppercase tracking-wider mb-2">
+            <Clock size={13} className="text-[#E11D48]" />
             <span>Order Verification</span>
           </div>
           <h3 className="text-xl font-bold text-slate-900 font-['Outfit']">
@@ -256,7 +256,7 @@ export default function OrderConfirmationModal({
               cx="55"
               cy="55"
               r={radius}
-              stroke="#E2E8F0"
+              stroke="#FFE4E6"
               strokeWidth="7"
               fill="transparent"
             />
@@ -265,7 +265,7 @@ export default function OrderConfirmationModal({
               cx="55"
               cy="55"
               r={radius}
-              stroke={timeLeft <= 8 ? '#EF4444' : '#FF5722'}
+              stroke={timeLeft <= 8 ? '#EF4444' : '#E11D48'}
               strokeWidth="7"
               fill="transparent"
               strokeDasharray={circumference}
@@ -278,7 +278,7 @@ export default function OrderConfirmationModal({
           {/* Time text in center */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className={`text-3xl font-extrabold font-mono tracking-tight ${
-              timeLeft <= 8 ? 'text-rose-500 animate-timer-pulse' : 'text-slate-900'
+              timeLeft <= 8 ? 'text-rose-500 animate-timer-pulse' : 'text-[#881337]'
             }`}>
               {timeLeft}s
             </span>
@@ -289,20 +289,20 @@ export default function OrderConfirmationModal({
         </div>
 
         {/* Order Details Preview */}
-        <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2 text-left">
-          <div className="flex justify-between items-center text-slate-900 font-bold border-b border-slate-200 pb-1.5">
+        <div className="p-3.5 rounded-xl bg-[#FAF5F5] border border-[#FFE4E6] text-xs space-y-2 text-left">
+          <div className="flex justify-between items-center text-slate-900 font-bold border-b border-[#FFE4E6] pb-1.5">
             <span className="text-xs">{restaurant?.name || 'Campus Kitchen'}</span>
-            <span className="font-mono text-[#FF5722] font-extrabold text-sm">₹{totalAmount}</span>
+            <span className="font-mono text-[#9F1239] font-extrabold text-sm">₹{totalAmount}</span>
           </div>
           <div className="text-[11px] text-slate-600 flex items-center justify-between">
             <span>Student: <strong>{profile?.name || 'Student'}</strong></span>
             <span className="font-mono">{deliveryDetails.phone || profile?.phone}</span>
           </div>
           <div className="flex items-center gap-1.5 text-slate-600 text-[11px]">
-            <MapPin size={12} className="text-[#FF5722] shrink-0" />
+            <MapPin size={12} className="text-[#E11D48] shrink-0" />
             <span>Drop: <strong>Vit-ap Campus</strong></span>
           </div>
-          <div className="text-[11px] text-slate-500 border-t border-slate-200 pt-1.5">
+          <div className="text-[11px] text-slate-500 border-t border-[#FFE4E6] pt-1.5">
             {items.map(i => `${i.name} × ${i.quantity}`).join(', ')}
           </div>
         </div>

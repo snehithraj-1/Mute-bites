@@ -302,7 +302,7 @@ export default async function handler(req, res) {
           items, total_amount, status, payment_method, instructions,
           created_at, updated_at
         ) VALUES (
-          ${orderId}, ${studentName}, ${studentEmail}, ${studentPhone || '9989955833'},
+          ${orderId}, ${studentName}, ${studentEmail}, ${studentPhone || '8247075652'},
           ${deliveryLocation}, ${restaurantId}, ${restaurantName},
           ${itemsJson}::jsonb, ${totalAmount}, 'CONFIRMED', ${paymentMethod}, ${instructions},
           NOW(), NOW()

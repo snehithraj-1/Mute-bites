@@ -22,9 +22,9 @@ export default async function handler(req, res) {
       }
 
       const cleanEmail = email.trim().toLowerCase();
-      const studentId = id || `srm-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
+      const studentId = id || `vit-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
       const studentName = (name || '').trim() || cleanEmail.split('@')[0];
-      const studentPhone = (phone || '').trim() || '9989955833';
+      const studentPhone = (phone || '').trim() || '8247075652';
 
       await sql`
         INSERT INTO students (id, name, email, phone, role, created_at, updated_at)

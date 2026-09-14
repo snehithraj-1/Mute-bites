@@ -245,7 +245,7 @@ export default function StudentNotificationToast({ onTrackOrder, activeOrderId }
             ? 'bg-gradient-to-r from-emerald-400 to-teal-500'
             : activeToast.status === 'OUT_FOR_DELIVERY'
             ? 'bg-gradient-to-r from-blue-500 to-cyan-500'
-            : 'bg-gradient-to-r from-[#FF5722] to-amber-500'
+            : 'bg-gradient-to-r from-[#E11D48] to-[#881337]'
         }`} />
 
         <div className="flex items-start justify-between gap-3">
@@ -299,7 +299,7 @@ export default function StudentNotificationToast({ onTrackOrder, activeOrderId }
                 onTrackOrder(activeToast.order);
                 setActiveToast(null);
               }}
-              className="inline-flex items-center gap-1 text-[11px] font-black text-[#FF5722] hover:text-[#E64A19] border-none bg-transparent cursor-pointer"
+              className="inline-flex items-center gap-1 text-[11px] font-black text-[#9F1239] hover:text-[#881337] border-none bg-transparent cursor-pointer"
             >
               <span>Track Order</span>
               <ArrowRight size={12} />

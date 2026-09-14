@@ -87,31 +87,31 @@ export default function RestaurantsPage({ onSelectRestaurant, orderingEnabled })
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-5 space-y-5 animate-fade-in pb-24 md:pb-12">
       
-      {/* 1. Header & Location Bar (Food App Style) */}
-      <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-xs">
+      {/* 1. Header & Location Bar (Luxury Food App Style) */}
+      <div className="bg-white/90 backdrop-blur-md rounded-2xl p-5 border border-[#FFE4E6] shadow-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <div className="text-xs text-slate-500 font-medium">
-              Welcome, <strong className="text-slate-800">{profile?.name || 'Student'}</strong>
+            <div className="text-xs text-[#71717A] font-medium">
+              Welcome, <strong className="text-[#1C1917] font-extrabold">{profile?.name || 'Student'}</strong>
             </div>
-            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 font-['Outfit'] tracking-tight mt-0.5">
+            <h2 className="text-lg sm:text-xl font-black text-[#1C1917] font-['Outfit'] tracking-tight mt-0.5">
               Campus Food Ordering
             </h2>
-            <div className="flex items-center gap-1.5 text-xs text-slate-600 mt-1">
-              <MapPin size={13} className="text-[#FF5722] shrink-0" />
-              <span>Delivering directly to <strong>Vit-ap Campus</strong></span>
+            <div className="flex items-center gap-1.5 text-xs text-slate-700 mt-1">
+              <MapPin size={14} className="text-[#E11D48] shrink-0" />
+              <span>Delivering directly to <strong className="text-[#9F1239]">Vit-ap Campus</strong></span>
             </div>
           </div>
 
           {/* Search Input */}
           <div className="relative w-full sm:w-64">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-rose-400" />
             <input
               type="text"
               placeholder="Search kitchens & food..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors"
+              className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-[#FAF5F5] border border-[#FFE4E6] text-xs text-[#1C1917] placeholder-slate-400 focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all"
             />
           </div>
         </div>
@@ -210,36 +210,36 @@ export default function RestaurantsPage({ onSelectRestaurant, orderingEnabled })
                 </div>
 
                 {/* Restaurant Information & Action */}
-                <div className="p-4 flex-1 flex flex-col justify-between space-y-3">
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between space-y-3 bg-white">
                   <div className="space-y-1.5">
-                    <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                      <MapPin size={12} className="text-[#FF5722] shrink-0" />
-                      <span className="truncate">{restaurant.location || 'Neerukonda Village'}</span>
+                    <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
+                      <MapPin size={12} className="text-[#E11D48] shrink-0" />
+                      <span className="truncate">{restaurant.location || 'Beside VIT-AP Campus'}</span>
                     </div>
 
                     {restaurant.phone && (
-                      <div className="flex items-center gap-1.5 text-xs text-slate-600">
-                        <Phone size={12} className="text-[#FF5722] shrink-0" />
+                      <div className="flex items-center gap-1.5 text-xs text-[#71717A]">
+                        <Phone size={12} className="text-[#E11D48] shrink-0" />
                         <span className="font-mono font-medium">{restaurant.phone}</span>
                       </div>
                     )}
 
-                    <div className="flex items-center gap-2 text-xs text-slate-600">
+                    <div className="flex items-center gap-2 text-xs text-[#71717A]">
                       <Clock size={12} className="shrink-0 text-slate-400" />
                       <span>Prep time: {restaurant.prep_time || '15-20 mins'}</span>
                       <span>•</span>
-                      <span className="text-emerald-700 font-semibold">Free Delivery</span>
+                      <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Free Delivery</span>
                     </div>
 
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed pt-1">
+                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed pt-1 font-normal">
                       {restaurant.description}
                     </p>
                   </div>
 
                   {/* Closed Banner if restaurant closed */}
                   {!isOpen && (
-                    <div className="p-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-medium flex items-center gap-1.5">
-                      <AlertCircle size={13} className="shrink-0 text-amber-600" />
+                    <div className="p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-medium flex items-center gap-1.5">
+                      <AlertCircle size={13} className="shrink-0 text-rose-600" />
                       <span>Currently CLOSED • Menu browsing only</span>
                     </div>
                   )}
@@ -248,9 +248,9 @@ export default function RestaurantsPage({ onSelectRestaurant, orderingEnabled })
                   <div className="pt-1">
                     <button
                       onClick={() => onSelectRestaurant(restaurant)}
-                      className={`w-full py-2.5 px-4 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all border-none ${
+                      className={`w-full py-3 px-4 rounded-xl text-xs font-black flex items-center justify-center gap-2 transition-all border-none ${
                         isOpen
-                          ? 'bg-[#FF5722] hover:bg-[#F4511E] text-white cursor-pointer shadow-xs active:scale-98'
+                          ? 'bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#F43F5E] hover:to-[#9F1239] text-white cursor-pointer shadow-md shadow-rose-900/20 active:scale-98'
                           : 'bg-slate-800 hover:bg-slate-700 text-white cursor-pointer shadow-xs active:scale-98'
                       }`}
                     >

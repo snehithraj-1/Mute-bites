@@ -123,7 +123,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6 sm:space-y-8 animate-fade-in">
       
       {/* Top Breadcrumb & Status Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#F1EAE4] pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#FFE4E6] pb-4">
         <button
           onClick={onBackToHome}
           className="flex items-center gap-2 text-xs sm:text-sm font-bold text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer border-none bg-transparent p-0"
@@ -138,7 +138,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
             <span>Neon PostgreSQL: Live Connected</span>
           </div>
 
-          <span className="px-2.5 py-1 rounded-full bg-[#FFF0EB] text-[#FF5722] text-[10px] font-black uppercase tracking-wider">
+          <span className="px-2.5 py-1 rounded-full bg-[#FFF1F2] text-[#9F1239] text-[10px] font-black uppercase tracking-wider border border-[#FECDD3]">
             Student Portal
           </span>
         </div>
@@ -172,14 +172,14 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Hero Identity Card */}
-          <div className="card-elevated p-6 sm:p-8 bg-white border border-[#F1EAE4] rounded-3xl shadow-sm space-y-6 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-44 h-44 bg-[#FF5722]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="card-elevated p-6 sm:p-8 bg-white border border-[#FFE4E6] rounded-3xl shadow-sm space-y-6 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-44 h-44 bg-rose-500/5 rounded-full blur-3xl pointer-events-none" />
             <div className="absolute bottom-0 left-10 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none" />
 
             <div className="relative z-10 space-y-5">
               {/* Avatar + Verified Badge */}
               <div className="flex items-center gap-4">
-                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-tr from-[#FF5722] via-orange-500 to-amber-400 flex items-center justify-center text-white text-2xl sm:text-3xl font-black shadow-lg shadow-[#FF5722]/25 border-2 border-[#FFD3C4] shrink-0">
+                <div className="w-18 h-18 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-tr from-[#881337] via-[#9F1239] to-[#E11D48] flex items-center justify-center text-white text-2xl sm:text-3xl font-black shadow-lg shadow-rose-900/25 border-2 border-[#FECDD3] shrink-0">
                   {getInitials(profile?.name)}
                 </div>
 
@@ -189,27 +189,27 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                       Verified Student
                     </span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-black text-[#0F172A] font-['Outfit'] tracking-tight leading-snug">
+                  <h2 className="text-xl sm:text-2xl font-black text-[#1C1917] font-['Outfit'] tracking-tight leading-snug">
                     {profile?.name || 'Student Member'}
                   </h2>
-                  <p className="text-xs text-[#64748B] font-semibold flex items-center gap-1.5">
-                    <MapPin size={13} className="text-[#FF5722]" />
+                  <p className="text-xs text-[#71717A] font-semibold flex items-center gap-1.5">
+                    <MapPin size={13} className="text-[#E11D48]" />
                     <span>VIT-AP University</span>
                   </p>
                 </div>
               </div>
 
               {/* Direct Details Snippet */}
-              <div className="pt-2 space-y-2.5 text-xs border-t border-[#F1EAE4]">
-                <div className="flex items-center gap-2.5 bg-[#FAF8F5] p-3 rounded-2xl border border-[#F1EAE4]">
-                  <Phone size={15} className="text-[#FF5722] shrink-0" />
-                  <span className="font-bold text-[#0F172A] font-mono text-xs sm:text-sm">
+              <div className="pt-2 space-y-2.5 text-xs border-t border-[#FFE4E6]">
+                <div className="flex items-center gap-2.5 bg-[#FAF5F5] p-3 rounded-2xl border border-[#FFE4E6]">
+                  <Phone size={15} className="text-[#E11D48] shrink-0" />
+                  <span className="font-bold text-[#1C1917] font-mono text-xs sm:text-sm">
                     {profile?.phone ? `+91 ${profile.phone}` : 'No phone set'}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2.5 bg-[#FAF8F5] p-3 rounded-2xl border border-[#F1EAE4]">
-                  <Mail size={15} className="text-[#3B82F6] shrink-0" />
+                <div className="flex items-center gap-2.5 bg-[#FAF5F5] p-3 rounded-2xl border border-[#FFE4E6]">
+                  <Mail size={15} className="text-blue-600 shrink-0" />
                   <span className="truncate text-xs font-semibold text-[#475569] font-mono">
                     {profile?.email}
                   </span>
@@ -221,7 +221,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 <button
                   type="button"
                   onClick={handleStartEditing}
-                  className="w-full py-3 px-4 rounded-2xl bg-[#FFF0EB] hover:bg-[#FF5722] text-[#FF5722] hover:text-white text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer border border-[#FFD3C4] active:scale-98 shadow-xs"
+                  className="w-full py-3 px-4 rounded-2xl bg-[#FFF1F2] hover:bg-gradient-to-r hover:from-[#E11D48] hover:to-[#881337] text-[#9F1239] hover:text-white text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer border border-[#FECDD3] active:scale-98 shadow-xs"
                 >
                   <Edit3 size={15} />
                   <span>Edit Profile Details</span>
@@ -229,21 +229,21 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
               </div>
 
               {/* Quick Stats Grid */}
-              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#F1EAE4] text-xs">
+              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#FFE4E6] text-xs">
                 <div
                   onClick={onViewOrders}
-                  className="p-3.5 rounded-2xl bg-[#FAF8F5] hover:bg-[#F1EAE4]/60 border border-[#F1EAE4] cursor-pointer transition-colors"
+                  className="p-3.5 rounded-2xl bg-[#FAF5F5] hover:bg-rose-50/70 border border-[#FFE4E6] cursor-pointer transition-colors"
                 >
-                  <span className="text-[10px] uppercase font-bold text-[#64748B] block tracking-wider">Orders</span>
+                  <span className="text-[10px] uppercase font-bold text-[#71717A] block tracking-wider">Orders</span>
                   <div className="flex items-center justify-between mt-1">
                     <span className="text-base font-black font-mono text-emerald-700">{ordersCount} Placed</span>
                     <ChevronRight size={13} className="text-slate-400" />
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4]">
-                  <span className="text-[10px] uppercase font-bold text-[#64748B] block tracking-wider">Destination</span>
-                  <span className="text-xs sm:text-sm font-black text-[#FF5722] mt-1 block truncate">
+                <div className="p-3.5 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6]">
+                  <span className="text-[10px] uppercase font-bold text-[#71717A] block tracking-wider">Destination</span>
+                  <span className="text-xs sm:text-sm font-black text-[#9F1239] mt-1 block truncate">
                     Vit-ap Campus
                   </span>
                 </div>
@@ -255,14 +255,14 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
           {/* Quick Nav Card: My Orders */}
           <button
             onClick={onViewOrders}
-            className="w-full card-elevated p-4 sm:p-5 bg-white hover:bg-[#FAF8F5] border border-[#F1EAE4] rounded-3xl flex items-center justify-between transition-all cursor-pointer group text-left shadow-sm hover:shadow-md"
+            className="w-full card-elevated p-4 sm:p-5 bg-white hover:bg-[#FFF1F2]/40 border border-[#FFE4E6] rounded-3xl flex items-center justify-between transition-all cursor-pointer group text-left shadow-sm hover:shadow-md"
           >
             <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-2xl bg-[#FFF0EB] text-[#FF5722] flex items-center justify-center text-xl border border-[#FFD3C4]">
+              <div className="w-12 h-12 rounded-2xl bg-[#FFF1F2] text-[#9F1239] flex items-center justify-center text-xl border border-[#FECDD3]">
                 📦
               </div>
               <div>
-                <h4 className="text-sm font-black text-[#0F172A] font-['Outfit'] group-hover:text-[#FF5722] transition-colors">
+                <h4 className="text-sm font-black text-[#0F172A] font-['Outfit'] group-hover:text-[#9F1239] transition-colors">
                   My Orders & Live Tracker
                 </h4>
                 <p className="text-xs text-[#64748B]">
@@ -270,13 +270,13 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 </p>
               </div>
             </div>
-            <ChevronRight size={18} className="text-slate-400 group-hover:translate-x-1 transition-transform" />
+            <ChevronRight size={18} className="text-slate-400 group-hover:translate-x-1 group-hover:text-[#9F1239] transition-all" />
           </button>
 
           {/* Sign Out Card */}
           <button
             onClick={logout}
-            className="w-full p-4 rounded-3xl bg-rose-50 hover:bg-rose-100/70 border border-rose-200 text-rose-700 flex items-center justify-between transition-all cursor-pointer group text-left"
+            className="w-full p-4 rounded-3xl bg-rose-50/60 hover:bg-rose-100/70 border border-rose-200 text-rose-700 flex items-center justify-between transition-all cursor-pointer group text-left"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-white text-rose-600 flex items-center justify-center text-lg border border-rose-200 shadow-xs">
@@ -302,12 +302,12 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
         <div className="lg:col-span-7 space-y-6">
           
           {/* Main Card: Profile Details with Edit Option */}
-          <div className="card-elevated p-6 sm:p-8 bg-white border border-[#F1EAE4] rounded-3xl space-y-6 shadow-sm">
+          <div className="card-elevated p-6 sm:p-8 bg-white border border-[#FFE4E6] rounded-3xl space-y-6 shadow-sm">
             
             {/* Header: Title + Prominent [ EDIT ] Option Button */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#F1EAE4] pb-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#FFE4E6] pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#FFF0EB] text-[#FF5722] flex items-center justify-center">
+                <div className="w-10 h-10 rounded-2xl bg-[#FFF1F2] text-[#9F1239] flex items-center justify-center border border-[#FECDD3]">
                   <User size={20} />
                 </div>
                 <div>
@@ -327,7 +327,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 <button
                   type="button"
                   onClick={handleStartEditing}
-                  className="py-2.5 px-5 rounded-2xl bg-[#FF5722] hover:bg-[#F4511E] text-white font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#FF5722]/30 active:scale-95 group"
+                  className="py-2.5 px-5 rounded-2xl bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#BE123C] hover:to-[#701A31] text-white font-extrabold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#881337]/25 active:scale-95 group"
                   title="Click to edit your name and phone number"
                 >
                   <Edit3 size={16} className="group-hover:rotate-12 transition-transform" />
@@ -359,7 +359,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
               <div className="space-y-4 animate-fade-in">
                 
                 {/* Full Name Card */}
-                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                       Full Student Name
@@ -370,7 +370,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                   </div>
                   <button
                     onClick={handleStartEditing}
-                    className="py-1.5 px-3 rounded-xl bg-[#FFF0EB] hover:bg-[#FF5722] text-[#FF5722] hover:text-white text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer border border-[#FFD3C4]"
+                    className="py-1.5 px-3 rounded-xl bg-[#FFF1F2] hover:bg-[#881337] text-[#9F1239] hover:text-white text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer border border-[#FECDD3]"
                   >
                     <Edit3 size={12} />
                     <span>Edit</span>
@@ -378,7 +378,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 </div>
 
                 {/* Mobile Phone Number Card */}
-                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                       Mobile Phone Number
@@ -396,7 +396,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                   </div>
                   <button
                     onClick={handleStartEditing}
-                    className="py-1.5 px-3 rounded-xl bg-[#FFF0EB] hover:bg-[#FF5722] text-[#FF5722] hover:text-white text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer border border-[#FFD3C4]"
+                    className="py-1.5 px-3 rounded-xl bg-[#FFF1F2] hover:bg-[#881337] text-[#9F1239] hover:text-white text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer border border-[#FECDD3]"
                   >
                     <Edit3 size={12} />
                     <span>Edit</span>
@@ -404,7 +404,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 </div>
 
                 {/* Email Address Card */}
-                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6] flex items-center justify-between">
                   <div>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
                       Email Address
@@ -413,7 +413,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                       {profile?.email}
                     </span>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-mono bg-white px-2 py-1 rounded-md border border-slate-200">
+                  <span className="text-[10px] text-slate-400 font-mono bg-white px-2 py-1 rounded-md border border-[#FFE4E6]">
                     Account ID
                   </span>
                 </div>
@@ -423,7 +423,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                   <button
                     type="button"
                     onClick={handleStartEditing}
-                    className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-md active:scale-98"
+                    className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-[#881337] to-[#9F1239] hover:from-[#701A31] hover:to-[#881337] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg shadow-[#881337]/20 active:scale-98"
                   >
                     <Edit3 size={16} />
                     <span>Click here to Edit & Update Details</span>
@@ -440,7 +440,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 {/* Full Name Input */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-black text-[#0F172A] flex items-center justify-between">
-                    <span>Full Student Name <span className="text-[#FF5722]">*</span></span>
+                    <span>Full Student Name <span className="text-[#E11D48]">*</span></span>
                     <span className="text-[10px] text-slate-400 font-normal">Printed on kitchen food bills</span>
                   </label>
                   <div className="relative">
@@ -451,7 +451,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter full name (e.g. Aryan Sharma)"
-                      className="w-full py-3.5 px-4 rounded-2xl text-xs sm:text-sm font-bold bg-white border-2 border-[#FF5722] text-[#0F172A] focus:ring-4 focus:ring-[#FF5722]/15 outline-none transition-all shadow-xs"
+                      className="w-full py-3.5 px-4 rounded-2xl text-xs sm:text-sm font-bold bg-white border-2 border-[#E11D48] text-[#0F172A] focus:ring-4 focus:ring-[#E11D48]/15 outline-none transition-all shadow-xs"
                     />
                   </div>
                 </div>
@@ -459,11 +459,11 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 {/* Mobile Number Input */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-black text-[#0F172A] flex items-center justify-between">
-                    <span>Mobile Phone Number <span className="text-[#FF5722]">*</span></span>
+                    <span>Mobile Phone Number <span className="text-[#E11D48]">*</span></span>
                     <span className="text-[10px] text-slate-400 font-normal">Contact for Vit-ap Campus drop</span>
                   </label>
                   <div className="relative flex items-center">
-                    <span className="absolute left-4 text-xs font-mono font-black text-[#FF5722] select-none">
+                    <span className="absolute left-4 text-xs font-mono font-black text-[#E11D48] select-none">
                       +91
                     </span>
                     <input
@@ -473,7 +473,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                       onChange={(e) => setPhone(e.target.value)}
                       maxLength={10}
                       placeholder="10-digit mobile number"
-                      className="w-full py-3.5 pl-14 pr-4 rounded-2xl text-xs sm:text-sm font-mono font-bold bg-white border-2 border-[#FF5722] text-[#0F172A] focus:ring-4 focus:ring-[#FF5722]/15 outline-none transition-all shadow-xs"
+                      className="w-full py-3.5 pl-14 pr-4 rounded-2xl text-xs sm:text-sm font-mono font-bold bg-white border-2 border-[#E11D48] text-[#0F172A] focus:ring-4 focus:ring-[#E11D48]/15 outline-none transition-all shadow-xs"
                     />
                   </div>
                 </div>
@@ -496,7 +496,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                   <button
                     type="submit"
                     disabled={isSaving}
-                    className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl btn-primary text-xs sm:text-sm font-black flex items-center justify-center gap-2 cursor-pointer border-none shadow-lg shadow-[#FF5722]/25 active:scale-98 transition-all"
+                    className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl btn-primary text-xs sm:text-sm font-black flex items-center justify-center gap-2 cursor-pointer border-none shadow-lg shadow-[#881337]/25 active:scale-98 transition-all"
                   >
                     {isSaving ? (
                       <>
@@ -526,10 +526,10 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
           </div>
 
           {/* Campus Delivery Destination Box */}
-          <div className="card-elevated p-6 bg-white border border-[#F1EAE4] rounded-3xl space-y-3 shadow-sm">
+          <div className="card-elevated p-6 bg-white border border-[#FFE4E6] rounded-3xl space-y-3 shadow-sm">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <MapPin size={18} className="text-[#FF5722]" />
+                <MapPin size={18} className="text-[#E11D48]" />
                 <h4 className="text-sm font-extrabold text-[#0F172A] font-['Outfit']">
                   Campus Handover Destination
                 </h4>
@@ -539,7 +539,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
               </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] space-y-1">
+            <div className="p-4 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6] space-y-1">
               <span className="font-extrabold text-xs text-[#0F172A] block">
                 Vit-ap Campus — Delivery Dispatch Point
               </span>

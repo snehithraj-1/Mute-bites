@@ -137,10 +137,10 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
     }`}>
       
       {/* 1. Header: Back Navigation, Restaurant Meta & Availability */}
-      <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#E2D9D0] shadow-xs space-y-4">
+      <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#FFE4E6] shadow-xs space-y-4">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer border-none bg-transparent p-0"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#71717A] hover:text-[#9F1239] transition-colors cursor-pointer border-none bg-transparent p-0"
         >
           <ArrowLeft size={16} />
           <span>Back to Restaurants</span>
@@ -149,7 +149,7 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-xl sm:text-2xl font-black text-[#0F172A] font-['Outfit'] tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#1C1917] font-['Outfit'] tracking-tight">
                 {restaurant.name}
               </h2>
               <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
@@ -161,47 +161,47 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-[#64748B] mt-1 font-medium">
-              <span className="flex items-center gap-1 text-[#0F172A]">
-                <MapPin size={13} className="text-[#FF5722]" />
-                {restaurant.location || 'Beside Ayyappa PG Hostel'}
+            <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-[#71717A] mt-1 font-medium">
+              <span className="flex items-center gap-1 text-[#1C1917]">
+                <MapPin size={13} className="text-[#E11D48]" />
+                {restaurant.location || 'Beside VIT-AP Campus'}
               </span>
               {restaurant.phone && (
                 <>
                   <span>•</span>
-                  <a href={`tel:${restaurant.phone}`} className="flex items-center gap-1 font-mono text-slate-700 hover:text-[#FF5722]">
-                    <Phone size={12} className="text-[#FF5722]" />
+                  <a href={`tel:${restaurant.phone}`} className="flex items-center gap-1 font-mono text-slate-700 hover:text-[#9F1239]">
+                    <Phone size={12} className="text-[#E11D48]" />
                     <span>{restaurant.phone}</span>
                   </a>
                 </>
               )}
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Clock size={13} className="text-[#64748B]" />
+                <Clock size={13} className="text-[#71717A]" />
                 {restaurant.prep_time || '15-20 min'}
               </span>
               <span>•</span>
-              <span className="text-emerald-700 font-bold">Free Campus Delivery</span>
+              <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Free Campus Delivery</span>
             </div>
           </div>
 
           {/* Search Bar */}
           <div className="relative w-full sm:w-64">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-rose-400" />
             <input
               type="text"
               placeholder="Search food in menu..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-8 pr-3 py-2 rounded-xl bg-[#FAF8F5] border border-[#E2D9D0] text-xs text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors"
+              className="w-full pl-8 pr-3 py-2 rounded-xl bg-[#FAF5F5] border border-[#FFE4E6] text-xs text-[#1C1917] placeholder-slate-400 focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all"
             />
           </div>
         </div>
 
         {/* Closed / Disabled Notice */}
         {!isOpen && (
-          <div className="p-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-xs flex items-center gap-2">
-            <AlertCircle size={16} className="shrink-0 text-amber-600" />
+          <div className="p-3 bg-rose-50 border border-rose-200 text-rose-900 rounded-xl text-xs flex items-center gap-2">
+            <AlertCircle size={16} className="shrink-0 text-rose-600" />
             <span>
               {!orderingEnabled
                 ? 'Campus ordering is currently paused by platform administration. You can browse the menu, but placing orders is disabled.'
@@ -212,17 +212,17 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
       </div>
 
       {/* 2. Sticky Horizontally Scrollable Categories */}
-      <div className="sticky top-16 z-20 bg-[#FAF8F5]/95 backdrop-blur-xs py-2 -mx-4 px-4 sm:-mx-6 sm:px-6 flex items-center gap-2 overflow-x-auto scrollbar-none">
+      <div className="sticky top-16 z-20 bg-[#FAF5F5]/95 backdrop-blur-xs py-2 -mx-4 px-4 sm:-mx-6 sm:px-6 flex items-center gap-2 overflow-x-auto scrollbar-none">
         {categories.map((cat) => {
           const isActive = activeCategory === cat;
           return (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all cursor-pointer border ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer border ${
                 isActive
-                  ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                  : 'bg-white text-slate-600 hover:text-slate-900 border-slate-200 hover:bg-slate-50'
+                  ? 'bg-gradient-to-r from-[#E11D48] to-[#881337] text-white border-transparent shadow-sm shadow-rose-900/25'
+                  : 'bg-white text-slate-600 hover:text-[#9F1239] border-[#FFE4E6] hover:bg-[#FFF1F2]'
               }`}
             >
               {cat}
@@ -341,25 +341,25 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
                     ) : qty === 0 ? (
                       <button
                         onClick={() => addToCart(dish, restaurant.id)}
-                        className="px-3 py-1 rounded-lg text-xs font-extrabold bg-white hover:bg-[#FF5722] text-[#FF5722] hover:text-white transition-all cursor-pointer border border-[#FF5722] flex items-center gap-1 shadow-xs"
+                        className="px-3.5 py-1.5 rounded-xl text-xs font-black bg-white hover:bg-gradient-to-r hover:from-[#E11D48] hover:to-[#881337] text-[#9F1239] hover:text-white transition-all cursor-pointer border border-[#FECDD3] hover:border-transparent flex items-center gap-1 shadow-xs hover:shadow-md hover:shadow-rose-900/20 active:scale-95"
                       >
-                        <Plus size={11} />
+                        <Plus size={12} className="text-[#E11D48] group-hover:text-white" />
                         <span>ADD</span>
                       </button>
                     ) : (
-                      <div className="flex items-center gap-1 bg-white border border-[#FF5722] rounded-lg p-0.5 shadow-xs">
+                      <div className="flex items-center gap-1 bg-white border border-[#FECDD3] rounded-xl p-0.5 shadow-sm">
                         <button
                           onClick={() => updateQuantity(dish.id, -1)}
-                          className="w-5 h-5 rounded bg-slate-100 text-slate-800 hover:bg-slate-200 flex items-center justify-center font-bold text-xs cursor-pointer border-none"
+                          className="w-5 h-5 rounded-lg bg-[#FFF1F2] text-[#9F1239] hover:bg-[#FFE4E6] flex items-center justify-center font-bold text-xs cursor-pointer border-none"
                         >
                           <Minus size={10} />
                         </button>
-                        <span className="font-mono text-xs font-bold w-4 text-center text-[#FF5722]">
+                        <span className="font-mono text-xs font-black w-4 text-center text-[#9F1239]">
                           {qty}
                         </span>
                         <button
                           onClick={() => updateQuantity(dish.id, 1)}
-                          className="w-5 h-5 rounded bg-[#FF5722] text-white hover:bg-[#F4511E] flex items-center justify-center font-bold text-xs cursor-pointer border-none"
+                          className="w-5 h-5 rounded-lg bg-gradient-to-r from-[#E11D48] to-[#9F1239] text-white hover:opacity-90 flex items-center justify-center font-bold text-xs cursor-pointer border-none shadow-xs"
                         >
                           <Plus size={10} />
                         </button>
@@ -381,13 +381,13 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
             bottom: 'calc(var(--bottom-nav-height, 60px) + env(safe-area-inset-bottom, 0px) + 12px)'
           }}
         >
-          <div className="bg-slate-900 text-white px-4 py-3 rounded-xl shadow-lg flex items-center justify-between gap-3 border border-slate-700">
+          <div className="bg-[#1C1917]/95 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-xl shadow-rose-950/20 flex items-center justify-between gap-3 border border-rose-900/40">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#FF5722] flex items-center justify-center text-white shrink-0">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#881337] to-[#E11D48] flex items-center justify-center text-white shrink-0 shadow-sm">
                 <ShoppingBag size={16} />
               </div>
               <div>
-                <div className="text-xs font-medium text-slate-300">
+                <div className="text-xs font-medium text-rose-200">
                   {totalItemsCount} {totalItemsCount === 1 ? 'item' : 'items'} added
                 </div>
                 <div className="text-xs font-bold text-white">
@@ -398,7 +398,7 @@ export default function MenuPage({ restaurant, onBack, orderingEnabled }) {
 
             <button
               onClick={() => setIsCartOpen(true)}
-              className="py-2 px-4 rounded-lg text-xs font-extrabold bg-[#FF5722] hover:bg-[#F4511E] text-white flex items-center gap-1.5 transition-all cursor-pointer border-none shadow-xs"
+              className="py-2.5 px-4 rounded-xl text-xs font-black bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#F43F5E] hover:to-[#9F1239] text-white flex items-center gap-1.5 transition-all cursor-pointer border-none shadow-md shadow-rose-900/30 active:scale-95"
             >
               <span>View Cart • ₹{totalAmount}</span>
               <ChevronRight size={14} />

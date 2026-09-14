@@ -790,7 +790,7 @@ app.post('/api/auth/send-otp', async (req, res) => {
         </div>
         
         <div style="background: #FAF8F5; padding: 18px 24px; text-align: center; border-top: 1px solid #f1eae4; font-size: 11px; color: #8a7b70;">
-          VIT-AP University • Vit-ap Campus Delivery Support: 9989955833
+          VIT-AP University • Vit-ap Campus Delivery Support: 8247075652
         </div>
       </div>
     `;
@@ -882,8 +882,8 @@ app.post('/api/auth/verify-otp', async (req, res) => {
     otpMemoryCache.delete(cleanEmail);
 
     const studentName = name || storedData?.name || cleanEmail.split('@')[0];
-    const studentPhone = phone || storedData?.phone || '9989955833';
-    const studentId = `srm-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    const studentPhone = phone || storedData?.phone || '8247075652';
+    const studentId = `vit-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
 
     // Upsert into Neon PostgreSQL students table
     if (sql) {
@@ -1392,7 +1392,7 @@ app.post('/api/orders', async (req, res) => {
     student_name: orderData.student_name || orderData.studentName || authUser?.name || 'Student',
     student_email: orderData.student_email || orderData.studentEmail || authUser?.email || '',
     student_id: orderData.student_id || orderData.studentId || null,
-    student_phone: orderData.student_phone || orderData.studentPhone || authUser?.phone || '9989955833',
+    student_phone: orderData.student_phone || orderData.studentPhone || authUser?.phone || '8247075652',
     delivery_location: orderData.delivery_location || orderData.deliveryLocation || 'VIT-AP Campus',
     restaurant_id: orderData.restaurant_id || orderData.restaurantId || 'bheemasena-restaurant',
     restaurant_name: orderData.restaurant_name || orderData.restaurantName || 'Bheemasena Restaurant',

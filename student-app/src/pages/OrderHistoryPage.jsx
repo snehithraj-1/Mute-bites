@@ -165,14 +165,14 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
           className="p-2 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
           title="Refresh Orders"
         >
-          <RefreshCw size={14} className={isRefreshing ? 'animate-spin text-[#FF5722]' : ''} />
+          <RefreshCw size={14} className={isRefreshing ? 'animate-spin text-[#E11D48]' : ''} />
         </button>
       </div>
 
       {/* Orders List */}
       {isLoading ? (
         <div className="py-16 text-center space-y-2">
-          <div className="w-8 h-8 rounded-full border-2 border-[#FF5722] border-t-transparent animate-spin mx-auto" />
+          <div className="w-8 h-8 rounded-full border-2 border-[#E11D48] border-t-transparent animate-spin mx-auto" />
           <p className="text-xs text-slate-500">Loading your orders...</p>
         </div>
       ) : orders.length === 0 ? (
@@ -246,16 +246,16 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
                       {orderItems.length > 0
                         ? orderItems.map((item, idx) => (
                             <span key={idx}>
-                              {item.name || item.item_name || 'Food Item'} <span className="font-mono font-bold text-[#FF5722]">×{item.quantity || item.qty || 1}</span>
+                              {item.name || item.item_name || 'Food Item'} <span className="font-mono font-bold text-[#E11D48]">×{item.quantity || item.qty || 1}</span>
                               {idx < orderItems.length - 1 ? ', ' : ''}
                             </span>
                           ))
                         : 'Food order'}
                     </div>
                     <div className="pt-0.5">
-                      <a href="tel:9989955833" className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-orange-50 border border-orange-200 text-orange-800 text-[11px] font-semibold mt-1 no-underline hover:bg-orange-100">
-                        <Phone size={11} className="text-[#FF5722]" />
-                        <span>Kitchen Helpline: <strong>+91 9989955833</strong></span>
+                      <a href="tel:8247075652" className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-semibold mt-1 no-underline hover:bg-rose-100">
+                        <Phone size={11} className="text-[#E11D48]" />
+                        <span>Kitchen Helpline: <strong>+91 8247075652</strong></span>
                       </a>
                     </div>
                   </div>
@@ -270,7 +270,7 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
                 {/* Drop Destination & Track Button */}
                 <div className="pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
                   <div className="flex items-center gap-1.5">
-                    <MapPin size={12} className="text-[#FF5722]" />
+                    <MapPin size={12} className="text-[#E11D48]" />
                     <span>Drop: {order.delivery_location || 'Vit-ap Campus'}</span>
                   </div>
 

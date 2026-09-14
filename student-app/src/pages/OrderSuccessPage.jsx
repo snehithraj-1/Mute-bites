@@ -99,7 +99,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         <p className="text-sm text-slate-600">This order has been cleared or cancelled by the restaurant management.</p>
         <button
           onClick={onGoHome}
-          className="mt-4 px-6 py-2.5 bg-[#EE4D2D] text-white font-bold rounded-xl shadow hover:bg-[#D43D1F] transition cursor-pointer"
+          className="mt-4 px-6 py-2.5 bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#BE123C] hover:to-[#701A31] text-white font-bold rounded-xl shadow-md transition cursor-pointer"
         >
           Back to Campus Dining
         </button>
@@ -110,7 +110,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
   const currentStatus = liveOrder.status || order.status || 'CONFIRMED';
   const isCompleted = currentStatus === 'COMPLETED' || currentStatus === 'DELIVERED';
   const restaurantName = liveOrder.restaurant_name || order.restaurant_name || 'Campus Kitchen';
-  const kitchenPhone = '9989955833';
+  const kitchenPhone = '8247075652';
 
   const orderDate = liveOrder.created_at || order.created_at
     ? new Date(liveOrder.created_at || order.created_at).toLocaleString('en-IN', {
@@ -164,7 +164,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
       )}
 
       {/* 1. Verified Order Confirmation Header */}
-      <div className="bg-white rounded-2xl p-6 sm:p-8 text-center border border-[#E2D9D0] shadow-sm space-y-4">
+      <div className="bg-white rounded-2xl p-6 sm:p-8 text-center border border-[#FFE4E6] shadow-sm space-y-4">
         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mx-auto shadow-md border ${
           isCompleted
             ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
@@ -196,7 +196,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         </div>
 
         {/* Live Order Progress Pipeline - Confirmed & Completed */}
-        <div className="pt-3 border-t border-[#F1EAE4] grid grid-cols-2 gap-6 text-center text-xs max-w-xs mx-auto">
+        <div className="pt-3 border-t border-[#FFE4E6] grid grid-cols-2 gap-6 text-center text-xs max-w-xs mx-auto">
           <div className="flex flex-col items-center">
             <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-xs shadow-sm">✓</div>
             <span className="font-bold text-slate-800 mt-1.5 text-xs">Confirmed</span>
@@ -221,21 +221,21 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             onClick={handleTestSound}
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all cursor-pointer border border-slate-200"
           >
-            <Volume2 size={13} className="text-[#FF5722]" />
+            <Volume2 size={13} className="text-[#E11D48]" />
             <span>Sound Alert: Active (Test Chime)</span>
           </button>
         </div>
       </div>
 
       {/* 2. Itemized Bill & Receipt Card */}
-      <div className="bg-white rounded-2xl p-5 sm:p-7 border border-[#E2D9D0] shadow-sm space-y-5">
+      <div className="bg-white rounded-2xl p-5 sm:p-7 border border-[#FFE4E6] shadow-sm space-y-5">
         
         {/* Receipt Meta */}
-        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#F1EAE4] pb-5">
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#FFE4E6] pb-5">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-lg font-black text-[#0F172A] font-['Outfit']">Vit: Mute Bites</span>
-              <span className="px-2 py-0.5 rounded bg-[#FFF0EB] text-[#FF5722] text-[10px] font-black uppercase">
+              <span className="px-2 py-0.5 rounded bg-[#FFF1F2] text-[#9F1239] border border-[#FECDD3] text-[10px] font-black uppercase">
                 Invoice
               </span>
             </div>
@@ -252,7 +252,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             <div className="text-[10px] font-bold text-[#64748B] uppercase tracking-wider">
               Order ID
             </div>
-            <div className="text-base sm:text-lg font-black font-mono text-[#FF5722]">
+            <div className="text-base sm:text-lg font-black font-mono text-[#9F1239]">
               #{order.id}
             </div>
             <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border mt-1 ${
@@ -266,10 +266,8 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
           </div>
         </div>
 
-
-
         {/* Student and Delivery Destination */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E2D9D0] text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#FAF5F5] border border-[#FFE4E6] text-xs">
           <div>
             <div className="font-bold text-[#64748B] uppercase text-[10px] tracking-wider mb-1">
               Student Details
@@ -280,7 +278,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             )}
             {order.student_phone && (
               <div className="text-[#64748B] flex items-center gap-1 mt-1 font-mono">
-                <Phone size={11} className="text-[#FF5722]" />
+                <Phone size={11} className="text-[#E11D48]" />
                 <span>{order.student_phone}</span>
               </div>
             )}
@@ -291,11 +289,11 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
               Delivery Drop Location
             </div>
             <div className="flex items-start gap-1.5 text-[#0F172A] font-bold">
-              <MapPin size={14} className="text-[#FF5722] shrink-0 mt-0.5" />
+              <MapPin size={14} className="text-[#E11D48] shrink-0 mt-0.5" />
               <span>{order.delivery_location || 'Vit-ap Campus'}</span>
             </div>
             {order.instructions && (
-              <div className="text-[#64748B] italic mt-1.5 text-[11px] bg-white p-2 rounded-lg border border-[#E2D9D0]">
+              <div className="text-[#64748B] italic mt-1.5 text-[11px] bg-white p-2 rounded-lg border border-[#FFE4E6]">
                 "{order.instructions}"
               </div>
             )}
@@ -303,10 +301,10 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         </div>
 
         {/* Official Kitchen Contact & Delivery Info */}
-        <div className="p-4 rounded-xl bg-gradient-to-r from-orange-50 via-amber-50 to-white border border-orange-200 shadow-sm text-xs space-y-3">
+        <div className="p-4 rounded-xl bg-gradient-to-r from-[#FFF1F2] via-rose-50/50 to-white border border-[#FECDD3] shadow-sm text-xs space-y-3">
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#FF5722] text-white flex items-center justify-center shadow-md shadow-orange-500/25 shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#E11D48] to-[#881337] text-white flex items-center justify-center shadow-md shadow-rose-900/20 shrink-0">
                 <Store size={20} />
               </div>
               <div>
@@ -326,16 +324,16 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
 
             <a
               href={`tel:${kitchenPhone}`}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-[#FF5722] hover:bg-[#E64A19] text-white font-bold text-xs shadow-md shadow-orange-500/20 transition-all cursor-pointer no-underline active:scale-95"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#BE123C] hover:to-[#701A31] text-white font-bold text-xs shadow-md shadow-rose-900/20 transition-all cursor-pointer no-underline active:scale-95"
             >
               <Phone size={13} />
-              <span>Call Restaurant (99899 55833)</span>
+              <span>Call Restaurant (82470 75652)</span>
             </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2.5 border-t border-orange-100 text-slate-600 text-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2.5 border-t border-[#FFE4E6] text-slate-600 text-xs">
             <div className="flex items-center gap-1.5">
-              <MapPin size={13} className="text-[#FF5722] shrink-0" />
+              <MapPin size={13} className="text-[#E11D48] shrink-0" />
               <span>Delivery Handover: <strong className="text-slate-900">{order.delivery_location || 'Vit-ap Campus'}</strong></span>
             </div>
             <span className="text-slate-500 text-[11px]">
@@ -350,11 +348,11 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             Ordered Items
           </div>
 
-          <div className="border border-[#E2D9D0] rounded-xl overflow-hidden divide-y divide-[#F1EAE4]">
+          <div className="border border-[#FFE4E6] rounded-xl overflow-hidden divide-y divide-[#FFE4E6]">
             {orderItems.map((item, idx) => (
               <div key={idx} className="p-3 flex items-center justify-between text-xs bg-white">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-5 h-5 rounded bg-[#FAF8F5] text-[#64748B] font-black text-[11px] flex items-center justify-center shrink-0">
+                  <div className="w-5 h-5 rounded bg-[#FFF1F2] text-[#9F1239] font-black text-[11px] flex items-center justify-center shrink-0 border border-[#FECDD3]">
                     {idx + 1}
                   </div>
                   <div>
@@ -374,7 +372,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         </div>
 
         {/* Pricing Breakdown */}
-        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#E2D9D0] space-y-1.5 text-xs">
+        <div className="p-3.5 rounded-xl bg-[#FAF5F5] border border-[#FFE4E6] space-y-1.5 text-xs">
           <div className="flex justify-between text-[#64748B]">
             <span>Items Subtotal</span>
             <span className="font-mono font-bold text-[#0F172A]">₹{subtotal}</span>
@@ -388,9 +386,9 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             <span className="font-bold text-emerald-700 uppercase text-[11px]">Free Campus Delivery</span>
           </div>
 
-          <div className="pt-2 border-t border-[#E2D9D0] flex justify-between items-center text-base font-black text-[#0F172A]">
+          <div className="pt-2 border-t border-[#FFE4E6] flex justify-between items-center text-base font-black text-[#0F172A]">
             <span>Total Amount</span>
-            <span className="text-[#FF5722] font-mono font-black text-xl">
+            <span className="text-[#9F1239] font-mono font-black text-xl">
               ₹{order.total_amount}
             </span>
           </div>
@@ -400,7 +398,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         <div className="pt-1 flex justify-end">
           <button
             onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#E2D9D0] bg-white text-[#0F172A] text-xs font-bold hover:bg-[#FAF8F5] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#FFE4E6] bg-white text-[#0F172A] text-xs font-bold hover:bg-[#FAF5F5] transition-colors cursor-pointer"
           >
             <Printer size={13} />
             <span>Print Receipt</span>
@@ -413,7 +411,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
       <div className="grid grid-cols-2 gap-3 pt-2">
         <button
           onClick={onGoHome}
-          className="py-3 px-4 rounded-xl border border-[#E2D9D0] bg-white hover:bg-[#FAF8F5] text-[#0F172A] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer transition-colors"
+          className="py-3 px-4 rounded-xl border border-[#FFE4E6] bg-white hover:bg-[#FAF5F5] text-[#0F172A] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer transition-colors"
         >
           <Home size={15} />
           <span>Back to Home</span>
@@ -421,7 +419,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
 
         <button
           onClick={onViewHistory}
-          className="py-3 px-4 rounded-xl bg-[#FF5722] hover:bg-[#F4511E] text-white font-black text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm transition-colors"
+          className="py-3 px-4 rounded-xl btn-primary text-xs sm:text-sm font-black flex items-center justify-center gap-2 cursor-pointer border-none shadow-lg shadow-[#881337]/20 active:scale-98 transition-all"
         >
           <span>View My Orders</span>
           <ArrowRight size={15} />

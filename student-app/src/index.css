@@ -4,15 +4,17 @@
   --bottom-nav-height: 64px;
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --floating-cart-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px) + 16px);
-  --primary: #FF5722;
-  --primary-hover: #F4511E;
-  --primary-light: #FFF0EB;
-  --accent: #FF9800;
-  --bg-main: #FAF8F5;
+  --primary: #881337;
+  --primary-hover: #9F1239;
+  --primary-accent: #E11D48;
+  --primary-light: #FFF1F2;
+  --accent: #F43F5E;
+  --bg-main: #FAF5F5;
   --card-bg: #FFFFFF;
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-  --border-color: #F1EAE4;
+  --text-main: #1C1917;
+  --text-muted: #71717A;
+  --border-color: #FFE4E6;
+  --border-rose: #FECDD3;
   --spring-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -202,48 +204,46 @@ h1, h2, h3, h4, .font-heading {
 
 /* Skeleton Loading Shimmer for Smooth Content Transitions */
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #F1EAE4 25%, #FFF0EB 50%, #F1EAE4 75%);
+  background: linear-gradient(90deg, #FFE4E6 25%, #FFF1F2 50%, #FFE4E6 75%);
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite linear;
   border-radius: 0.75rem;
 }
 
 /* ======================================================== */
-/* COMPONENT UTILITIES                                      */
-/* ======================================================== */
-
-/* ======================================================== */
-/* COMPONENT UTILITIES (REAL COMMERCIAL FOOD APP SYSTEM)    */
+/* COMPONENT UTILITIES (CRIMSON & ROSE LUXURY SYSTEM)       */
 /* ======================================================== */
 
 .btn-primary {
-  background-color: var(--primary);
+  background: linear-gradient(135deg, #E11D48 0%, #881337 100%);
   color: #FFFFFF;
   font-weight: 700;
-  border-radius: 0.75rem;
-  transition: background-color 0.15s ease, transform 0.1s ease;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 0.85rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px -2px rgba(225, 29, 72, 0.35);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--primary-hover);
+  background: linear-gradient(135deg, #F43F5E 0%, #9F1239 100%);
+  box-shadow: 0 6px 20px -2px rgba(225, 29, 72, 0.45);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: scale(0.975);
 }
 
 .card-elevated {
   background: #FFFFFF;
   border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px -4px rgba(136, 19, 55, 0.05), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
 }
 
 .card-elevated:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  border-color: var(--border-rose);
+  box-shadow: 0 10px 25px -5px rgba(136, 19, 55, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.03);
 }
 
 /* Momentum Touch Scrolling */
@@ -262,10 +262,10 @@ h1, h2, h3, h4, .font-heading {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #E2D9D0;
+  background: #FECDD3;
   border-radius: 9999px;
   transition: background-color 0.2s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C4B5A5;
+  background: #FDA4AF;
 }

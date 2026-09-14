@@ -110,27 +110,27 @@ export default function StudentLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 bg-[#FAF8F5]">
+    <div className="min-h-screen flex flex-col justify-center py-10 px-4 sm:px-6 lg:px-8 bg-[#FAF5F5]">
       
       {/* Brand Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="w-14 h-14 rounded-2xl bg-[#FF5722] text-white mx-auto flex items-center justify-center text-2xl font-black shadow-md shadow-[#FF5722]/20 mb-3">
+        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#881337] via-[#9F1239] to-[#E11D48] text-white mx-auto flex items-center justify-center text-2xl font-black shadow-xl shadow-rose-900/25 mb-3 border border-rose-400/30">
           MB
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight font-['Outfit']">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#1C1917] tracking-tight font-['Outfit']">
           Vit: Mute Bites
         </h1>
-        <p className="mt-1 text-xs sm:text-sm text-[#64748B] font-medium">
+        <p className="mt-1 text-xs sm:text-sm text-[#71717A] font-medium">
           VIT-AP Student Food Ordering & Delivery
         </p>
       </div>
 
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-7 px-6 sm:px-8 rounded-2xl shadow-sm border border-[#E2D9D0] space-y-5">
+        <div className="bg-white/95 backdrop-blur-md py-7 px-6 sm:px-8 rounded-3xl shadow-xl shadow-rose-950/5 border border-[#FFE4E6] space-y-5">
           
           {/* Status Message */}
           {message && (
-            <div className={`p-3.5 rounded-xl text-xs font-bold leading-relaxed flex items-start gap-2 ${
+            <div className={`p-3.5 rounded-2xl text-xs font-bold leading-relaxed flex items-start gap-2 ${
               message.type === 'error'
                 ? 'bg-rose-50 text-rose-800 border border-rose-200'
                 : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
@@ -147,8 +147,8 @@ export default function StudentLoginPage() {
           {step === 'ENTER_EMAIL' ? (
             <form onSubmit={handleSendOtp} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <User size={13} className="text-[#FF5722]" />
+                <label className="block text-xs font-bold text-[#1C1917] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <User size={13} className="text-[#E11D48]" />
                   <span>Student Name *</span>
                 </label>
                 <input
@@ -158,13 +158,13 @@ export default function StudentLoginPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={isLoading}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D9D0] bg-[#FAF8F5] text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors disabled:opacity-60"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#FFE4E6] bg-[#FAF5F5] text-sm text-[#1C1917] placeholder-slate-400 focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all disabled:opacity-60"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <Phone size={13} className="text-[#FF5722]" />
+                <label className="block text-xs font-bold text-[#1C1917] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <Phone size={13} className="text-[#E11D48]" />
                   <span>Mobile Phone Number *</span>
                 </label>
                 <input
@@ -175,16 +175,16 @@ export default function StudentLoginPage() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                   disabled={isLoading}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D9D0] bg-[#FAF8F5] text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors font-mono disabled:opacity-60"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#FFE4E6] bg-[#FAF5F5] text-sm text-[#1C1917] placeholder-slate-400 focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all font-mono disabled:opacity-60"
                 />
-                <p className="text-[11px] text-[#64748B] mt-1">
+                <p className="text-[11px] text-[#71717A] mt-1">
                   Couriers call this number when arriving at Vit-ap Campus.
                 </p>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <Mail size={13} className="text-[#FF5722]" />
+                <label className="block text-xs font-bold text-[#1C1917] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <Mail size={13} className="text-[#E11D48]" />
                   <span>Email Address *</span>
                 </label>
                 <input
@@ -194,9 +194,9 @@ export default function StudentLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={isLoading}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D9D0] bg-[#FAF8F5] text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors disabled:opacity-60"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#FFE4E6] bg-[#FAF5F5] text-sm text-[#1C1917] placeholder-slate-400 focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all disabled:opacity-60"
                 />
-                <p className="text-[11px] text-[#64748B] mt-1">
+                <p className="text-[11px] text-[#71717A] mt-1">
                   We will send a 6-digit one-time passcode (OTP) to this email.
                 </p>
               </div>
@@ -204,7 +204,7 @@ export default function StudentLoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 mt-2 rounded-xl text-sm font-black bg-[#FF5722] hover:bg-[#F4511E] text-white flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 mt-2 rounded-xl text-sm font-black bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#F43F5E] hover:to-[#9F1239] text-white flex items-center justify-center gap-2 cursor-pointer border-none shadow-md shadow-rose-900/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
               >
                 {isLoading ? (
                   <span>Sending Verification Code...</span>
@@ -218,21 +218,21 @@ export default function StudentLoginPage() {
             </form>
           ) : (
             <form onSubmit={handleVerifyOtp} className="space-y-4">
-              <div className="p-3 rounded-xl bg-[#FFF0EB] border border-[#FFD3C4] text-xs text-[#FF5722] flex items-center justify-between">
+              <div className="p-3.5 rounded-2xl bg-[#FFF1F2] border border-[#FECDD3] text-xs text-[#9F1239] flex items-center justify-between">
                 <span>Code sent to: <strong>{email}</strong></span>
                 <button
                   type="button"
                   onClick={() => setStep('ENTER_EMAIL')}
                   disabled={isLoading}
-                  className="text-xs font-black underline cursor-pointer border-none bg-transparent text-[#FF5722]"
+                  className="text-xs font-black underline cursor-pointer border-none bg-transparent text-[#9F1239] hover:text-[#E11D48]"
                 >
                   Change
                 </button>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#0F172A] uppercase tracking-wider mb-1 flex items-center gap-1.5">
-                  <KeyRound size={13} className="text-[#FF5722]" />
+                <label className="block text-xs font-bold text-[#1C1917] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  <KeyRound size={13} className="text-[#E11D48]" />
                   <span>Enter 6-Digit Code *</span>
                 </label>
                 <input
@@ -244,10 +244,10 @@ export default function StudentLoginPage() {
                   value={otpToken}
                   onChange={(e) => setOtpToken(e.target.value)}
                   disabled={isLoading}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D9D0] bg-[#FAF8F5] text-xl font-mono font-black tracking-widest text-center text-[#0F172A] focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors disabled:opacity-60"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#FFE4E6] bg-[#FAF5F5] text-xl font-mono font-black tracking-widest text-center text-[#1C1917] focus:outline-none focus:border-[#E11D48] focus:bg-white focus:ring-3 focus:ring-[#E11D48]/15 transition-all disabled:opacity-60"
                 />
-                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-[#64748B] mt-2 space-y-1">
-                  <p className="font-semibold text-[#0F172A]">
+                <div className="p-3 rounded-2xl bg-rose-50/50 border border-rose-100 text-[11px] text-[#71717A] mt-2 space-y-1">
+                  <p className="font-bold text-[#1C1917]">
                     📬 Please check your Inbox and Spam/Junk folder.
                   </p>
                   <p>The OTP is valid for 10 minutes.</p>
@@ -257,7 +257,7 @@ export default function StudentLoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 mt-2 rounded-xl text-sm font-black bg-[#FF5722] hover:bg-[#F4511E] text-white flex items-center justify-center gap-2 cursor-pointer border-none shadow-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-3 mt-2 rounded-xl text-sm font-black bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#F43F5E] hover:to-[#9F1239] text-white flex items-center justify-center gap-2 cursor-pointer border-none shadow-md shadow-rose-900/25 transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-98"
               >
                 {isLoading ? (
                   <span>Verifying Code...</span>
@@ -274,7 +274,7 @@ export default function StudentLoginPage() {
                   type="button"
                   onClick={handleSendOtp}
                   disabled={isLoading}
-                  className="text-xs font-bold text-[#FF5722] hover:underline cursor-pointer border-none bg-transparent"
+                  className="text-xs font-bold text-[#9F1239] hover:text-[#E11D48] hover:underline cursor-pointer border-none bg-transparent"
                 >
                   Resend OTP
                 </button>

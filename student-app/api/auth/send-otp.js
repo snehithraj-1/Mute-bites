@@ -94,7 +94,7 @@ export default async function handler(req, res) {
         </div>
         
         <div style="background: #FAF8F5; padding: 18px 24px; text-align: center; border-top: 1px solid #f1eae4; font-size: 11px; color: #8a7b70;">
-          VIT-AP University • Vit-ap Campus Delivery Support: 9989955833
+          VIT-AP University • Vit-ap Campus Delivery Support: 8247075652
         </div>
       </div>
     `;
@@ -111,7 +111,7 @@ export default async function handler(req, res) {
         to: cleanEmail,
         replyTo: activeSender,
         subject: `${otp} is your Vit: Mute Bites Login Code`,
-        text: `Your Vit: Mute Bites verification code is: ${otp}\n\nThis code is valid for 10 minutes.\n\nVit-ap Campus Dining\nDelivery Support: 9989955833`,
+        text: `Your Vit: Mute Bites verification code is: ${otp}\n\nThis code is valid for 10 minutes.\n\nVit-ap Campus Dining\nDelivery Support: 8247075652`,
         html: htmlTemplate
       });
       emailSent = true;

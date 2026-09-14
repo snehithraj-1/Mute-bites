@@ -130,7 +130,7 @@ export function StudentAuthProvider({ children }) {
         id: 'student-' + cleanEmail.replace(/[^a-zA-Z0-9]/g, '_'),
         name: name.trim() || splitEmailName(cleanEmail),
         email: cleanEmail,
-        phone: phone.trim() || '9989955833',
+        phone: phone.trim() || '8247075652',
         role: 'student'
       };
 

@@ -120,8 +120,8 @@ function StudentAppInner() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#FAF8F5] flex flex-col items-center justify-center space-y-4">
-        <div className="w-12 h-12 rounded-full border-4 border-[#FF5722] border-t-transparent animate-spin" />
+      <div className="min-h-screen bg-[#FAF5F5] flex flex-col items-center justify-center space-y-4">
+        <div className="w-12 h-12 rounded-full border-4 border-[#E11D48] border-t-transparent animate-spin" />
         <p className="text-xs font-bold text-[#64748B]">Loading Student Portal...</p>
       </div>
     );
@@ -244,7 +244,7 @@ function StudentAppInner() {
       />
 
       {/* Modern Student Footer */}
-      <footer className="bg-white border-t border-[#F1EAE4] pt-8 pb-24 md:pb-8 text-xs text-[#64748B]">
+      <footer className="bg-white border-t border-[#FFE4E6] pt-8 pb-24 md:pb-8 text-xs text-[#64748B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-2">
             <span className="text-base font-black text-[#0F172A] font-['Outfit']">Vit: Mute Bites</span>

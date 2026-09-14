@@ -63,8 +63,8 @@ export default async function handler(req, res) {
 
     // Keep record in Neon DB for audit & visibility in console
     const studentName = name || storedData?.name || cleanEmail.split('@')[0];
-    const studentPhone = phone || storedData?.phone || '9989955833';
-    const studentId = `srm-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
+    const studentPhone = phone || storedData?.phone || '8247075652';
+    const studentId = `vit-${cleanEmail.replace(/[^a-zA-Z0-9]/g, '_')}`;
 
     // Upsert into Neon DB students table
     try {

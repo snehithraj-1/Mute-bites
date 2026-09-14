@@ -86,16 +86,16 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
         <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col h-full animate-drawer-right">
           
           {/* Header */}
-          <div className="p-5 border-b border-[#F1EAE4] flex items-center justify-between bg-[#FAF8F5] shrink-0">
+          <div className="p-5 border-b border-[#FFE4E6] flex items-center justify-between bg-[#FAF5F5] shrink-0">
             <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#FFF0EB] text-[#FF5722] flex items-center justify-center font-bold">
+              <div className="w-9 h-9 rounded-xl bg-[#FFF1F2] text-[#9F1239] border border-[#FECDD3] flex items-center justify-center font-bold shadow-xs">
                 <ShoppingBag size={18} />
               </div>
               <div>
-                <h3 className="font-extrabold text-base text-[#0F172A] font-['Outfit']">
+                <h3 className="font-extrabold text-base text-[#1C1917] font-['Outfit']">
                   Your Food Cart
                 </h3>
-                <p className="text-xs text-[#64748B]">
+                <p className="text-xs text-[#71717A]">
                   {totalItemsCount} {totalItemsCount === 1 ? 'item' : 'items'} selected
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
               )}
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="w-9 h-9 rounded-xl text-[#64748B] hover:text-[#0F172A] hover:bg-white flex items-center justify-center transition-colors cursor-pointer border border-[#E2D9D0]"
+                className="w-9 h-9 rounded-xl text-[#71717A] hover:text-[#1C1917] hover:bg-white flex items-center justify-center transition-colors cursor-pointer border border-[#FFE4E6]"
               >
                 <X size={18} />
               </button>
@@ -127,13 +127,13 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
             {items.length === 0 ? (
               <div className="py-16 text-center space-y-3">
                 <div className="text-5xl">🍲</div>
-                <h4 className="font-extrabold text-base text-[#0F172A]">Your cart is hungry!</h4>
-                <p className="text-xs text-[#64748B] max-w-xs mx-auto">
+                <h4 className="font-extrabold text-base text-[#1C1917]">Your cart is hungry!</h4>
+                <p className="text-xs text-[#71717A] max-w-xs mx-auto">
                   Browse delicious meals from our campus kitchens and add dishes to start your order.
                 </p>
                 <button
                   onClick={() => setIsCartOpen(false)}
-                  className="btn-primary py-2.5 px-6 rounded-xl text-xs font-bold mt-2 cursor-pointer border-none"
+                  className="btn-primary py-2.5 px-6 rounded-xl text-xs font-bold mt-2 cursor-pointer border-none shadow-md shadow-rose-900/20"
                 >
                   Browse Campus Menu
                 </button>
@@ -141,7 +141,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
             ) : (
               <>
                 {/* Items List */}
-                <div className="space-y-3 divide-y divide-[#F1EAE4]">
+                <div className="space-y-3 divide-y divide-[#FFE4E6]">
                   {items.map((item) => {
                     const isItemSoldOut = item.is_available === false || item.is_available === 'false' || item.is_available === 0 || item.isAvailable === false || item.isAvailable === 'false';
                     return (
@@ -149,7 +149,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className={`w-2 h-2 rounded-full ${item.is_veg ? 'bg-emerald-500' : 'bg-rose-500'}`} />
-                          <h5 className={`font-bold text-xs sm:text-sm truncate ${isItemSoldOut ? 'text-rose-700 line-through' : 'text-[#0F172A]'}`}>
+                          <h5 className={`font-bold text-xs sm:text-sm truncate ${isItemSoldOut ? 'text-rose-700 line-through' : 'text-[#1C1917]'}`}>
                             {item.name}
                           </h5>
                           {isItemSoldOut && (
@@ -158,7 +158,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                             </span>
                           )}
                         </div>
-                        <div className="text-xs font-mono text-[#FF5722] font-extrabold mt-0.5">
+                        <div className="text-xs font-mono text-[#9F1239] font-extrabold mt-0.5">
                           ₹{item.price * item.quantity}
                           <span className="text-[10px] text-slate-400 font-normal ml-1">
                             (₹{item.price} each)
@@ -167,19 +167,19 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                       </div>
 
                       {/* Quantity Stepper */}
-                      <div className="flex items-center gap-2 bg-[#FAF8F5] border border-[#E2D9D0] rounded-xl p-1">
+                      <div className="flex items-center gap-2 bg-[#FAF5F5] border border-[#FECDD3] rounded-xl p-1">
                         <button
                           onClick={() => updateQuantity(item.id, -1)}
-                          className="w-6 h-6 rounded-lg bg-white text-[#0F172A] hover:bg-slate-100 flex items-center justify-center font-bold text-xs cursor-pointer border-none shadow-xs"
+                          className="w-6 h-6 rounded-lg bg-white text-[#1C1917] hover:bg-[#FFE4E6] flex items-center justify-center font-bold text-xs cursor-pointer border-none shadow-xs"
                         >
                           <Minus size={12} />
                         </button>
-                        <span className="font-mono text-xs font-bold w-4 text-center">
+                        <span className="font-mono text-xs font-bold w-4 text-center text-[#9F1239]">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() => updateQuantity(item.id, 1)}
-                          className="w-6 h-6 rounded-lg bg-[#FF5722] text-white hover:bg-[#F4511E] flex items-center justify-center font-bold text-xs cursor-pointer border-none shadow-xs"
+                          className="w-6 h-6 rounded-lg bg-gradient-to-r from-[#E11D48] to-[#9F1239] text-white hover:opacity-90 flex items-center justify-center font-bold text-xs cursor-pointer border-none shadow-xs"
                         >
                           <Plus size={12} />
                         </button>
@@ -198,10 +198,10 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                 </div>
 
                 {/* Delivery Drop Address Form */}
-                <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] space-y-3 text-xs">
-                  <div className="font-extrabold text-[#0F172A] flex items-center justify-between">
+                <div className="p-4 rounded-2xl bg-[#FAF5F5] border border-[#FFE4E6] space-y-3 text-xs">
+                  <div className="font-extrabold text-[#1C1917] flex items-center justify-between">
                     <div className="flex items-center gap-1.5 uppercase tracking-wider text-[11px]">
-                      <MapPin size={13} className="text-[#FF5722]" />
+                      <MapPin size={13} className="text-[#E11D48]" />
                       <span>Campus Delivery Destination</span>
                     </div>
                     <span className="text-[10px] font-extrabold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-200">
@@ -210,14 +210,14 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                   </div>
 
                   {/* Fixed Vit-ap Campus Destination Card */}
-                  <div className="p-3 bg-white border border-[#E2D9D0] rounded-xl flex items-start gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#FFF0EB] text-[#FF5722] flex items-center justify-center shrink-0 mt-0.5 border border-[#FF5722]/20">
+                  <div className="p-3 bg-white border border-[#FFE4E6] rounded-xl flex items-start gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#FFF1F2] text-[#9F1239] flex items-center justify-center shrink-0 mt-0.5 border border-[#FECDD3]">
                       <MapPin size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-black text-xs text-[#0F172A]">Vit-ap Campus</div>
-                      <div className="text-[11px] text-[#64748B] mt-0.5">
-                        Built exclusively for VIT-AP. All food parcels arrive directly at <strong>Vit-ap Campus</strong> for quick campus collection.
+                      <div className="font-black text-xs text-[#1C1917]">Vit-ap Campus</div>
+                      <div className="text-[11px] text-[#71717A] mt-0.5">
+                        Built exclusively for VIT-AP. All food parcels arrive directly at <strong className="text-[#9F1239]">Vit-ap Campus</strong> for quick campus collection.
                       </div>
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                           updateProfile({ phone: val });
                         }
                       }}
-                      className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs font-medium text-slate-900 focus:outline-none focus:border-[#FF5722]"
+                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#FFE4E6] text-xs font-medium text-[#1C1917] focus:outline-none focus:border-[#E11D48]"
                     />
                   </div>
 
@@ -254,24 +254,24 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                       placeholder="e.g. Less spicy, extra onions"
                       value={deliveryDetails.instructions}
                       onChange={(e) => setDeliveryDetails({ ...deliveryDetails, instructions: e.target.value })}
-                      className="w-full px-3 py-2 rounded-lg bg-white border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-[#FF5722]"
+                      className="w-full px-3 py-2 rounded-lg bg-white border border-[#FFE4E6] text-xs text-[#1C1917] focus:outline-none focus:border-[#E11D48]"
                     />
                   </div>
                 </div>
 
                 {/* Pricing Summary */}
-                <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-2 text-xs">
+                <div className="p-4 rounded-xl bg-white border border-[#FFE4E6] space-y-2 text-xs">
                   <div className="flex justify-between text-slate-500">
                     <span>Items Subtotal</span>
-                    <span className="font-mono text-slate-800">₹{subtotal}</span>
+                    <span className="font-mono text-[#1C1917] font-bold">₹{subtotal}</span>
                   </div>
                   <div className="flex justify-between text-slate-500">
                     <span>Delivery Fee (Vit-ap Campus)</span>
                     <span className="font-bold text-emerald-600">FREE</span>
                   </div>
-                  <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-sm font-bold text-slate-900">
+                  <div className="pt-2 border-t border-[#FFE4E6] flex justify-between items-center text-sm font-bold text-[#1C1917]">
                     <span>Total Amount</span>
-                    <span className="text-[#FF5722] font-mono text-base font-extrabold">₹{totalAmount}</span>
+                    <span className="text-[#9F1239] font-mono text-base font-extrabold">₹{totalAmount}</span>
                   </div>
                 </div>
               </>
