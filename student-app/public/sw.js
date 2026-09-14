@@ -1,5 +1,5 @@
 // Vit: Mute Bites Service Worker for PWA & Push Notifications
-const CACHE_NAME = 'vit-mute-bites-v2';
+const CACHE_NAME = 'vit-mute-bites-v3';
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();

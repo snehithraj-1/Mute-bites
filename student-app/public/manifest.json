@@ -9,31 +9,31 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/mutebites-logo.png",
+      "src": "/mutebites-logo.png?v=3",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon-192.png",
+      "src": "/icon-192.png?v=3",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/icon-512.png",
+      "src": "/icon-512.png?v=3",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-192.svg",
+      "src": "/icon-192.svg?v=3",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.svg",
+      "src": "/icon-512.svg?v=3",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"

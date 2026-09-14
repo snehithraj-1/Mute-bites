@@ -115,7 +115,7 @@ export default function StudentLoginPage() {
       {/* Brand Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <img 
-          src="/mutebites-logo.png" 
+          src="/mutebites-logo.png?v=3" 
           alt="Mutebites Logo" 
           className="w-20 h-20 rounded-full mx-auto object-cover shadow-xl shadow-rose-900/20 mb-3 border-2 border-[#FFE4E6]"
         />

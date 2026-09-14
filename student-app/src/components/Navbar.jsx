@@ -17,7 +17,7 @@ export default function Navbar({ currentView, onNavigate }) {
           className="flex items-center gap-3 cursor-pointer select-none group"
         >
           <img 
-            src="/mutebites-logo.png" 
+            src="/mutebites-logo.png?v=3" 
             alt="Mutebites Logo" 
             className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform border border-[#FFE4E6]"
           />
