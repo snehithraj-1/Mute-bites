@@ -144,12 +144,12 @@ export function AdminAuthProvider({ children }) {
     } catch (apiErr) {
       // Direct credential fallback check
       const lowerInput = cleanInput.toLowerCase();
-      if ((lowerInput === 'collagebites1@gmail.com' || lowerInput === 'collagebites@gmail.com' || lowerInput === 'rajsrmap2@gmail.com' || lowerInput === 'superadmin' || lowerInput === 'admin@collegebites.com' || lowerInput === 'admin@campusbites.com') && (cleanPassword === 'Clgbites123' || cleanPassword === 'Snehith@007' || cleanPassword === 'admin123')) {
+      if ((lowerInput === 'mutebites@gmail.com' || lowerInput === 'mutebites' || lowerInput === 'collagebites1@gmail.com' || lowerInput === 'collagebites@gmail.com' || lowerInput === 'rajsrmap2@gmail.com' || lowerInput === 'superadmin' || lowerInput === 'admin@collegebites.com' || lowerInput === 'admin@campusbites.com') && (cleanPassword === 'mutebites123' || cleanPassword === 'Clgbites123' || cleanPassword === 'Snehith@007' || cleanPassword === 'admin123')) {
         const superProfile = {
           id: 'admin-super',
-          username: 'collagebites1@gmail.com',
+          username: lowerInput.includes('@') ? lowerInput : 'mutebites@gmail.com',
           name: 'Vit: Mute Bites (Super Admin)',
-          email: 'collagebites1@gmail.com',
+          email: lowerInput.includes('@') ? lowerInput : 'mutebites@gmail.com',
           role: 'super_admin',
           restaurant_id: null,
           created_at: new Date().toISOString()

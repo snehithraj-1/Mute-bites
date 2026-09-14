@@ -68,12 +68,12 @@ export default async function handler(req, res) {
     }
 
     // 2. Fallback checks: Super Admin & Restaurant Admins
-    if ((inputIdentifier === 'collagebites1@gmail.com' || inputIdentifier === 'collagebites@gmail.com' || inputIdentifier === 'rajsrmap2@gmail.com' || inputIdentifier === 'superadmin' || inputIdentifier === 'admin@campusbites.com') && 
-        (cleanPassword === 'Clgbites123' || cleanPassword === 'Snehith@007' || cleanPassword === 'admin123')) {
+    if ((inputIdentifier === 'mutebites@gmail.com' || inputIdentifier === 'mutebites' || inputIdentifier === 'collagebites1@gmail.com' || inputIdentifier === 'collagebites@gmail.com' || inputIdentifier === 'rajsrmap2@gmail.com' || inputIdentifier === 'superadmin' || inputIdentifier === 'admin@campusbites.com') && 
+        (cleanPassword === 'mutebites123' || cleanPassword === 'Clgbites123' || cleanPassword === 'Snehith@007' || cleanPassword === 'admin123')) {
       const superAdminProfile = {
         id: 'admin-super',
         username: inputIdentifier,
-        name: 'Collage Bites (Super Admin)',
+        name: 'Mute Bites (Super Admin)',
         email: inputIdentifier,
         role: 'super_admin',
         restaurant_id: null,
