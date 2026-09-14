@@ -255,7 +255,7 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
                     <div className="pt-0.5">
                       <a href="tel:8247075652" className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-800 text-[11px] font-semibold mt-1 no-underline hover:bg-rose-100">
                         <Phone size={11} className="text-[#E11D48]" />
-                        <span>Kitchen Helpline: <strong>+91 8247075652</strong></span>
+                        <span>Mutebites Helpline: <strong>+91 8247075652</strong></span>
                       </a>
                     </div>
                   </div>

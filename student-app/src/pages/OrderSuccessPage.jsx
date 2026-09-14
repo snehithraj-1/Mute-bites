@@ -317,7 +317,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
                   </span>
                 </div>
                 <span className="text-[11px] text-slate-500 font-medium block">
-                  Direct Kitchen Helpline for Order #{order.id}
+                  Direct Helpline for Order #{order.id}
                 </span>
               </div>
             </div>
@@ -327,7 +327,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
               className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-[#E11D48] to-[#881337] hover:from-[#BE123C] hover:to-[#701A31] text-white font-bold text-xs shadow-md shadow-rose-900/20 transition-all cursor-pointer no-underline active:scale-95"
             >
               <Phone size={13} />
-              <span>Call Restaurant (82470 75652)</span>
+              <span>Call Mutebites (82470 75652)</span>
             </a>
           </div>
 
@@ -337,7 +337,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
               <span>Delivery Handover: <strong className="text-slate-900">{order.delivery_location || 'Vit-ap Campus'}</strong></span>
             </div>
             <span className="text-slate-500 text-[11px]">
-              Direct Helpline: <strong className="text-slate-800 font-mono">+91 {kitchenPhone}</strong>
+              Mutebites Helpline: <strong className="text-slate-800 font-mono">+91 {kitchenPhone}</strong>
             </span>
           </div>
         </div>
