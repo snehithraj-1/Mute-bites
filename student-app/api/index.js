@@ -10,6 +10,16 @@ import adminLoginHandler from './_handlers/auth-admin-login.js';
 import riderHandler from './_handlers/rider.js';
 
 export default async function handler(req, res) {
+  // Global CORS Headers & Preflight Handling
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Max-Age', '86400');
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Extract clean URL & pathname
   const rawPath = req.headers['x-forwarded-uri'] || req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'];
   let currentUrl = req.url || '';
@@ -19,8 +29,19 @@ export default async function handler(req, res) {
     }
   }
 
-  const [pathOnly] = currentUrl.split('?');
+  const [pathOnly, queryString] = currentUrl.split('?');
   const pathname = pathOnly.replace(/\/$/, '') || '/';
+
+  // Ensure req.query is populated
+  if (!req.query) {
+    req.query = {};
+  }
+  if (queryString) {
+    const params = new URLSearchParams(queryString);
+    for (const [k, v] of params.entries()) {
+      req.query[k] = v;
+    }
+  }
 
   // 1. Auth routes
   if (pathname === '/api/auth/send-otp') {

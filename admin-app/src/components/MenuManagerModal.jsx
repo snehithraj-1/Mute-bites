@@ -19,9 +19,11 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
+import { DEFAULT_MENU_ITEMS } from '../lib/campusSeedData.js';
+
 export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId = null }) {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [items, setItems] = useState(DEFAULT_MENU_ITEMS);
+  const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRestaurant, setSelectedRestaurant] = useState(assignedRestaurantId || 'ALL');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
@@ -37,19 +39,17 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
 
   // Fetch menu items from shared backend
   const loadMenu = async () => {
-    setLoading(true);
     try {
-      const res = await fetch(`/api/menu?_t=${Date.now()}`, {
-        cache: 'no-store',
-        headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' }
-      });
-      const data = await res.json();
-      const list = Array.isArray(data) ? data : (data.items || data.menu || []);
-      if (Array.isArray(list) && list.length > 0) {
-        setItems(list);
+      const res = await fetch(`/api/menu?_t=${Date.now()}`);
+      if (res.ok) {
+        const data = await res.json();
+        const list = Array.isArray(data) ? data : (data.items || data.menu || data.dishes || []);
+        if (Array.isArray(list) && list.length > 0) {
+          setItems(list);
+        }
       }
     } catch (err) {
-      console.error('Failed to fetch menu items:', err);
+      console.warn('Failed to fetch menu items from backend, using authentic campus seed:', err);
     } finally {
       setLoading(false);
     }
@@ -172,7 +172,7 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
   // Bulk toggle availability for currently filtered restaurant or all
   const handleBulkAvailability = async (targetStock) => {
     const label = targetStock ? 'IN STOCK' : 'SOLD OUT';
-    const restName = selectedRestaurant === 'ALL' ? 'ALL restaurants' : (selectedRestaurant === 'clg-bites-biryani-nation' ? 'Clg Bites Biryani Nation' : 'Local Home Kitchen');
+    const restName = selectedRestaurant === 'ALL' ? 'ALL restaurants' : (selectedRestaurant === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (selectedRestaurant === 'a1-biryani-point' ? 'A1 Biryani Point' : 'Bismillah Fruit Juice'));
     if (!window.confirm(`Are you sure you want to mark ALL dishes for ${restName} as ${label}?`)) {
       return;
     }

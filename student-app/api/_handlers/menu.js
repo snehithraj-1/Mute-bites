@@ -8,7 +8,7 @@ const sql = neon(DATABASE_URL);
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
@@ -19,8 +19,9 @@ export default async function handler(req, res) {
 
   // DELETE /api/menu or /api/menu?id=...
   if (req.method === 'DELETE') {
-    const itemId = req.query.id || req.query.itemId || req.body?.id || req.body?.itemId;
-    const restaurantId = req.query.restaurant_id || req.query.restaurantId || req.body?.restaurant_id;
+    const query = req.query || {};
+    const itemId = query.id || query.itemId || req.body?.id || req.body?.itemId;
+    const restaurantId = query.restaurant_id || query.restaurantId || req.body?.restaurant_id;
 
     try {
       if (itemId && itemId !== 'all') {
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
   // PATCH / POST for availability or editing
   if (req.method === 'PATCH' || (req.method === 'POST' && req.body?.action === 'toggle_availability')) {
     const body = req.body || {};
-    const itemId = body.id || req.query.id;
+    const itemId = body.id || (req.query || {}).id;
     const isAvailable = body.is_available !== undefined ? body.is_available : body.isAvailable;
 
     if (!itemId) {
@@ -60,7 +61,8 @@ export default async function handler(req, res) {
 
   // GET /api/menu
   if (req.method === 'GET') {
-    const { restaurant_id, restaurantId, available_only } = req.query;
+    const query = req.query || {};
+    const { restaurant_id, restaurantId, available_only } = query;
     const targetRestaurant = restaurant_id || restaurantId;
 
     try {
