@@ -207,7 +207,7 @@ export default function AdminDashboardPage() {
                   title: 'Order Out For Delivery! 🚀',
                   badge: 'Dispatched',
                   order: o,
-                  message: `Order #${o.id.slice(-8)} is out for delivery to Gate 3`
+                  message: `Order #${o.id.slice(-8)} is out for delivery to Vit-ap Campus`
                 });
 
                 if (soundEnabledRef.current) {
@@ -216,7 +216,7 @@ export default function AdminDashboardPage() {
 
                 sendAdminNotification(
                   `🚀 Order #${o.id.slice(-8)} Out For Delivery`,
-                  `Order dispatched to Gate 3!`
+                  `Order dispatched to Vit-ap Campus!`
                 );
               } else if (change.nextStatus === 'DELIVERED') {
                 setNewOrderAlert({
@@ -580,7 +580,7 @@ export default function AdminDashboardPage() {
                     {newOrderAlert.title || (newOrderAlert.order ? `${newOrderAlert.order.student_name} • ₹${newOrderAlert.order.total_amount}` : 'Order Update')}
                   </h4>
                   <p className="text-xs text-slate-300 mt-0.5">
-                    {newOrderAlert.message || (newOrderAlert.order ? `${newOrderAlert.order.student_name} • Drop: ${newOrderAlert.order.delivery_location || 'Gate 3'}` : 'SRM University Gate 3')}
+                    {newOrderAlert.message || (newOrderAlert.order ? `${newOrderAlert.order.student_name} • Drop: ${newOrderAlert.order.delivery_location || 'Vit-ap Campus'}` : 'Vit-ap Campus')}
                   </p>
                 </div>
               </div>

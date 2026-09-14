@@ -194,7 +194,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                   </h2>
                   <p className="text-xs text-[#64748B] font-semibold flex items-center gap-1.5">
                     <MapPin size={13} className="text-[#FF5722]" />
-                    <span>SRM University AP</span>
+                    <span>VIT-AP University</span>
                   </p>
                 </div>
               </div>
@@ -244,7 +244,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 <div className="p-3.5 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4]">
                   <span className="text-[10px] uppercase font-bold text-[#64748B] block tracking-wider">Destination</span>
                   <span className="text-xs sm:text-sm font-black text-[#FF5722] mt-1 block truncate">
-                    Gate 3 Counter
+                    Vit-ap Campus
                   </span>
                 </div>
               </div>
@@ -460,7 +460,7 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 <div className="space-y-1.5">
                   <label className="text-xs font-black text-[#0F172A] flex items-center justify-between">
                     <span>Mobile Phone Number <span className="text-[#FF5722]">*</span></span>
-                    <span className="text-[10px] text-slate-400 font-normal">Contact for Gate 3 drop</span>
+                    <span className="text-[10px] text-slate-400 font-normal">Contact for Vit-ap Campus drop</span>
                   </label>
                   <div className="relative flex items-center">
                     <span className="absolute left-4 text-xs font-mono font-black text-[#FF5722] select-none">
@@ -535,16 +535,16 @@ export default function StudentProfilePage({ onBackToHome, onViewOrders }) {
                 </h4>
               </div>
               <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase border border-emerald-200">
-                Fixed at SRM Gate 3
+                Fixed at Vit-ap Campus
               </span>
             </div>
 
             <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#F1EAE4] space-y-1">
               <span className="font-extrabold text-xs text-[#0F172A] block">
-                SRM University AP — Gate 3 Security Dispatch Point
+                Vit-ap Campus — Delivery Dispatch Point
               </span>
               <p className="text-[11px] text-[#64748B] leading-relaxed">
-                Srm : College Bites is exclusively customized for SRM University AP. Freshly packed food from campus kitchens is handed over directly to you at Gate 3.
+                Vit: Mute Bites is exclusively customized for VIT-AP. Freshly packed food from campus kitchens is handed over directly to you at Vit-ap Campus.
               </p>
             </div>
           </div>

@@ -1,7 +1,7 @@
 {
-  "name": "Srm : College Bites — Student Dining",
-  "short_name": "Srm : College Bites",
-  "description": "Fast hostel food ordering and delivery portal for SRM University-AP students.",
+  "name": "Vit: Mute Bites — Student Dining",
+  "short_name": "Vit: Mute Bites",
+  "description": "Fast campus food ordering and delivery portal for VIT-AP students.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAF8F5",

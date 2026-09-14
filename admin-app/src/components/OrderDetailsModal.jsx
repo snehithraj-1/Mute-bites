@@ -132,14 +132,14 @@ export default function OrderDetailsModal({
                 </span>
               </div>
               <span className="text-[11px] font-mono text-slate-400">
-                SRM Campus
+                Vit-ap Campus
               </span>
             </div>
 
             <div className="flex items-start gap-2 text-slate-300 pt-1.5 border-t border-slate-800/80 print:border-slate-200 print:text-slate-800">
               <MapPin size={15} className="text-[#FF5722] shrink-0 mt-0.5" />
               <div>
-                <span className="font-medium">{order.delivery_location || 'SRM University - Gate 3'}</span>
+                <span className="font-medium">{order.delivery_location || 'Vit-ap Campus'}</span>
                 {(order.hostel_block || order.room_number) && (
                   <span className="text-slate-400 ml-1">
                     ({[order.hostel_block, order.room_number].filter(Boolean).join(' - ')})

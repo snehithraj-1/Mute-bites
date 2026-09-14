@@ -190,7 +190,7 @@ export default function OrderConfirmationModal({
           requestPushPermission();
         }
         showPushNotification(
-          'Srm : College Bites — Order Confirmed!',
+          'Vit: Mute Bites — Order Confirmed!',
           `Your order #${orderId} for ${restaurant?.name || 'Campus Kitchen'} (₹${totalAmount}) has been confirmed!`
         );
       } catch (e) {}
@@ -300,7 +300,7 @@ export default function OrderConfirmationModal({
           </div>
           <div className="flex items-center gap-1.5 text-slate-600 text-[11px]">
             <MapPin size={12} className="text-[#FF5722] shrink-0" />
-            <span>Drop: <strong>SRM University Gate 3</strong></span>
+            <span>Drop: <strong>Vit-ap Campus</strong></span>
           </div>
           <div className="text-[11px] text-slate-500 border-t border-slate-200 pt-1.5">
             {items.map(i => `${i.name} × ${i.quantity}`).join(', ')}

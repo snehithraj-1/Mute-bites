@@ -29,11 +29,11 @@ try {
 } catch (e) {}
 
 console.log('================================================================');
-console.log('  Srm : College Bites — Starting Dedicated Portals + Shared API ');
+console.log('  Mutebites — Starting Dedicated Portals + Shared API ');
 console.log('================================================================');
 console.log('  ⚡ Shared Backend API:          http://localhost:5000');
 console.log('  🍔 Student Dining Portal:       http://localhost:5173');
-console.log('  🛡️  Srm : College Bites Admin Portal: http://localhost:5174');
+console.log('  🛡️  Mutebites Admin Portal:     http://localhost:5174');
 console.log('================================================================\n');
 
 const npxCmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';

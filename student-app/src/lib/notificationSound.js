@@ -1,4 +1,4 @@
-// Web Audio API Synthesizer & Browser Notification Engine for Srm : College Bites Student Portal
+// Web Audio API Synthesizer & Browser Notification Engine for Vit: Mute Bites Student Portal
 
 let sharedStudentAudioCtx = null;
 let audioUnlocked = false;
@@ -220,7 +220,7 @@ export function sendStudentNotification(title, body) {
         const notif = new Notification(title, {
           body,
           icon: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛵</text></svg>',
-          tag: 'srm-college-bites-student-status-' + Date.now(),
+          tag: 'vit-mute-bites-student-status-' + Date.now(),
           badge: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍔</text></svg>'
         });
         notif.onclick = () => {

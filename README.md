@@ -1,6 +1,6 @@
-# Srm : College Bites — Campus Food Ordering & Unified Admin System
+# Vit: Mute Bites — Campus Food Ordering & Unified Admin System
 
-Srm : College Bites is structured as **2 DEDICATED FRONTEND APPLICATIONS** connected to **ONE central API & Neon PostgreSQL database**:
+Vit: Mute Bites is structured as **2 DEDICATED FRONTEND APPLICATIONS** connected to **ONE central API & Neon PostgreSQL database**:
 
 1. **Student Dining Portal** (`student-app/`): `http://localhost:5173`
 2. **Unified Admin Portal** (`admin-app/`): `http://localhost:5174`
@@ -18,7 +18,7 @@ This single command spins up the backend API, the Student Dining Portal, and the
 
 ### 2. Run Individual Applications
 - **Student Dining Portal**: `npm run dev:student` (`http://localhost:5173`)
-- **Srm : College Bites Admin Portal**: `npm run dev:admin` (`http://localhost:5174`)
+- **Vit: Mute Bites Admin Portal**: `npm run dev:admin` (`http://localhost:5174`)
 - **Shared Backend API**: `npm run server` (`http://localhost:5000`)
 
 ---

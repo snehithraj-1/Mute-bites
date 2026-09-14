@@ -99,7 +99,7 @@ export default function RestaurantsPage({ onSelectRestaurant, orderingEnabled })
             </h2>
             <div className="flex items-center gap-1.5 text-xs text-slate-600 mt-1">
               <MapPin size={13} className="text-[#FF5722] shrink-0" />
-              <span>Delivering directly to <strong>SRM University Gate 3</strong></span>
+              <span>Delivering directly to <strong>Vit-ap Campus</strong></span>
             </div>
           </div>
 
@@ -134,7 +134,7 @@ export default function RestaurantsPage({ onSelectRestaurant, orderingEnabled })
             Available Restaurants ({filteredRestaurants.length})
           </h3>
           <p className="text-xs text-slate-500">
-            Fresh food prepared in Neerukonda and delivered to Gate 3
+            Fresh food prepared and delivered directly to Vit-ap Campus
           </p>
         </div>
       </div>

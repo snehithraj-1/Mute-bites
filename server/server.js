@@ -491,7 +491,7 @@ app.get(['/', '/api', '/api/health', '/api/db/status'], async (req, res) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Srm : College Bites Central Backend & Neon DB Hub</title>
+        <title>Vit: Mute Bites Central Backend & Neon DB Hub</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -661,7 +661,7 @@ app.get(['/', '/api', '/api/health', '/api/db/status'], async (req, res) => {
             <span class="badge badge-neon"><span class="dot"></span> Neon DB (${currentDb}): ${neonStatus.toUpperCase()}</span>
           </div>
 
-          <h1>Srm : College Bites Central Hub</h1>
+          <h1>Vit: Mute Bites Central Hub</h1>
           <p class="subtitle">The shared backend and real-time database are active and synchronized.</p>
 
           <div class="stats-grid">
@@ -689,7 +689,7 @@ app.get(['/', '/api', '/api/health', '/api/db/status'], async (req, res) => {
             </a>
             <a href="http://localhost:5174" class="portal-btn admin">
               <div>
-                <div style="font-size: 18px;">🛡️ Srm : College Bites Admin Portal</div>
+                <div style="font-size: 18px;">🛡️ Vit: Mute Bites Admin Portal</div>
                 <div style="font-size: 13px; font-weight: 500; opacity: 0.85;">http://localhost:5174</div>
               </div>
               <span style="font-size: 22px;">➔</span>
@@ -712,7 +712,7 @@ app.get(['/', '/api', '/api/health', '/api/db/status'], async (req, res) => {
 
   res.json({
     ok: true,
-    message: 'Srm : College Bites Central Shared Backend is Live 🚀',
+    message: 'Vit: Mute Bites Central Shared Backend is Live 🚀',
     neon: {
       status: neonStatus,
       database: currentDb,
@@ -770,14 +770,14 @@ app.post('/api/auth/send-otp', async (req, res) => {
       <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 520px; margin: 0 auto; background: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
         <div style="background: linear-gradient(135deg, #FF5722 0%, #F4511E 100%); padding: 32px 24px; text-align: center; color: #ffffff;">
           <div style="font-size: 40px; margin-bottom: 8px;">🍔</div>
-          <h1 style="margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">Srm : College Bites Dining</h1>
-          <p style="margin: 6px 0 0; font-size: 13px; opacity: 0.9;">SRM University-AP Hostel Delivery Portal</p>
+          <h1 style="margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">Vit: Mute Bites Dining</h1>
+          <p style="margin: 6px 0 0; font-size: 13px; opacity: 0.9;">VIT-AP Campus Food Delivery Portal</p>
         </div>
         
         <div style="padding: 32px 28px; text-align: center;">
           <h2 style="font-size: 18px; color: #0f172a; margin-top: 0; font-weight: 800;">Your One-Time Login Code</h2>
           <p style="color: #64748b; font-size: 14px; line-height: 1.5; margin: 8px 0 24px;">
-            Hello <b>${name || 'Student'}</b>, use the 6-digit verification code below to securely sign into Srm : College Bites.
+            Hello <b>${name || 'Student'}</b>, use the 6-digit verification code below to securely sign into Vit: Mute Bites.
           </p>
           
           <div style="display: inline-block; background: #FFF0EB; border: 2px dashed #FF5722; border-radius: 16px; padding: 16px 36px; margin-bottom: 24px;">
@@ -790,7 +790,7 @@ app.post('/api/auth/send-otp', async (req, res) => {
         </div>
         
         <div style="background: #FAF8F5; padding: 18px 24px; text-align: center; border-top: 1px solid #f1eae4; font-size: 11px; color: #8a7b70;">
-          SRM University AP • Neerukonda Village • Gate 3 Delivery Support: 9989955833
+          VIT-AP University • Vit-ap Campus Delivery Support: 9989955833
         </div>
       </div>
     `;
@@ -802,10 +802,10 @@ app.post('/api/auth/send-otp', async (req, res) => {
       const { user: senderEmail, transporter } = getMailTransporter();
       await Promise.race([
         transporter.sendMail({
-          from: '"Srm : College Bites" <' + senderEmail + '>',
+          from: '"Vit: Mute Bites" <' + senderEmail + '>',
           to: cleanEmail,
           replyTo: senderEmail,
-          subject: `${otp} is your College Bites Login Code`,
+          subject: `${otp} is your Vit: Mute Bites Login Code`,
           html: htmlTemplate
         }),
         new Promise((_, reject) => setTimeout(() => reject(new Error('SMTP send timeout (6s)')), 6000))
@@ -1344,7 +1344,7 @@ app.post('/api/orders', async (req, res) => {
       if (!isAllowed) {
         return res.status(403).json({
           success: false,
-          error: 'Srm : College Bites ordering is temporarily paused by university administration. Please try again later.'
+          error: 'Vit: Mute Bites ordering is temporarily paused by university administration. Please try again later.'
         });
       }
 
@@ -2602,7 +2602,7 @@ export default app;
 if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log('====================================================');
-    console.log(`  Srm : College Bites Backend with Neon PostgreSQL Live! `);
+    console.log(`  Vit: Mute Bites Backend with Neon PostgreSQL Live! `);
     console.log(`  🌐 Port: http://localhost:${PORT}                 `);
     console.log(`  🐘 Neon DB: Connected                            `);
     console.log('====================================================');

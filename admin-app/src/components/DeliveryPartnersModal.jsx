@@ -124,7 +124,7 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
   };
 
   const handleCopyCredentials = (partner) => {
-    const text = `Srm : College Bites Rider Credentials:\nName: ${partner.name}\nMobile: +91 ${partner.phone}\nPIN: ${partner.pin || '1234'}\nPortal: http://localhost:5173/#delivery`;
+    const text = `Vit: Mute Bites Rider Credentials:\nName: ${partner.name}\nMobile: +91 ${partner.phone}\nPIN: ${partner.pin || '1234'}\nPortal: http://localhost:5173/#delivery`;
     navigator.clipboard.writeText(text);
     setCopiedId(partner.id);
     setTimeout(() => setCopiedId(null), 2500);
@@ -316,7 +316,7 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
                     Existing Delivery Partners ({visiblePartners.length})
                   </span>
                   <span className="text-[10px] text-slate-500">
-                    Gate 3 Security Handover Personnel
+                    Vit-ap Campus Handover Personnel
                   </span>
                 </div>
 

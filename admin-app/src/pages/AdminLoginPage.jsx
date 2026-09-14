@@ -33,10 +33,10 @@ export default function AdminLoginPage() {
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-black font-['Outfit'] tracking-tight">
-          Srm : College Bites Admin Portal
+          Vit: Mute Bites Admin Portal
         </h1>
         <p className="mt-1 text-xs text-slate-400 font-medium">
-          Central Order & Kitchen Operations Console (SRM University AP)
+          Central Order & Kitchen Operations Console (VIT-AP University)
         </p>
       </div>
 

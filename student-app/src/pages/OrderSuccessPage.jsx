@@ -234,7 +234,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
         <div className="flex flex-wrap items-start justify-between gap-3 border-b border-[#F1EAE4] pb-5">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-lg font-black text-[#0F172A] font-['Outfit']">Srm : College Bites</span>
+              <span className="text-lg font-black text-[#0F172A] font-['Outfit']">Vit: Mute Bites</span>
               <span className="px-2 py-0.5 rounded bg-[#FFF0EB] text-[#FF5722] text-[10px] font-black uppercase">
                 Invoice
               </span>
@@ -292,7 +292,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
             </div>
             <div className="flex items-start gap-1.5 text-[#0F172A] font-bold">
               <MapPin size={14} className="text-[#FF5722] shrink-0 mt-0.5" />
-              <span>{order.delivery_location || 'SRM University - Gate 3'}</span>
+              <span>{order.delivery_location || 'Vit-ap Campus'}</span>
             </div>
             {order.instructions && (
               <div className="text-[#64748B] italic mt-1.5 text-[11px] bg-white p-2 rounded-lg border border-[#E2D9D0]">
@@ -336,7 +336,7 @@ export default function OrderSuccessPage({ order, onGoHome, onViewHistory }) {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2.5 border-t border-orange-100 text-slate-600 text-xs">
             <div className="flex items-center gap-1.5">
               <MapPin size={13} className="text-[#FF5722] shrink-0" />
-              <span>Delivery Handover: <strong className="text-slate-900">{order.delivery_location || 'SRM University - Gate 3'}</strong></span>
+              <span>Delivery Handover: <strong className="text-slate-900">{order.delivery_location || 'Vit-ap Campus'}</strong></span>
             </div>
             <span className="text-slate-500 text-[11px]">
               Direct Helpline: <strong className="text-slate-800 font-mono">+91 {kitchenPhone}</strong>

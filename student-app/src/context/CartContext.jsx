@@ -25,10 +25,10 @@ export function CartProvider({ children }) {
 
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Delivery drop details (Locked default for SRM University - Gate 3)
+  // Delivery drop details (Locked default for Vit-ap Campus)
   const [deliveryDetails, setDeliveryDetails] = useState(() => {
     const defaultData = {
-      deliveryLocation: 'SRM University - Gate 3',
+      deliveryLocation: 'Vit-ap Campus',
       phone: '',
       instructions: ''
     };
@@ -48,7 +48,7 @@ export function CartProvider({ children }) {
           ...defaultData,
           phone: initialPhone || parsed.phone || '',
           instructions: parsed.instructions || '',
-          deliveryLocation: 'SRM University - Gate 3'
+          deliveryLocation: 'Vit-ap Campus'
         };
       }
       return { ...defaultData, phone: initialPhone };

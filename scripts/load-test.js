@@ -21,7 +21,7 @@ const TOTAL_ORDERS_TO_PLACE = 100;    // 100 orders placed concurrently
 const TOTAL_READ_REQUESTS = 200;      // 200 high-frequency reads (admin polling + student tracking)
 
 console.log('====================================================');
-console.log('⚡ SRM : COLLEGE BITES HEAVY TRAFFIC STRESS & LOAD TEST ⚡');
+console.log('⚡ VIT : MUTE BITES HEAVY TRAFFIC STRESS & LOAD TEST ⚡');
 console.log('====================================================');
 console.log(`Target: ${BASE_URL}`);
 console.log(`Concurrent Simulated Users: ${TOTAL_CONCURRENT_USERS}`);
@@ -262,7 +262,7 @@ async function runBenchmark() {
   const partnerList = [
     { id: 'dp-1', name: 'Ramesh Kumar (SRM Express)', phone: '+91 98765 43210' },
     { id: 'dp-2', name: 'Suresh Babu (Campus Rider)', phone: '+91 98765 43211' },
-    { id: 'dp-3', name: 'Manoj Kumar (Gate 3 Courier)', phone: '+91 98765 43212' }
+    { id: 'dp-3', name: 'Manoj Kumar (Vit-ap Campus Courier)', phone: '+91 98765 43212' }
   ];
   const assignLatencies = [];
   let assignSuccess = 0;

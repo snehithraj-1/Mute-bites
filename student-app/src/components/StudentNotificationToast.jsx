@@ -290,7 +290,7 @@ export default function StudentNotificationToast({ onTrackOrder, activeOrderId }
         <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
           <div className="flex items-center gap-1.5 text-slate-500 text-[11px] font-semibold">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>Drop: SRM AP Gate 3</span>
+            <span>Drop: Vit-ap Campus</span>
           </div>
 
           {onTrackOrder && (

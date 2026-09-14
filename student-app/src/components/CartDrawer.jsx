@@ -209,15 +209,15 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                     </span>
                   </div>
 
-                  {/* Fixed SRM University - Gate 3 Destination Card */}
+                  {/* Fixed Vit-ap Campus Destination Card */}
                   <div className="p-3 bg-white border border-[#E2D9D0] rounded-xl flex items-start gap-2.5">
                     <div className="w-8 h-8 rounded-lg bg-[#FFF0EB] text-[#FF5722] flex items-center justify-center shrink-0 mt-0.5 border border-[#FF5722]/20">
                       <MapPin size={16} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="font-black text-xs text-[#0F172A]">SRM University — Gate 3</div>
+                      <div className="font-black text-xs text-[#0F172A]">Vit-ap Campus</div>
                       <div className="text-[11px] text-[#64748B] mt-0.5">
-                        Built exclusively for SRM University. All food parcels arrive directly at <strong>Gate 3</strong> for quick campus collection.
+                        Built exclusively for VIT-AP. All food parcels arrive directly at <strong>Vit-ap Campus</strong> for quick campus collection.
                       </div>
                     </div>
                   </div>
@@ -266,7 +266,7 @@ export default function CartDrawer({ onProceedToConfirmation, orderingEnabled, i
                     <span className="font-mono text-slate-800">₹{subtotal}</span>
                   </div>
                   <div className="flex justify-between text-slate-500">
-                    <span>Delivery Fee (Gate 3)</span>
+                    <span>Delivery Fee (Vit-ap Campus)</span>
                     <span className="font-bold text-emerald-600">FREE</span>
                   </div>
                   <div className="pt-2 border-t border-slate-200 flex justify-between items-center text-sm font-bold text-slate-900">

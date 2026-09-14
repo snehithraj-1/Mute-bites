@@ -274,7 +274,7 @@ export default function OrdersTable({
                         <span>{order.student_phone || '—'}</span>
                       </div>
                       <div className="text-[10px] text-slate-500 truncate max-w-[150px]">
-                        {order.delivery_location || 'Gate 3'}
+                        {order.delivery_location || 'Vit-ap Campus'}
                       </div>
                     </td>
 

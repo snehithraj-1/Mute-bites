@@ -179,7 +179,7 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
         <div className="bg-white rounded-xl border border-slate-200 p-10 text-center space-y-2.5">
           <h3 className="text-base font-bold text-slate-900 font-['Outfit']">No orders placed yet</h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
-            Browse our campus kitchens to place an order for delivery at Gate 3.
+            Browse our campus kitchens to place an order for delivery at Vit-ap Campus.
           </p>
           <div className="pt-2">
             <button
@@ -271,7 +271,7 @@ export default function OrderHistoryPage({ onBackToRestaurants, onTrackOrder }) 
                 <div className="pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500">
                   <div className="flex items-center gap-1.5">
                     <MapPin size={12} className="text-[#FF5722]" />
-                    <span>Drop: {order.delivery_location || 'SRM University Gate 3'}</span>
+                    <span>Drop: {order.delivery_location || 'Vit-ap Campus'}</span>
                   </div>
 
                   <button

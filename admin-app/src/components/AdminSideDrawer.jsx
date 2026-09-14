@@ -50,7 +50,7 @@ export default function AdminSideDrawer({
               <h3 className="text-base font-black text-white font-['Outfit'] tracking-tight">
                 Control Hub
               </h3>
-              <p className="text-[11px] text-slate-400">Srm : College Bites Dispatch Console</p>
+              <p className="text-[11px] text-slate-400">Vit: Mute Bites Dispatch Console</p>
             </div>
           </div>
 
@@ -236,7 +236,7 @@ export default function AdminSideDrawer({
             <span>Sign Out of Admin Control</span>
           </button>
           <p className="text-center text-[10px] text-slate-500 font-mono">
-            Srm : College Bites v2.0 • SRM University AP Dispatch
+            Vit: Mute Bites v2.0 • VIT-AP Campus Dispatch
           </p>
         </div>
       </div>

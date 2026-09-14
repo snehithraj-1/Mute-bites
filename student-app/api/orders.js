@@ -174,7 +174,7 @@ export default async function handler(req, res) {
         const studentName = r.student_name || 'Student';
         const studentPhone = r.student_phone || '';
         const studentEmailVal = r.student_email || '';
-        const deliveryLocation = r.delivery_location || 'SRM University - Gate 3';
+        const deliveryLocation = r.delivery_location || 'Vit-ap Campus';
         const restaurantName = r.restaurant_name || 'Campus Kitchen';
         const restaurantIdVal = r.restaurant_id || 'local-home-kitchen';
         const partnerName = r.delivery_partner_name || null;
@@ -279,7 +279,7 @@ export default async function handler(req, res) {
       const studentName = body.student_name || body.studentName || 'Student';
       const studentPhone = body.student_phone || body.studentPhone || '';
       const studentEmail = (body.student_email || body.studentEmail || '').trim().toLowerCase();
-      const deliveryLocation = body.delivery_location || body.deliveryLocation || 'SRM University - Gate 3';
+      const deliveryLocation = body.delivery_location || body.deliveryLocation || 'Vit-ap Campus';
       const restaurantId = body.restaurant_id || body.restaurantId || 'local-home-kitchen';
       const restaurantName = body.restaurant_name || body.restaurantName || 'Campus Kitchen';
       const totalAmount = Number(body.total_amount ?? body.totalAmount) || 0;

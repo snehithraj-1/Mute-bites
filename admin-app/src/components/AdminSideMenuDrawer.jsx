@@ -62,7 +62,7 @@ export default function AdminSideMenuDrawer({
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 font-['Outfit']">
-                Srm : College Bites Operations Hub
+                Vit: Mute Bites Operations Hub
               </p>
             </div>
           </div>
@@ -241,7 +241,7 @@ export default function AdminSideMenuDrawer({
           </button>
 
           <p className="text-center text-[10px] text-slate-500 font-mono">
-            Srm : College Bites v1.2 • SRM University Gate 3 Dispatch
+            Vit: Mute Bites v1.2 • Vit-ap Campus Dispatch
           </p>
         </div>
 

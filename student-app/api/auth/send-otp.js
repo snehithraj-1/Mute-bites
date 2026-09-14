@@ -74,14 +74,14 @@ export default async function handler(req, res) {
       <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 520px; margin: 0 auto; background: #ffffff; border-radius: 20px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
         <div style="background: linear-gradient(135deg, #FF5722 0%, #F4511E 100%); padding: 32px 24px; text-align: center; color: #ffffff;">
           <div style="font-size: 40px; margin-bottom: 8px;">🍔</div>
-          <h1 style="margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">Collage Bites Dining</h1>
-          <p style="margin: 6px 0 0; font-size: 13px; opacity: 0.9;">SRM University-AP Hostel Delivery Portal</p>
+          <h1 style="margin: 0; font-size: 26px; font-weight: 900; letter-spacing: -0.5px;">Vit: Mute Bites Dining</h1>
+          <p style="margin: 6px 0 0; font-size: 13px; opacity: 0.9;">VIT-AP Campus Food Delivery Portal</p>
         </div>
         
         <div style="padding: 32px 28px; text-align: center;">
           <h2 style="font-size: 18px; color: #0f172a; margin-top: 0; font-weight: 800;">Your One-Time Login Code</h2>
           <p style="color: #64748b; font-size: 14px; line-height: 1.5; margin: 8px 0 24px;">
-            Hello <b>${name || 'Student'}</b>, use the 6-digit verification code below to securely sign into Collage Bites.
+            Hello <b>${name || 'Student'}</b>, use the 6-digit verification code below to securely sign into Vit: Mute Bites.
           </p>
           
           <div style="display: inline-block; background: #FFF0EB; border: 2px dashed #FF5722; border-radius: 16px; padding: 16px 36px; margin-bottom: 24px;">
@@ -94,7 +94,7 @@ export default async function handler(req, res) {
         </div>
         
         <div style="background: #FAF8F5; padding: 18px 24px; text-align: center; border-top: 1px solid #f1eae4; font-size: 11px; color: #8a7b70;">
-          SRM University AP • Neerukonda Village • Gate 3 Delivery Support: 9989955833
+          VIT-AP University • Vit-ap Campus Delivery Support: 9989955833
         </div>
       </div>
     `;
@@ -107,11 +107,11 @@ export default async function handler(req, res) {
       const activeSender = activeUser;
       const transporter = getMailTransporter();
       const info = await transporter.sendMail({
-        from: '"Srm : College Bites" <' + activeSender + '>',
+        from: '"Vit: Mute Bites" <' + activeSender + '>',
         to: cleanEmail,
         replyTo: activeSender,
-        subject: `${otp} is your Srm : College Bites Login Code`,
-        text: `Your Collage Bites verification code is: ${otp}\n\nThis code is valid for 10 minutes.\n\nSRM University-AP Campus Dining\nDelivery Support: 9989955833`,
+        subject: `${otp} is your Vit: Mute Bites Login Code`,
+        text: `Your Vit: Mute Bites verification code is: ${otp}\n\nThis code is valid for 10 minutes.\n\nVit-ap Campus Dining\nDelivery Support: 9989955833`,
         html: htmlTemplate
       });
       emailSent = true;

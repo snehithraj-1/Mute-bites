@@ -115,13 +115,13 @@ export default function StudentLoginPage() {
       {/* Brand Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <div className="w-14 h-14 rounded-2xl bg-[#FF5722] text-white mx-auto flex items-center justify-center text-2xl font-black shadow-md shadow-[#FF5722]/20 mb-3">
-          CB
+          MB
         </div>
         <h1 className="text-2xl sm:text-3xl font-black text-[#0F172A] tracking-tight font-['Outfit']">
-          Srm : College Bites
+          Vit: Mute Bites
         </h1>
         <p className="mt-1 text-xs sm:text-sm text-[#64748B] font-medium">
-          SRM-AP Student Food Ordering & Hostel Delivery
+          VIT-AP Student Food Ordering & Delivery
         </p>
       </div>
 
@@ -178,7 +178,7 @@ export default function StudentLoginPage() {
                   className="w-full px-3.5 py-2.5 rounded-xl border border-[#E2D9D0] bg-[#FAF8F5] text-sm text-[#0F172A] placeholder-slate-400 focus:outline-none focus:border-[#FF5722] focus:bg-white transition-colors font-mono disabled:opacity-60"
                 />
                 <p className="text-[11px] text-[#64748B] mt-1">
-                  Couriers call this number when arriving at Gate 3.
+                  Couriers call this number when arriving at Vit-ap Campus.
                 </p>
               </div>
 

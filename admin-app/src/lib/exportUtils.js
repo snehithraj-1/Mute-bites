@@ -31,7 +31,7 @@ export function exportOrdersToCSV(orders, filename = 'srm_college_bites_orders')
       `"${(o.student_name || o.studentName || 'Student').replace(/"/g, '""')}"`,
       `"${(o.student_phone || o.studentPhone || '—').replace(/"/g, '""')}"`,
       `"${(o.restaurant_name || o.restaurantName || o.restaurant_id || 'Campus Kitchen').replace(/"/g, '""')}"`,
-      `"${(o.delivery_location || o.deliveryLocation || 'SRM AP Gate 3').replace(/"/g, '""')}"`,
+      `"${(o.delivery_location || o.deliveryLocation || 'Vit-ap Campus').replace(/"/g, '""')}"`,
       `"${(o.status || 'pending').toUpperCase()}"`,
       `"${(o.payment_status || 'PAID').toUpperCase()}"`,
       Number(o.total_amount || o.totalAmount || 0).toFixed(2),

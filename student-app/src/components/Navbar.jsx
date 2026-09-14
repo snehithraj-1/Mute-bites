@@ -17,17 +17,17 @@ export default function Navbar({ currentView, onNavigate }) {
           className="flex items-center gap-3 cursor-pointer select-none"
         >
           <div className="w-10 h-10 rounded-xl bg-[#FF5722] flex items-center justify-center text-white font-black text-lg shadow-sm">
-            CB
+            MB
           </div>
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-lg font-black text-[#0F172A] tracking-tight font-['Outfit']">
-                Srm : College Bites
+                Vit: Mute Bites
               </span>
             </div>
             <div className="flex items-center gap-1 text-[11px] text-[#64748B] font-medium">
               <MapPin size={12} className="text-[#FF5722] shrink-0" />
-              <span>SRM University • Gate 3</span>
+              <span>Vit-ap Campus</span>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 /**
- * Excel / CSV Export Utility for Srm : College Bites Admin
+ * Excel / CSV Export Utility for Vit: Mute Bites Admin
  * Formats orders data into Excel-compatible CSV with UTF-8 BOM,
  * ensuring proper parsing of Indian phone numbers, item lists, and dates.
  */
@@ -122,7 +122,7 @@ export function exportOrdersToExcel(orders, {
         order.student_name ? String(order.student_name) : 'Student',
         phoneFormatted,
         order.student_email ? String(order.student_email) : '',
-        order.delivery_location ? String(order.delivery_location) : 'Gate 3',
+        order.delivery_location ? String(order.delivery_location) : 'Vit-ap Campus',
         order.restaurant_name ? String(order.restaurant_name) : (restaurantName || 'Campus Kitchen'),
         itemsDescription || 'Order items recorded',
         totalQty,

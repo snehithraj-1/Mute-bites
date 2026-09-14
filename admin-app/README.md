@@ -1,6 +1,6 @@
-# Srm : College Bites Admin Management Portal
+# Vit: Mute Bites Admin Management Portal
 
-Central administrative console for managing live food orders, restaurant status, dishes/menus, student accounts, and system controls for SRM University AP campus dining.
+Central administrative console for managing live food orders, restaurant status, dishes/menus, student accounts, and system controls for VIT-AP University campus dining.
 
 ---
 

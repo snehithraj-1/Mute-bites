@@ -224,7 +224,7 @@ function StudentAppInner() {
         onOrderConfirmed={handleOrderConfirmed}
       />
 
-      {/* Floating Real-Time Order Status Notifications (Cooking, Ready, Out for delivery to Gate 3) */}
+      {/* Floating Real-Time Order Status Notifications (Cooking, Ready, Out for delivery to Vit-ap Campus) */}
       <StudentNotificationToast
         activeOrderId={confirmedOrder?.id}
         onTrackOrder={(order) => {
@@ -247,12 +247,12 @@ function StudentAppInner() {
       <footer className="bg-white border-t border-[#F1EAE4] pt-8 pb-24 md:pb-8 text-xs text-[#64748B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-2">
-            <span className="text-base font-black text-[#0F172A] font-['Outfit']">Srm : College Bites</span>
+            <span className="text-base font-black text-[#0F172A] font-['Outfit']">Vit: Mute Bites</span>
             <span>•</span>
             <span>Student Food Ordering Portal</span>
           </div>
           <div className="flex items-center gap-3">
-            <span>SRM University AP, Amaravati</span>
+            <span>VIT-AP University Campus, Amaravati</span>
           </div>
         </div>
       </footer>

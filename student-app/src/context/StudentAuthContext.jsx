@@ -144,7 +144,7 @@ export function StudentAuthProvider({ children }) {
         localStorage.setItem('cb_delivery_details', JSON.stringify({
           ...parsedDeliv,
           phone: studentUser.phone,
-          deliveryLocation: 'SRM University - Gate 3'
+          deliveryLocation: 'Vit-ap Campus'
         }));
       } catch {}
 
@@ -177,7 +177,7 @@ export function StudentAuthProvider({ children }) {
       localStorage.setItem('cb_delivery_details', JSON.stringify({
         ...parsedDeliv,
         phone: updated.phone,
-        deliveryLocation: 'SRM University - Gate 3'
+        deliveryLocation: 'Vit-ap Campus'
       }));
     } catch {}
 

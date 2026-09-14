@@ -148,7 +148,7 @@ export function AdminAuthProvider({ children }) {
         const superProfile = {
           id: 'admin-super',
           username: 'collagebites1@gmail.com',
-          name: 'Srm : College Bites (Super Admin)',
+          name: 'Vit: Mute Bites (Super Admin)',
           email: 'collagebites1@gmail.com',
           role: 'super_admin',
           restaurant_id: null,

@@ -1,4 +1,4 @@
-// Centralized API Service Layer for Srm : College Bites Admin Portal
+// Centralized API Service Layer for Vit: Mute Bites Admin Portal
 // Seamlessly interacts with /api routes in both localhost (proxy port 5000) and Vercel cloud deployment.
 
 const jsonHeaders = {
