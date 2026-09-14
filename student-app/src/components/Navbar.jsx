@@ -16,9 +16,11 @@ export default function Navbar({ currentView, onNavigate }) {
           onClick={() => onNavigate('restaurants')}
           className="flex items-center gap-3 cursor-pointer select-none group"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#881337] via-[#9F1239] to-[#E11D48] flex items-center justify-center text-white font-black text-lg shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform">
-            MB
-          </div>
+          <img 
+            src="/mutebites-logo.png" 
+            alt="Mutebites Logo" 
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full object-cover shadow-md shadow-rose-900/20 group-hover:scale-105 transition-transform border border-[#FFE4E6]"
+          />
           <div>
             <div className="flex items-center gap-1.5">
               <span className="text-lg font-black text-[#1C1917] tracking-tight font-['Outfit'] group-hover:text-[#9F1239] transition-colors">

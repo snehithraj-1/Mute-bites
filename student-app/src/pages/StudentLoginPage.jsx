@@ -114,9 +114,11 @@ export default function StudentLoginPage() {
       
       {/* Brand Header */}
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-[#881337] via-[#9F1239] to-[#E11D48] text-white mx-auto flex items-center justify-center text-2xl font-black shadow-xl shadow-rose-900/25 mb-3 border border-rose-400/30">
-          MB
-        </div>
+        <img 
+          src="/mutebites-logo.png" 
+          alt="Mutebites Logo" 
+          className="w-20 h-20 rounded-full mx-auto object-cover shadow-xl shadow-rose-900/20 mb-3 border-2 border-[#FFE4E6]"
+        />
         <h1 className="text-2xl sm:text-3xl font-black text-[#1C1917] tracking-tight font-['Outfit']">
           Vit: Mute Bites
         </h1>
