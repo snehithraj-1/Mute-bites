@@ -277,14 +277,14 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
                     className="w-full pl-8 pr-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {!assignedRestaurantId && <option value="all">All Kitchens (Campus Fleet)</option>}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'local-home-kitchen') && (
-                      <option value="local-home-kitchen">Local Home Kitchen</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
+                      <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
                     )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'clg-bites-biryani-nation') && (
-                      <option value="clg-bites-biryani-nation">CLG Bites Biryani Nation</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
+                      <option value="a1-biryani-point">A1 Biryani Point</option>
                     )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'vilasa-cafe') && (
-                      <option value="vilasa-cafe">Vilasa Café</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
+                      <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
                     )}
                   </select>
                 </div>
@@ -345,12 +345,12 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
                           <div className="flex items-center gap-2">
                             <span className="font-bold text-white text-xs sm:text-sm">{p.name}</span>
                             <span className="px-2 py-0.2 rounded-md bg-slate-800 text-slate-400 text-[10px] font-mono">
-                              {p.restaurant_id === 'local-home-kitchen'
-                                ? 'Local Home Kitchen'
-                                : p.restaurant_id === 'clg-bites-biryani-nation'
-                                ? 'Biryani Nation'
-                                : p.restaurant_id === 'vilasa-cafe'
-                                ? 'Vilasa Café'
+                              {p.restaurant_id === 'bheemasena-restaurant'
+                                ? 'Bheemasena Restaurant'
+                                : p.restaurant_id === 'a1-biryani-point'
+                                ? 'A1 Biryani Point'
+                                : p.restaurant_id === 'bismillah-fruit-juice'
+                                ? 'Bismillah Fruit Juice'
                                 : 'Campus Fleet'}
                             </span>
                           </div>

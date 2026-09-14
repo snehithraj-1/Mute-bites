@@ -160,52 +160,52 @@ export function AdminAuthProvider({ children }) {
         return { success: true, user: superProfile };
       }
 
-      if ((lowerInput === 'lhk_admin' || lowerInput === 'lhk@collegebites.com' || lowerInput === 'lhk@campusbites.com') && cleanPassword === 'LHK@Campus2026') {
-        const lhkProfile = {
-          id: 'admin-lhk',
-          username: 'lhk_admin',
-          name: 'Local Home Kitchen Staff',
-          email: 'lhk@collegebites.com',
+      if ((lowerInput === 'bheemasena_admin' || lowerInput === 'bheemasena@mutebites.com' || lowerInput === 'bheemasena') && cleanPassword === 'Bheema@Campus2026') {
+        const bheemaProfile = {
+          id: 'admin-bheemasena',
+          username: 'bheemasena_admin',
+          name: 'Bheemasena Restaurant Staff',
+          email: 'bheemasena@mutebites.com',
           role: 'restaurant_admin',
-          restaurant_id: 'local-home-kitchen',
+          restaurant_id: 'bheemasena-restaurant',
           created_at: new Date().toISOString()
         };
-        setProfile(lhkProfile);
-        setUser({ id: lhkProfile.id, email: lhkProfile.email });
-        try { localStorage.setItem('cb_admin_profile', JSON.stringify(lhkProfile)); } catch {}
-        return { success: true, user: lhkProfile };
+        setProfile(bheemaProfile);
+        setUser({ id: bheemaProfile.id, email: bheemaProfile.email });
+        try { localStorage.setItem('cb_admin_profile', JSON.stringify(bheemaProfile)); } catch {}
+        return { success: true, user: bheemaProfile };
       }
 
-      if ((lowerInput === 'clgbites_admin' || lowerInput === 'clg@collegebites.com' || lowerInput === 'clg@campusbites.com') && cleanPassword === 'CLG@Campus2026') {
-        const clgProfile = {
-          id: 'admin-clg',
-          username: 'clgbites_admin',
-          name: 'CLG Bites Staff',
-          email: 'clg@collegebites.com',
+      if ((lowerInput === 'a1_admin' || lowerInput === 'a1@mutebites.com' || lowerInput === 'a1') && cleanPassword === 'A1@Campus2026') {
+        const a1Profile = {
+          id: 'admin-a1',
+          username: 'a1_admin',
+          name: 'A1 Biryani Point Staff',
+          email: 'a1@mutebites.com',
           role: 'restaurant_admin',
-          restaurant_id: 'clg-bites-biryani-nation',
+          restaurant_id: 'a1-biryani-point',
           created_at: new Date().toISOString()
         };
-        setProfile(clgProfile);
-        setUser({ id: clgProfile.id, email: clgProfile.email });
-        try { localStorage.setItem('cb_admin_profile', JSON.stringify(clgProfile)); } catch {}
-        return { success: true, user: clgProfile };
+        setProfile(a1Profile);
+        setUser({ id: a1Profile.id, email: a1Profile.email });
+        try { localStorage.setItem('cb_admin_profile', JSON.stringify(a1Profile)); } catch {}
+        return { success: true, user: a1Profile };
       }
 
-      if ((lowerInput === 'vilasa_admin' || lowerInput === 'vilasa@collegebites.com' || lowerInput === 'vilasa@campusbites.com' || lowerInput === 'vilasa') && (cleanPassword === 'Vilasa@Campus2026' || cleanPassword === 'Vilasa123')) {
-        const vilasaProfile = {
-          id: 'admin-vilasa',
-          username: 'vilasa_admin',
-          name: 'Vilasa Café Admin',
-          email: 'vilasa@campusbites.com',
+      if ((lowerInput === 'bismillah_admin' || lowerInput === 'bismillah@mutebites.com' || lowerInput === 'bismillah') && (cleanPassword === 'Bismillah@Campus2026' || cleanPassword === 'Bismillah@2026')) {
+        const bismillahProfile = {
+          id: 'admin-bismillah',
+          username: 'bismillah_admin',
+          name: 'Bismillah Fruit Juice Staff',
+          email: 'bismillah@mutebites.com',
           role: 'restaurant_admin',
-          restaurant_id: 'vilasa-cafe',
+          restaurant_id: 'bismillah-fruit-juice',
           created_at: new Date().toISOString()
         };
-        setProfile(vilasaProfile);
-        setUser({ id: vilasaProfile.id, email: vilasaProfile.email });
-        try { localStorage.setItem('cb_admin_profile', JSON.stringify(vilasaProfile)); } catch {}
-        return { success: true, user: vilasaProfile };
+        setProfile(bismillahProfile);
+        setUser({ id: bismillahProfile.id, email: bismillahProfile.email });
+        try { localStorage.setItem('cb_admin_profile', JSON.stringify(bismillahProfile)); } catch {}
+        return { success: true, user: bismillahProfile };
       }
 
       return {

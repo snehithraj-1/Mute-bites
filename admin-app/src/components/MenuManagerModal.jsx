@@ -360,8 +360,8 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
 
             <button
               onClick={() => {
-                const effectiveRest = assignedRestaurantId || (selectedRestaurant !== 'ALL' ? selectedRestaurant : 'local-home-kitchen');
-                const effectiveName = effectiveRest === 'vilasa-cafe' ? 'Vilasa Café' : (effectiveRest === 'clg-bites-biryani-nation' ? 'Clg Bites Biryani Nation' : 'Local Home Kitchen');
+                const effectiveRest = assignedRestaurantId || (selectedRestaurant !== 'ALL' ? selectedRestaurant : 'bheemasena-restaurant');
+                const effectiveName = effectiveRest === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (effectiveRest === 'a1-biryani-point' ? 'A1 Biryani Point' : 'Bismillah Fruit Juice');
                 setEditingItem({
                   restaurant_id: effectiveRest,
                   restaurant_name: effectiveName,
@@ -415,14 +415,14 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
               className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white font-medium focus:outline-none focus:border-amber-500 cursor-pointer disabled:opacity-75"
             >
               {!assignedRestaurantId && <option value="ALL">All Kitchens ({items.length})</option>}
-              {(!assignedRestaurantId || assignedRestaurantId === 'local-home-kitchen') && (
-                <option value="local-home-kitchen">Local Home Kitchen</option>
+              {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
+                <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
               )}
-              {(!assignedRestaurantId || assignedRestaurantId === 'clg-bites-biryani-nation') && (
-                <option value="clg-bites-biryani-nation">Clg Bites Biryani Nation</option>
+              {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
+                <option value="a1-biryani-point">A1 Biryani Point</option>
               )}
-              {(!assignedRestaurantId || assignedRestaurantId === 'vilasa-cafe') && (
-                <option value="vilasa-cafe">Vilasa Café</option>
+              {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
+                <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
               )}
             </select>
           </div>
@@ -717,30 +717,30 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
                     Kitchen / Restaurant *
                   </label>
                   <select
-                    value={editingItem.restaurant_id || (assignedRestaurantId || 'local-home-kitchen')}
+                    value={editingItem.restaurant_id || (assignedRestaurantId || 'bheemasena-restaurant')}
                     disabled={Boolean(assignedRestaurantId)}
                     onChange={(e) =>
                       setEditingItem({
                         ...editingItem,
                         restaurant_id: e.target.value,
                         restaurant_name:
-                          e.target.value === 'vilasa-cafe'
-                            ? 'Vilasa Café'
-                            : e.target.value === 'clg-bites-biryani-nation'
-                            ? 'Clg Bites Biryani Nation'
-                            : 'Local Home Kitchen'
+                          e.target.value === 'bheemasena-restaurant'
+                            ? 'Bheemasena Restaurant'
+                            : e.target.value === 'a1-biryani-point'
+                            ? 'A1 Biryani Point'
+                            : 'Bismillah Fruit Juice'
                       })
                     }
                     className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs text-white cursor-pointer focus:outline-none focus:border-amber-500 disabled:opacity-75"
                   >
-                    {(!assignedRestaurantId || assignedRestaurantId === 'local-home-kitchen') && (
-                      <option value="local-home-kitchen">Local Home Kitchen</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
+                      <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
                     )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'clg-bites-biryani-nation') && (
-                      <option value="clg-bites-biryani-nation">Clg Bites Biryani Nation</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
+                      <option value="a1-biryani-point">A1 Biryani Point</option>
                     )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'vilasa-cafe') && (
-                      <option value="vilasa-cafe">Vilasa Café</option>
+                    {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
+                      <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
                     )}
                   </select>
                 </div>

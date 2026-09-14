@@ -88,8 +88,8 @@ export default function OrderCard({
 
   const studentName = order.student_name || order.studentName || 'Student';
   const studentPhone = order.student_phone || order.studentPhone || '';
-  const restaurantName = order.restaurant_name || order.restaurantName || (order.restaurant_id === 'vilasa-cafe' ? 'Vilasa Café' : (order.restaurant_id === 'clg-bites-biryani-nation' ? 'Biryani Nation' : 'Local Home Kitchen'));
-  const deliveryLocation = order.delivery_location || order.deliveryLocation || 'SRM AP - Gate 3';
+  const restaurantName = order.restaurant_name || order.restaurantName || (order.restaurant_id === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (order.restaurant_id === 'a1-biryani-point' ? 'A1 Biryani Point' : (order.restaurant_id === 'bismillah-fruit-juice' ? 'Bismillah Fruit Juice' : 'Campus Kitchen')));
+  const deliveryLocation = order.delivery_location || order.deliveryLocation || 'VIT-AP Campus';
   const totalAmount = Number(order.total_amount || order.totalAmount) || 0;
   const shortId = (order.id || '').toString().slice(-6).toUpperCase();
 

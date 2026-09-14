@@ -127,34 +127,34 @@ export default function OrdersTable({
         ) : onSelectRestaurantTab ? (
           <div className="flex items-center gap-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none font-['Outfit']">
             <button
-              onClick={() => onSelectRestaurantTab('local-home-kitchen')}
+              onClick={() => onSelectRestaurantTab('bheemasena-restaurant')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'local-home-kitchen'
+                activeRestaurantTab === 'bheemasena-restaurant'
                   ? 'bg-[#FF5722] text-white shadow-xs'
                   : 'bg-transparent text-slate-400 hover:text-white'
               }`}
             >
-              Local Home Kitchen
+              Bheemasena Restaurant
             </button>
             <button
-              onClick={() => onSelectRestaurantTab('clg-bites-biryani-nation')}
+              onClick={() => onSelectRestaurantTab('a1-biryani-point')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'clg-bites-biryani-nation'
+                activeRestaurantTab === 'a1-biryani-point'
                   ? 'bg-[#FF5722] text-white shadow-xs'
                   : 'bg-transparent text-slate-400 hover:text-white'
               }`}
             >
-              Biryani Nation
+              A1 Biryani Point
             </button>
             <button
-              onClick={() => onSelectRestaurantTab('vilasa-cafe')}
+              onClick={() => onSelectRestaurantTab('bismillah-fruit-juice')}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'vilasa-cafe'
+                activeRestaurantTab === 'bismillah-fruit-juice'
                   ? 'bg-[#FF5722] text-white shadow-xs'
                   : 'bg-transparent text-slate-400 hover:text-white'
               }`}
             >
-              Vilasa Café
+              Bismillah Fruit Juice
             </button>
             <button
               onClick={() => onSelectRestaurantTab('all')}

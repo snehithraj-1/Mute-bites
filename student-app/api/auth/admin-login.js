@@ -40,9 +40,9 @@ export default async function handler(req, res) {
       if (rows && rows.length > 0) {
         const account = rows[0];
         const isPassValid = account.password_hash === cleanPassword ||
-          (cleanPassword === 'lhk123' && account.restaurant_id === 'local-home-kitchen') ||
-          (cleanPassword === 'clg123' && account.restaurant_id === 'clg-bites-biryani-nation') ||
-          (cleanPassword === 'vilasa123' && account.restaurant_id === 'vilasa-cafe') ||
+          (cleanPassword === 'bheema123' && account.restaurant_id === 'bheemasena-restaurant') ||
+          (cleanPassword === 'a1123' && account.restaurant_id === 'a1-biryani-point') ||
+          (cleanPassword === 'bismillah123' && account.restaurant_id === 'bismillah-fruit-juice') ||
           (cleanPassword === 'admin123' && account.role === 'super_admin');
 
         if (isPassValid) {
@@ -82,46 +82,46 @@ export default async function handler(req, res) {
       return res.status(200).json({ success: true, token: makeAdminToken(superAdminProfile), user: superAdminProfile, message: 'Super Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'lhk_admin' || inputIdentifier === 'lhk@campusbites.com' || inputIdentifier === 'lhk') && 
-        (cleanPassword === 'LHK@Campus2026' || cleanPassword === 'lhk123')) {
-      const lhkProfile = {
-        id: 'admin-lhk',
-        username: 'lhk_admin',
-        name: 'Local Home Kitchen Staff',
-        email: 'lhk@campusbites.com',
+    if ((inputIdentifier === 'bheemasena_admin' || inputIdentifier === 'bheemasena@mutebites.com' || inputIdentifier === 'bheemasena') && 
+        (cleanPassword === 'Bheema@Campus2026' || cleanPassword === 'bheema123')) {
+      const bheemaProfile = {
+        id: 'admin-bheemasena',
+        username: 'bheemasena_admin',
+        name: 'Bheemasena Restaurant Staff',
+        email: 'bheemasena@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'local-home-kitchen',
+        restaurant_id: 'bheemasena-restaurant',
         created_at: new Date().toISOString()
       };
-      return res.status(200).json({ success: true, token: makeAdminToken(lhkProfile), user: lhkProfile, message: 'Local Home Kitchen Admin authenticated' });
+      return res.status(200).json({ success: true, token: makeAdminToken(bheemaProfile), user: bheemaProfile, message: 'Bheemasena Restaurant Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'clgbites_admin' || inputIdentifier === 'biryani_admin' || inputIdentifier === 'biryanination' || inputIdentifier === 'clg@campusbites.com' || inputIdentifier === 'clg') && 
-        (cleanPassword === 'CLG@Campus2026' || cleanPassword === 'clg123' || cleanPassword === 'biryani123')) {
-      const clgProfile = {
-        id: 'admin-clg',
-        username: 'clgbites_admin',
-        name: 'Biryani Nation Staff',
-        email: 'clg@campusbites.com',
+    if ((inputIdentifier === 'a1_admin' || inputIdentifier === 'a1@mutebites.com' || inputIdentifier === 'a1') && 
+        (cleanPassword === 'A1@Campus2026' || cleanPassword === 'a1123')) {
+      const a1Profile = {
+        id: 'admin-a1',
+        username: 'a1_admin',
+        name: 'A1 Biryani Point Staff',
+        email: 'a1@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'clg-bites-biryani-nation',
+        restaurant_id: 'a1-biryani-point',
         created_at: new Date().toISOString()
       };
-      return res.status(200).json({ success: true, token: makeAdminToken(clgProfile), user: clgProfile, message: 'Biryani Nation Admin authenticated' });
+      return res.status(200).json({ success: true, token: makeAdminToken(a1Profile), user: a1Profile, message: 'A1 Biryani Point Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'vilasa_admin' || inputIdentifier === 'vilasa@campusbites.com' || inputIdentifier === 'vilasa') && 
-        (cleanPassword === 'Vilasa@Campus2026' || cleanPassword === 'vilasa123')) {
-      const vilasaProfile = {
-        id: 'admin-vilasa',
-        username: 'vilasa_admin',
-        name: 'Vilasa Café Admin',
-        email: 'vilasa@campusbites.com',
+    if ((inputIdentifier === 'bismillah_admin' || inputIdentifier === 'bismillah@mutebites.com' || inputIdentifier === 'bismillah') && 
+        (cleanPassword === 'Bismillah@Campus2026' || cleanPassword === 'Bismillah@2026' || cleanPassword === 'bismillah123')) {
+      const bismillahProfile = {
+        id: 'admin-bismillah',
+        username: 'bismillah_admin',
+        name: 'Bismillah Fruit Juice Staff',
+        email: 'bismillah@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'vilasa-cafe',
+        restaurant_id: 'bismillah-fruit-juice',
         created_at: new Date().toISOString()
       };
-      return res.status(200).json({ success: true, token: makeAdminToken(vilasaProfile), user: vilasaProfile, message: 'Vilasa Café Admin authenticated' });
+      return res.status(200).json({ success: true, token: makeAdminToken(bismillahProfile), user: bismillahProfile, message: 'Bismillah Fruit Juice Admin authenticated' });
     }
 
     return res.status(401).json({

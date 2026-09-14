@@ -384,9 +384,9 @@ async function initNeonSchema() {
       VALUES 
         ('admin-super', 'collagebites1@gmail.com', 'Collage Bites (Super Admin)', 'super_admin', null, 'Clgbites123'),
         ('admin-super-alias', 'collagebites@gmail.com', 'Collage Bites Admin', 'super_admin', null, 'Clgbites123'),
-        ('admin-lhk', 'lhk_admin', 'Local Home Kitchen Staff', 'restaurant_admin', 'local-home-kitchen', 'LHK@Campus2026'),
-        ('admin-clg', 'clgbites_admin', 'Biryani Nation Staff', 'restaurant_admin', 'clg-bites-biryani-nation', 'CLG@Campus2026'),
-        ('admin-vilasa', 'vilasa_admin', 'Vilasa Café Admin', 'restaurant_admin', 'vilasa-cafe', 'Vilasa@Campus2026')
+        ('admin-bheemasena', 'bheemasena_admin', 'Bheemasena Restaurant Staff', 'restaurant_admin', 'bheemasena-restaurant', 'Bheema@Campus2026'),
+        ('admin-a1', 'a1_admin', 'A1 Biryani Point Staff', 'restaurant_admin', 'a1-biryani-point', 'A1@Campus2026'),
+        ('admin-bismillah', 'bismillah_admin', 'Bismillah Fruit Juice Staff', 'restaurant_admin', 'bismillah-fruit-juice', 'Bismillah@Campus2026')
       ON CONFLICT (id) DO UPDATE SET
         username = EXCLUDED.username,
         name = EXCLUDED.name,
@@ -949,8 +949,9 @@ app.post('/api/auth/admin-login', async (req, res) => {
         if (rows && rows.length > 0) {
           const account = rows[0];
           const isPassValid = account.password_hash === cleanPassword ||
-            (cleanPassword === 'lhk123' && account.restaurant_id === 'local-home-kitchen') ||
-            (cleanPassword === 'clg123' && account.restaurant_id === 'clg-bites-biryani-nation') ||
+            (cleanPassword === 'bheema123' && account.restaurant_id === 'bheemasena-restaurant') ||
+            (cleanPassword === 'a1123' && account.restaurant_id === 'a1-biryani-point') ||
+            (cleanPassword === 'bismillah123' && account.restaurant_id === 'bismillah-fruit-juice') ||
             (cleanPassword === 'admin123' && account.role === 'super_admin');
 
           if (isPassValid) {
@@ -991,43 +992,43 @@ app.post('/api/auth/admin-login', async (req, res) => {
       return res.json({ success: true, token: makeAdminToken(superAdminProfile), user: superAdminProfile, message: 'Super Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'lhk_admin' || inputIdentifier === 'lhk@campusbites.com' || inputIdentifier === 'lhk') && (cleanPassword === 'LHK@Campus2026' || cleanPassword === 'lhk123')) {
-      const lhkProfile = {
-        id: 'admin-lhk',
-        username: 'lhk_admin',
-        name: 'Local Home Kitchen Staff',
-        email: 'lhk@campusbites.com',
+    if ((inputIdentifier === 'bheemasena_admin' || inputIdentifier === 'bheemasena@mutebites.com' || inputIdentifier === 'bheemasena') && (cleanPassword === 'Bheema@Campus2026' || cleanPassword === 'bheema123')) {
+      const bheemaProfile = {
+        id: 'admin-bheemasena',
+        username: 'bheemasena_admin',
+        name: 'Bheemasena Restaurant Staff',
+        email: 'bheemasena@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'local-home-kitchen',
+        restaurant_id: 'bheemasena-restaurant',
         created_at: new Date().toISOString()
       };
-      return res.json({ success: true, token: makeAdminToken(lhkProfile), user: lhkProfile, message: 'Local Home Kitchen Admin authenticated' });
+      return res.json({ success: true, token: makeAdminToken(bheemaProfile), user: bheemaProfile, message: 'Bheemasena Restaurant Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'clgbites_admin' || inputIdentifier === 'clg@campusbites.com' || inputIdentifier === 'clg') && (cleanPassword === 'CLG@Campus2026' || cleanPassword === 'clg123')) {
-      const clgProfile = {
-        id: 'admin-clg',
-        username: 'clgbites_admin',
-        name: 'Biryani Nation Staff',
-        email: 'clg@campusbites.com',
+    if ((inputIdentifier === 'a1_admin' || inputIdentifier === 'a1@mutebites.com' || inputIdentifier === 'a1') && (cleanPassword === 'A1@Campus2026' || cleanPassword === 'a1123')) {
+      const a1Profile = {
+        id: 'admin-a1',
+        username: 'a1_admin',
+        name: 'A1 Biryani Point Staff',
+        email: 'a1@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'clg-bites-biryani-nation',
+        restaurant_id: 'a1-biryani-point',
         created_at: new Date().toISOString()
       };
-      return res.json({ success: true, token: makeAdminToken(clgProfile), user: clgProfile, message: 'Biryani Nation Admin authenticated' });
+      return res.json({ success: true, token: makeAdminToken(a1Profile), user: a1Profile, message: 'A1 Biryani Point Admin authenticated' });
     }
 
-    if ((inputIdentifier === 'vilasa_admin' || inputIdentifier === 'vilasa@campusbites.com' || inputIdentifier === 'vilasa') && (cleanPassword === 'Vilasa@Campus2026' || cleanPassword === 'vilasa123')) {
-      const vilasaProfile = {
-        id: 'admin-vilasa',
-        username: 'vilasa_admin',
-        name: 'Vilasa Café Admin',
-        email: 'vilasa@campusbites.com',
+    if ((inputIdentifier === 'bismillah_admin' || inputIdentifier === 'bismillah@mutebites.com' || inputIdentifier === 'bismillah') && (cleanPassword === 'Bismillah@Campus2026' || cleanPassword === 'Bismillah@2026' || cleanPassword === 'bismillah123')) {
+      const bismillahProfile = {
+        id: 'admin-bismillah',
+        username: 'bismillah_admin',
+        name: 'Bismillah Fruit Juice Staff',
+        email: 'bismillah@mutebites.com',
         role: 'restaurant_admin',
-        restaurant_id: 'vilasa-cafe',
+        restaurant_id: 'bismillah-fruit-juice',
         created_at: new Date().toISOString()
       };
-      return res.json({ success: true, token: makeAdminToken(vilasaProfile), user: vilasaProfile, message: 'Vilasa Café Admin authenticated' });
+      return res.json({ success: true, token: makeAdminToken(bismillahProfile), user: bismillahProfile, message: 'Bismillah Fruit Juice Admin authenticated' });
     }
 
     console.warn(`[Admin Auth Rejected] Invalid credentials attempt: ${inputIdentifier}`);
@@ -1347,7 +1348,7 @@ app.post('/api/orders', async (req, res) => {
         });
       }
 
-      const restId = orderData.restaurant_id || orderData.restaurantId || 'local-home-kitchen';
+      const restId = orderData.restaurant_id || orderData.restaurantId || 'bheemasena-restaurant';
       const restRows = await sql`SELECT is_open, name FROM restaurants WHERE id = ${restId} LIMIT 1;`;
       if (restRows && restRows.length > 0 && restRows[0].is_open === false) {
         return res.status(403).json({
@@ -1392,9 +1393,9 @@ app.post('/api/orders', async (req, res) => {
     student_email: orderData.student_email || orderData.studentEmail || authUser?.email || '',
     student_id: orderData.student_id || orderData.studentId || null,
     student_phone: orderData.student_phone || orderData.studentPhone || authUser?.phone || '9989955833',
-    delivery_location: orderData.delivery_location || orderData.deliveryLocation || 'SRM University - Gate 3',
-    restaurant_id: orderData.restaurant_id || orderData.restaurantId || 'local-home-kitchen',
-    restaurant_name: orderData.restaurant_name || orderData.restaurantName || 'Campus Kitchen',
+    delivery_location: orderData.delivery_location || orderData.deliveryLocation || 'VIT-AP Campus',
+    restaurant_id: orderData.restaurant_id || orderData.restaurantId || 'bheemasena-restaurant',
+    restaurant_name: orderData.restaurant_name || orderData.restaurantName || 'Bheemasena Restaurant',
     total_amount: Number(totalAmount) || 0,
     status: orderData.status || 'CONFIRMED',
     instructions: orderData.instructions || null,
@@ -2166,7 +2167,7 @@ app.post('/api/menu', async (req, res) => {
 
   const itemId = data.id || `dish-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
   const restaurantName = data.restaurant_name || 
-    (data.restaurant_id === 'vilasa-cafe' ? 'Vilasa Café' : (data.restaurant_id === 'clg-bites-biryani-nation' ? 'Biryani Nation' : 'Local Home Kitchen'));
+    (data.restaurant_id === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (data.restaurant_id === 'a1-biryani-point' ? 'A1 Biryani Point' : 'Bismillah Fruit Juice'));
 
   const defaultImg = data.is_veg 
     ? 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=600&q=80'
@@ -2346,7 +2347,7 @@ const handleAvailabilityToggle = async (req, res) => {
             ) VALUES (
               ${seed.id},
               ${seed.restaurant_id},
-              ${seed.restaurant_name || (seed.restaurant_id === 'clg-bites-biryani-nation' ? 'Biryani Nation' : 'Local Home Kitchen')},
+              ${seed.restaurant_name || (seed.restaurant_id === 'a1-biryani-point' ? 'A1 Biryani Point' : (seed.restaurant_id === 'bismillah-fruit-juice' ? 'Bismillah Fruit Juice' : 'Bheemasena Restaurant'))},
               ${seed.name},
               ${seed.description},
               ${Number(seed.price)},
