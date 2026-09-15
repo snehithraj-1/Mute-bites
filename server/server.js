@@ -1699,10 +1699,21 @@ app.get('/api/students', async (req, res) => {
   if (sql) {
     try {
       const students = await sql`
-        SELECT * FROM students 
+        SELECT 
+          id,
+          name,
+          email,
+          student_id,
+          phone,
+          hostel_block,
+          room_number,
+          COALESCE(total_orders, 0) AS total_orders,
+          created_at,
+          updated_at
+        FROM students 
         ORDER BY updated_at DESC;
       `;
-      return res.json({ success: true, students, source: 'neon' });
+      return res.json({ success: true, students, count: students.length, source: 'neon' });
     } catch (err) {
       console.warn('[Neon Fetch Students Error]:', err.message);
     }
