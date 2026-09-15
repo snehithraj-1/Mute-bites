@@ -19,10 +19,11 @@ import {
   CheckCircle2
 } from 'lucide-react';
 
-import { DEFAULT_MENU_ITEMS } from '../lib/campusSeedData.js';
+import { DEFAULT_MENU_ITEMS, DEFAULT_RESTAURANTS } from '../lib/campusSeedData.js';
 
 export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId = null }) {
   const [items, setItems] = useState(DEFAULT_MENU_ITEMS);
+  const [restaurantsList, setRestaurantsList] = useState(DEFAULT_RESTAURANTS);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedRestaurant, setSelectedRestaurant] = useState(assignedRestaurantId || 'ALL');
@@ -37,19 +38,29 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
   const [formError, setFormError] = useState('');
   const [uploadingImage, setUploadingImage] = useState(false);
 
-  // Fetch menu items from shared backend
+  // Fetch menu items and restaurants from shared backend
   const loadMenu = async () => {
     try {
-      const res = await fetch(`/api/menu?_t=${Date.now()}`);
-      if (res.ok) {
-        const data = await res.json();
+      const [menuRes, restRes] = await Promise.all([
+        fetch(`/api/menu?_t=${Date.now()}`),
+        fetch(`/api/restaurants?_t=${Date.now()}`)
+      ]);
+      if (menuRes.ok) {
+        const data = await menuRes.json();
         const list = Array.isArray(data) ? data : (data.items || data.menu || data.dishes || []);
         if (Array.isArray(list) && list.length > 0) {
           setItems(list);
         }
       }
+      if (restRes.ok) {
+        const restData = await restRes.json();
+        const rList = Array.isArray(restData) ? restData : (restData.restaurants || []);
+        if (Array.isArray(rList) && rList.length > 0) {
+          setRestaurantsList(rList);
+        }
+      }
     } catch (err) {
-      console.warn('Failed to fetch menu items from backend, using authentic campus seed:', err);
+      console.warn('Failed to fetch menu items or restaurants from backend:', err);
     } finally {
       setLoading(false);
     }
@@ -63,6 +74,19 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
       loadMenu();
     }
   }, [isOpen, assignedRestaurantId]);
+
+  // Dynamic list of all restaurants (seed + backend + items)
+  const restaurantOptions = useMemo(() => {
+    const map = new Map();
+    DEFAULT_RESTAURANTS.forEach((r) => map.set(r.id, r.name));
+    restaurantsList.forEach((r) => map.set(r.id, r.name));
+    items.forEach((i) => {
+      if (i.restaurant_id && !map.has(i.restaurant_id)) {
+        map.set(i.restaurant_id, i.restaurant_name || i.restaurant_id);
+      }
+    });
+    return Array.from(map.entries()).map(([id, name]) => ({ id, name }));
+  }, [restaurantsList, items]);
 
   // Extract unique categories
   const categories = useMemo(() => {
@@ -172,7 +196,8 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
   // Bulk toggle availability for currently filtered restaurant or all
   const handleBulkAvailability = async (targetStock) => {
     const label = targetStock ? 'IN STOCK' : 'SOLD OUT';
-    const restName = selectedRestaurant === 'ALL' ? 'ALL restaurants' : (selectedRestaurant === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (selectedRestaurant === 'a1-biryani-point' ? 'A1 Biryani Point' : 'Bismillah Fruit Juice'));
+    const targetRest = restaurantOptions.find((r) => r.id === selectedRestaurant);
+    const restName = selectedRestaurant === 'ALL' ? 'ALL restaurants' : (targetRest ? targetRest.name : selectedRestaurant);
     if (!window.confirm(`Are you sure you want to mark ALL dishes for ${restName} as ${label}?`)) {
       return;
     }
@@ -360,12 +385,13 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
 
             <button
               onClick={() => {
-                const effectiveRest = assignedRestaurantId || (selectedRestaurant !== 'ALL' ? selectedRestaurant : 'bheemasena-restaurant');
-                const effectiveName = effectiveRest === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (effectiveRest === 'a1-biryani-point' ? 'A1 Biryani Point' : 'Bismillah Fruit Juice');
+                const effectiveRest = assignedRestaurantId || (selectedRestaurant !== 'ALL' ? selectedRestaurant : (restaurantOptions[0]?.id || 'bheemasena-restaurant'));
+                const matched = restaurantOptions.find((r) => r.id === effectiveRest);
+                const effectiveName = matched ? matched.name : effectiveRest;
                 setEditingItem({
                   restaurant_id: effectiveRest,
                   restaurant_name: effectiveName,
-                  category: 'Biryani',
+                  category: 'Starters',
                   name: '',
                   description: '',
                   price: '',
@@ -415,15 +441,13 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
               className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white font-medium focus:outline-none focus:border-amber-500 cursor-pointer disabled:opacity-75"
             >
               {!assignedRestaurantId && <option value="ALL">All Kitchens ({items.length})</option>}
-              {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
-                <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
-              )}
-              {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
-                <option value="a1-biryani-point">A1 Biryani Point</option>
-              )}
-              {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
-                <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
-              )}
+              {restaurantOptions
+                .filter((r) => !assignedRestaurantId || assignedRestaurantId === r.id)
+                .map((r) => (
+                  <option key={r.id} value={r.id}>
+                    {r.name}
+                  </option>
+                ))}
             </select>
           </div>
 
@@ -717,31 +741,26 @@ export default function MenuManagerModal({ isOpen, onClose, assignedRestaurantId
                     Kitchen / Restaurant *
                   </label>
                   <select
-                    value={editingItem.restaurant_id || (assignedRestaurantId || 'bheemasena-restaurant')}
+                    value={editingItem.restaurant_id || (assignedRestaurantId || restaurantOptions[0]?.id || 'bheemasena-restaurant')}
                     disabled={Boolean(assignedRestaurantId)}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                      const selectedId = e.target.value;
+                      const matched = restaurantOptions.find((r) => r.id === selectedId);
                       setEditingItem({
                         ...editingItem,
-                        restaurant_id: e.target.value,
-                        restaurant_name:
-                          e.target.value === 'bheemasena-restaurant'
-                            ? 'Bheemasena Restaurant'
-                            : e.target.value === 'a1-biryani-point'
-                            ? 'A1 Biryani Point'
-                            : 'Bismillah Fruit Juice'
-                      })
-                    }
+                        restaurant_id: selectedId,
+                        restaurant_name: matched ? matched.name : selectedId
+                      });
+                    }}
                     className="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-xl text-xs text-white cursor-pointer focus:outline-none focus:border-amber-500 disabled:opacity-75"
                   >
-                    {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
-                      <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
-                    )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
-                      <option value="a1-biryani-point">A1 Biryani Point</option>
-                    )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
-                      <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
-                    )}
+                    {restaurantOptions
+                      .filter((r) => !assignedRestaurantId || assignedRestaurantId === r.id)
+                      .map((r) => (
+                        <option key={r.id} value={r.id}>
+                          {r.name}
+                        </option>
+                      ))}
                   </select>
                 </div>
 

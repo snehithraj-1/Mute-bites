@@ -457,13 +457,7 @@ export default function AdminDashboardPage() {
               <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap">
                 <span className="text-sm sm:text-lg lg:text-xl font-black text-white font-['Outfit'] tracking-tight truncate block">
                   {isRestaurantAdmin
-                    ? assignedRestaurantId === 'bheemasena-restaurant'
-                      ? 'Bheemasena Restaurant'
-                      : assignedRestaurantId === 'a1-biryani-point'
-                      ? 'A1 Biryani Point'
-                      : assignedRestaurantId === 'bismillah-fruit-juice'
-                      ? 'Bismillah Fruit Juice'
-                      : `${profile?.name || 'Kitchen Staff'}`
+                    ? restaurants.find(r => r.id === assignedRestaurantId)?.name || `${profile?.name || 'Kitchen Staff'}`
                     : 'Mutebites Admin'}
                 </span>
                 <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-extrabold uppercase border bg-orange-500/20 text-orange-400 border-orange-500/30 shrink-0 font-['Outfit']">
@@ -658,17 +652,12 @@ export default function AdminDashboardPage() {
         <ErrorBoundary>
           <OrdersTable
             orders={orders}
+            restaurants={restaurants}
             activeRestaurantTab={isRestaurantAdmin ? assignedRestaurantId : activeRestaurantTab}
             isRestaurantAdmin={isRestaurantAdmin}
             onSelectRestaurantTab={isRestaurantAdmin ? null : (tab) => setActiveRestaurantTab(tab)}
             restaurantName={
-              (isRestaurantAdmin && assignedRestaurantId === 'bheemasena-restaurant') || activeRestaurantTab === 'bheemasena-restaurant'
-                ? 'Bheemasena Restaurant'
-                : (isRestaurantAdmin && assignedRestaurantId === 'a1-biryani-point') || activeRestaurantTab === 'a1-biryani-point'
-                ? 'A1 Biryani Point'
-                : (isRestaurantAdmin && assignedRestaurantId === 'bismillah-fruit-juice') || activeRestaurantTab === 'bismillah-fruit-juice'
-                ? 'Bismillah Fruit Juice'
-                : 'All Restaurants'
+              restaurants.find(r => r.id === (isRestaurantAdmin ? assignedRestaurantId : activeRestaurantTab))?.name || 'All Restaurants'
             }
             onInspectOrder={(order) => setInspectingOrder(order)}
             onUpdateStatus={handleUpdateStatus}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, Ban, Trash2, Search, Download, Calendar, MapPin, Phone, Mail, Clock, CheckCircle2, XCircle } from 'lucide-react';
 import { exportOrdersToExcel } from '../lib/excelExport';
+import { DEFAULT_RESTAURANTS } from '../lib/campusSeedData';
 
 function safeFormatDateTime(rawDate) {
   if (!rawDate) return { date: 'Today', time: 'Just now' };
@@ -36,6 +37,7 @@ function safeExtractItems(order) {
 
 export default function OrdersTable({
   orders = [],
+  restaurants = DEFAULT_RESTAURANTS,
   activeRestaurantTab = 'all',
   onSelectRestaurantTab,
   restaurantName = 'All Restaurants',
@@ -126,36 +128,19 @@ export default function OrdersTable({
           </div>
         ) : onSelectRestaurantTab ? (
           <div className="flex items-center gap-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 overflow-x-auto scrollbar-none font-['Outfit']">
-            <button
-              onClick={() => onSelectRestaurantTab('bheemasena-restaurant')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'bheemasena-restaurant'
-                  ? 'bg-[#FF5722] text-white shadow-xs'
-                  : 'bg-transparent text-slate-400 hover:text-white'
-              }`}
-            >
-              Bheemasena Restaurant
-            </button>
-            <button
-              onClick={() => onSelectRestaurantTab('a1-biryani-point')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'a1-biryani-point'
-                  ? 'bg-[#FF5722] text-white shadow-xs'
-                  : 'bg-transparent text-slate-400 hover:text-white'
-              }`}
-            >
-              A1 Biryani Point
-            </button>
-            <button
-              onClick={() => onSelectRestaurantTab('bismillah-fruit-juice')}
-              className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
-                activeRestaurantTab === 'bismillah-fruit-juice'
-                  ? 'bg-[#FF5722] text-white shadow-xs'
-                  : 'bg-transparent text-slate-400 hover:text-white'
-              }`}
-            >
-              Bismillah Fruit Juice
-            </button>
+            {(restaurants && restaurants.length > 0 ? restaurants : DEFAULT_RESTAURANTS).map((r) => (
+              <button
+                key={r.id}
+                onClick={() => onSelectRestaurantTab(r.id)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${
+                  activeRestaurantTab === r.id
+                    ? 'bg-[#FF5722] text-white shadow-xs'
+                    : 'bg-transparent text-slate-400 hover:text-white'
+                }`}
+              >
+                {r.name}
+              </button>
+            ))}
             <button
               onClick={() => onSelectRestaurantTab('all')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer border-none whitespace-nowrap ${

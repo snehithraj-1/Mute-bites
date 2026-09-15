@@ -348,21 +348,27 @@ async function initNeonSchema() {
       );
     `;
 
-    // Seed restaurants if empty
-    const restCount = await sql`SELECT count(*) as c FROM restaurants;`;
-    if (parseInt(restCount[0]?.c || '0', 10) === 0) {
-      console.log('[Neon DB] Seeding default restaurants into Neon DB...');
-      for (const r of INITIAL_RESTAURANTS) {
-        await sql`
-          INSERT INTO restaurants (
-            id, name, description, cuisine, location, phone, rating, prep_time, image_url, is_open, created_at, updated_at
-          ) VALUES (
-            ${r.id}, ${r.name}, ${r.description}, ${r.cuisine}, ${r.location}, ${r.phone}, ${r.rating}, ${r.prep_time}, ${r.image_url}, ${r.is_open}, NOW(), NOW()
-          ) ON CONFLICT (id) DO NOTHING;
-        `;
-      }
-      console.log('✅ [Neon DB] Default restaurants seeded successfully!');
+    // Seed or update authentic restaurants
+    console.log('[Neon DB] Ensuring authentic restaurants are synced in Neon DB...');
+    for (const r of INITIAL_RESTAURANTS) {
+      await sql`
+        INSERT INTO restaurants (
+          id, name, description, cuisine, location, phone, rating, prep_time, image_url, is_open, created_at, updated_at
+        ) VALUES (
+          ${r.id}, ${r.name}, ${r.description}, ${r.cuisine}, ${r.location}, ${r.phone}, ${r.rating}, ${r.prep_time}, ${r.image_url}, ${r.is_open !== false}, NOW(), NOW()
+        ) ON CONFLICT (id) DO UPDATE SET
+          name = EXCLUDED.name,
+          description = EXCLUDED.description,
+          cuisine = EXCLUDED.cuisine,
+          location = EXCLUDED.location,
+          phone = EXCLUDED.phone,
+          rating = EXCLUDED.rating,
+          prep_time = EXCLUDED.prep_time,
+          image_url = EXCLUDED.image_url,
+          updated_at = NOW();
+      `;
     }
+    console.log('✅ [Neon DB] Authentic restaurants synced successfully!');
 
     // 9. Ensure admin_accounts table
     await sql`
@@ -386,7 +392,9 @@ async function initNeonSchema() {
         ('admin-super-alias', 'collagebites@gmail.com', 'Collage Bites Admin', 'super_admin', null, 'Clgbites123'),
         ('admin-bheemasena', 'bheemasena_admin', 'Bheemasena Restaurant Staff', 'restaurant_admin', 'bheemasena-restaurant', 'Bheema@Campus2026'),
         ('admin-a1', 'a1_admin', 'A1 Biryani Point Staff', 'restaurant_admin', 'a1-biryani-point', 'A1@Campus2026'),
-        ('admin-bismillah', 'bismillah_admin', 'Bismillah Fruit Juice Staff', 'restaurant_admin', 'bismillah-fruit-juice', 'Bismillah@Campus2026')
+        ('admin-bismillah', 'bismillah_admin', 'Bismillah Fruit Juice Staff', 'restaurant_admin', 'bismillah-fruit-juice', 'Bismillah@Campus2026'),
+        ('admin-fruits', 'fruits_admin', 'Mutebites Fresh Fruits Staff', 'restaurant_admin', 'mutebites-fresh-fruits', 'Fruits@Campus2026'),
+        ('admin-chinese', 'chinese_admin', 'Mutebites Chinese Staff', 'restaurant_admin', 'mutebites-chinese', 'Chinese@Campus2026')
       ON CONFLICT (id) DO UPDATE SET
         username = EXCLUDED.username,
         name = EXCLUDED.name,

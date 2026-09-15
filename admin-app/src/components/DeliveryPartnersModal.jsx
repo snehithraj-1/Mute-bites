@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bike, X, Plus, Trash2, Key, Phone, User, Store, ShieldCheck, Check, Copy, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { DEFAULT_RESTAURANTS } from '../lib/campusSeedData';
 
 export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaurantId = null }) {
   const [partners, setPartners] = useState([]);
@@ -277,15 +278,13 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
                     className="w-full pl-8 pr-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
                     {!assignedRestaurantId && <option value="all">All Kitchens (Campus Fleet)</option>}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'bheemasena-restaurant') && (
-                      <option value="bheemasena-restaurant">Bheemasena Restaurant</option>
-                    )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'a1-biryani-point') && (
-                      <option value="a1-biryani-point">A1 Biryani Point</option>
-                    )}
-                    {(!assignedRestaurantId || assignedRestaurantId === 'bismillah-fruit-juice') && (
-                      <option value="bismillah-fruit-juice">Bismillah Fruit Juice</option>
-                    )}
+                    {DEFAULT_RESTAURANTS
+                      .filter((r) => !assignedRestaurantId || assignedRestaurantId === r.id)
+                      .map((r) => (
+                        <option key={r.id} value={r.id}>
+                          {r.name}
+                        </option>
+                      ))}
                   </select>
                 </div>
               </div>
@@ -345,13 +344,9 @@ export default function DeliveryPartnersModal({ isOpen, onClose, assignedRestaur
                           <div className="flex items-center gap-2">
                             <span className="font-bold text-white text-xs sm:text-sm">{p.name}</span>
                             <span className="px-2 py-0.2 rounded-md bg-slate-800 text-slate-400 text-[10px] font-mono">
-                              {p.restaurant_id === 'bheemasena-restaurant'
-                                ? 'Bheemasena Restaurant'
-                                : p.restaurant_id === 'a1-biryani-point'
-                                ? 'A1 Biryani Point'
-                                : p.restaurant_id === 'bismillah-fruit-juice'
-                                ? 'Bismillah Fruit Juice'
-                                : 'Campus Fleet'}
+                              {p.restaurant_id === 'all'
+                                ? 'Campus Fleet'
+                                : (DEFAULT_RESTAURANTS.find(r => r.id === p.restaurant_id)?.name || p.restaurant_id || 'Campus Fleet')}
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">

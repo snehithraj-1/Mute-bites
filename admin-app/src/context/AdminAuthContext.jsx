@@ -208,6 +208,38 @@ export function AdminAuthProvider({ children }) {
         return { success: true, user: bismillahProfile };
       }
 
+      if ((lowerInput === 'fruits_admin' || lowerInput === 'fruits@mutebites.com' || lowerInput === 'fruits') && (cleanPassword === 'Fruits@Campus2026' || cleanPassword === 'Fruits@2026')) {
+        const fruitsProfile = {
+          id: 'admin-fruits',
+          username: 'fruits_admin',
+          name: 'Mutebites Fresh Fruits Staff',
+          email: 'fruits@mutebites.com',
+          role: 'restaurant_admin',
+          restaurant_id: 'mutebites-fresh-fruits',
+          created_at: new Date().toISOString()
+        };
+        setProfile(fruitsProfile);
+        setUser({ id: fruitsProfile.id, email: fruitsProfile.email });
+        try { localStorage.setItem('cb_admin_profile', JSON.stringify(fruitsProfile)); } catch {}
+        return { success: true, user: fruitsProfile };
+      }
+
+      if ((lowerInput === 'chinese_admin' || lowerInput === 'chinese@mutebites.com' || lowerInput === 'chinese') && (cleanPassword === 'Chinese@Campus2026' || cleanPassword === 'Chinese@2026')) {
+        const chineseProfile = {
+          id: 'admin-chinese',
+          username: 'chinese_admin',
+          name: 'Mutebites Chinese Staff',
+          email: 'chinese@mutebites.com',
+          role: 'restaurant_admin',
+          restaurant_id: 'mutebites-chinese',
+          created_at: new Date().toISOString()
+        };
+        setProfile(chineseProfile);
+        setUser({ id: chineseProfile.id, email: chineseProfile.email });
+        try { localStorage.setItem('cb_admin_profile', JSON.stringify(chineseProfile)); } catch {}
+        return { success: true, user: chineseProfile };
+      }
+
       return {
         success: false,
         error: 'Invalid administrator credentials. Access restricted to authorized campus staff.'

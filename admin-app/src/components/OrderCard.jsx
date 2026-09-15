@@ -11,6 +11,7 @@ import {
   Trash2,
   Utensils
 } from 'lucide-react';
+import { DEFAULT_RESTAURANTS } from '../lib/campusSeedData';
 
 function getTimeAgo(dateString) {
   if (!dateString) return 'Just now';
@@ -88,7 +89,7 @@ export default function OrderCard({
 
   const studentName = order.student_name || order.studentName || 'Student';
   const studentPhone = order.student_phone || order.studentPhone || '';
-  const restaurantName = order.restaurant_name || order.restaurantName || (order.restaurant_id === 'bheemasena-restaurant' ? 'Bheemasena Restaurant' : (order.restaurant_id === 'a1-biryani-point' ? 'A1 Biryani Point' : (order.restaurant_id === 'bismillah-fruit-juice' ? 'Bismillah Fruit Juice' : 'Campus Kitchen')));
+  const restaurantName = order.restaurant_name || order.restaurantName || (DEFAULT_RESTAURANTS.find(r => r.id === order.restaurant_id)?.name || 'Campus Kitchen');
   const deliveryLocation = order.delivery_location || order.deliveryLocation || 'VIT-AP Campus';
   const totalAmount = Number(order.total_amount || order.totalAmount) || 0;
   const shortId = (order.id || '').toString().slice(-6).toUpperCase();
