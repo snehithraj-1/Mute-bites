@@ -394,7 +394,7 @@ async function initNeonSchema() {
         ('admin-a1', 'a1_admin', 'A1 Biryani Point Staff', 'restaurant_admin', 'a1-biryani-point', 'A1@Campus2026'),
         ('admin-bismillah', 'bismillah_admin', 'Bismillah Fruit Juice Staff', 'restaurant_admin', 'bismillah-fruit-juice', 'Bismillah@Campus2026'),
         ('admin-fruits', 'fruits_admin', 'Mutebites Fresh Fruits Staff', 'restaurant_admin', 'mutebites-fresh-fruits', 'Fruits@Campus2026'),
-        ('admin-chinese', 'chinese_admin', 'Mutebites Chinese Staff', 'restaurant_admin', 'mutebites-chinese', 'Chinese@Campus2026')
+        ('admin-chinese', 'chinese_admin', 'Food Corner Staff', 'restaurant_admin', 'mutebites-chinese', 'Chinese@Campus2026')
       ON CONFLICT (id) DO UPDATE SET
         username = EXCLUDED.username,
         name = EXCLUDED.name,

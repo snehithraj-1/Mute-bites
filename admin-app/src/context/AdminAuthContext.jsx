@@ -224,11 +224,11 @@ export function AdminAuthProvider({ children }) {
         return { success: true, user: fruitsProfile };
       }
 
-      if ((lowerInput === 'chinese_admin' || lowerInput === 'chinese@mutebites.com' || lowerInput === 'chinese') && (cleanPassword === 'Chinese@Campus2026' || cleanPassword === 'Chinese@2026')) {
+      if ((lowerInput === 'chinese_admin' || lowerInput === 'chinese@mutebites.com' || lowerInput === 'chinese' || lowerInput === 'foodcorner_admin' || lowerInput === 'foodcorner' || lowerInput === 'foodcorner@mutebites.com') && (cleanPassword === 'Chinese@Campus2026' || cleanPassword === 'Chinese@2026' || cleanPassword === 'FoodCorner@Campus2026' || cleanPassword === 'FoodCorner@2026')) {
         const chineseProfile = {
           id: 'admin-chinese',
           username: 'chinese_admin',
-          name: 'Mutebites Chinese Staff',
+          name: 'Food Corner Staff',
           email: 'chinese@mutebites.com',
           role: 'restaurant_admin',
           restaurant_id: 'mutebites-chinese',

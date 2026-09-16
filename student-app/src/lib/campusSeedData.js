@@ -51,7 +51,7 @@ export const DEFAULT_RESTAURANTS = [
   },
   {
       "id": "mutebites-chinese",
-      "name": "Mutebites Chinese",
+      "name": "Food Corner",
       "description": "Fresh & Tasty Indo-Chinese — Noodles, Fried Rice, Manchurian & Chicken Lollipops.",
       "cuisine": "Indo-Chinese, Noodles & Rice",
       "location": "Campus Kitchen Hub, VIT-AP",
@@ -1053,7 +1053,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-veg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Veg Noodles",
       "description": "Classic wok-tossed noodles with shredded cabbage, carrots, capsicum, and oriental spices.",
@@ -1066,7 +1066,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-veg-manch",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Veg Manchurian Noodles",
       "description": "Aromatic hakka noodles served with crispy bite-sized veg manchurian dumplings.",
@@ -1079,7 +1079,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-veg-paneer",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Veg Paneer Noodles",
       "description": "Wok-fried noodles generously tossed with fresh succulent paneer cubes and spring onions.",
@@ -1092,7 +1092,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Egg Noodles",
       "description": "Savory scrambled egg tossed with street style noodles and tangy soy-chilli seasonings.",
@@ -1105,7 +1105,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-double-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Double Egg Noodles",
       "description": "Double portion of fluffy wok-scrambled farm eggs tossed in spiced noodles.",
@@ -1118,7 +1118,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-egg-manch",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Egg Manchurian Noodles",
       "description": "Delicious blend of egg noodles loaded with savory manchurian fritters.",
@@ -1131,7 +1131,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-egg-paneer",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Egg Paneer Noodles",
       "description": "High protein delight combining scrambled egg and golden soft paneer cubes in noodles.",
@@ -1144,7 +1144,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-chicken",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Chicken Noodles",
       "description": "Tender boneless chicken strips tossed with wok-charred noodles and garlic sauce.",
@@ -1157,7 +1157,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-nood-double-chicken",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Noodles",
       "name": "Double Egg Chicken Noodles",
       "description": "Generous pairing of shredded juicy chicken, double egg scramble, and seasoned noodles.",
@@ -1170,7 +1170,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-veg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Veg Fried Rice",
       "description": "Fragrant long grain rice wok-tossed with fresh crunchy veggies and mild Chinese spices.",
@@ -1183,7 +1183,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-veg-manch",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Veg Manchurian Fried Rice",
       "description": "Aromatic fried rice loaded with crispy bite-sized vegetable manchurian balls.",
@@ -1196,7 +1196,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-veg-paneer",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Veg Paneer Fried Rice",
       "description": "Golden fried rice tossed with marinated soft paneer cubes and herbs.",
@@ -1209,7 +1209,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Egg Fried Rice",
       "description": "Classic wok-tossed fried rice with delicate scrambled eggs and green scallions.",
@@ -1222,7 +1222,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-double-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Double Egg Fried Rice",
       "description": "Double portion of spiced fluffy scrambled eggs tossed through aromatic fried rice.",
@@ -1235,7 +1235,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-egg-manch",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Egg Manchurian Fried Rice",
       "description": "Flavorful fried rice combining scrambled egg and crispy manchurian pieces.",
@@ -1248,7 +1248,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-chicken",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Chicken Fried Rice",
       "description": "Succulent chicken chunks seasoned and wok-fried with fluffy long-grain rice.",
@@ -1261,7 +1261,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-rice-double-chicken",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Fried Rice",
       "name": "Double Egg Chicken Fried Rice",
       "description": "Ultimate student hunger buster with rich chicken bits, double eggs and fragrant rice.",
@@ -1274,7 +1274,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-manch-veg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Manchurian",
       "name": "Veg Manchurian",
       "description": "Deep-fried vegetable dumplings bathed in spicy, garlicky, sweet-tangy manchurian sauce.",
@@ -1287,7 +1287,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-manch-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Manchurian",
       "name": "Egg Manchurian",
       "description": "Savory boiled egg dumplings crispy fried and glazed with spicy Indo-Chinese sauce.",
@@ -1300,7 +1300,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-manch-double-egg",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Manchurian",
       "name": "Double Egg Manchurian",
       "description": "Extra portion of spiced egg fritters tossed with onion, bell peppers and coriander.",
@@ -1313,7 +1313,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-start-chicken-manch",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Starters",
       "name": "Chicken Manchurian",
       "description": "Golden fried chicken bites tossed in rich ginger-garlic and dark soya manchurian sauce.",
@@ -1326,7 +1326,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-start-chicken-chilli",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Starters",
       "name": "Chicken Chilli",
       "description": "Crisp chicken pieces tossed with green chillies, crunchy bell peppers, onions and chilli paste.",
@@ -1339,7 +1339,7 @@ export const DEFAULT_MENU_ITEMS = [
   {
       "id": "mbc-plate-lollipop",
       "restaurant_id": "mutebites-chinese",
-      "restaurant_name": "Mutebites Chinese",
+      "restaurant_name": "Food Corner",
       "category": "Plate",
       "name": "4P Chicken Lollipop",
       "description": "4 crispy seasoned chicken wings shaped into lollipops, fried golden and served with hot schezwan dip.",
