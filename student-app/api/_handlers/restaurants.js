@@ -19,7 +19,11 @@ export default async function handler(req, res) {
       }
     } catch (e) {}
 
-    let rows = await sql`SELECT * FROM restaurants ORDER BY id ASC;`;
+    let rows = await sql`
+      SELECT * FROM restaurants 
+      WHERE id NOT IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation')
+      ORDER BY id ASC;
+    `;
 
     if (!isGlobalOrderingEnabled) {
       rows = rows.map(r => ({ ...r, is_open: false }));

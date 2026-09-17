@@ -300,11 +300,13 @@ export default async function handler(req, res) {
           rows = await sql`
             SELECT * FROM menu_items 
             WHERE is_available = true 
+              AND restaurant_id NOT IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation')
             ORDER BY restaurant_id, category, name;
           `;
         } else {
           rows = await sql`
             SELECT * FROM menu_items 
+            WHERE restaurant_id NOT IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation')
             ORDER BY restaurant_id, category, name;
           `;
         }

@@ -358,6 +358,13 @@ async function initNeonSchema() {
       );
     `;
 
+    // Ensure unwanted legacy restaurants are purged
+    try {
+      await sql`DELETE FROM menu_items WHERE restaurant_id IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation');`;
+      await sql`DELETE FROM restaurant_statuses WHERE restaurant_id IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation');`;
+      await sql`DELETE FROM restaurants WHERE id IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation');`;
+    } catch (cleanErr) {}
+
     // Seed or update authentic restaurants
     console.log('[Neon DB] Ensuring authentic restaurants are synced in Neon DB...');
     for (const r of INITIAL_RESTAURANTS) {
@@ -1946,7 +1953,11 @@ app.get('/api/restaurants', async (req, res) => {
         isGlobalOrderingEnabled = settingRows[0].ordering_enabled !== false;
       }
 
-      let rows = await sql`SELECT * FROM restaurants ORDER BY id ASC;`;
+      let rows = await sql`
+        SELECT * FROM restaurants 
+        WHERE id NOT IN ('vilasa-cafe', 'clg-bites-biryani-nation', 'local-home-kitchen', 'biryani-nation')
+        ORDER BY id ASC;
+      `;
       if (rows && rows.length > 0) {
         isNeonReady = true;
         // If overall campus ordering is closed, all restaurants are strictly closed!

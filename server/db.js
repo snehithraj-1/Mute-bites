@@ -310,7 +310,7 @@ export async function createOrderInDb({
   const verifiedTotal = verifiedSubtotal + platformFee + deliveryFee;
 
   // 2. Generate unique Order ID
-  const prefix = restaurantId === 'local-home-kitchen' ? 'LHK' : 'ORD';
+  const prefix = restaurantId === 'bheemasena-restaurant' ? 'BHM' : 'MB';
   const orderId = `${prefix}-${Math.floor(1000 + Math.random() * 9000)}`;
 
   // 3. Set Confirmation Expiry = NOW() + 30 seconds
@@ -340,7 +340,7 @@ export async function createOrderInDb({
       ${studentPhone.trim()},
       ${studentId ? studentId.trim() : null},
       ${restaurantId},
-      ${restaurantName || (restaurantId === 'local-home-kitchen' ? 'Local Home Kitchen' : 'Campus Kitchen')},
+      ${restaurantName || 'Bheemasena Restaurant'},
       ${deliveryLocation || 'Hostel Delivery'},
       ${instructions || ''},
       ${verifiedTotal},
@@ -394,7 +394,7 @@ export async function createOrderInDb({
     studentPhone: studentPhone.trim(),
     studentId: studentId || null,
     restaurantId,
-    restaurantName: restaurantName || 'Local Home Kitchen',
+    restaurantName: restaurantName || 'Bheemasena Restaurant',
     deliveryLocation: deliveryLocation || 'Hostel Delivery',
     instructions: instructions || '',
     totalAmount: verifiedTotal,
