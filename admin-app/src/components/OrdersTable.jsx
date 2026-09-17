@@ -294,7 +294,7 @@ export default function OrdersTable({
                     {/* Status */}
                     <td className="py-3 px-4 text-center whitespace-nowrap">
                       <span className={`inline-block px-2 py-0.5 rounded-full text-[10px] uppercase border ${getStatusBadge(order.status)}`}>
-                        {(order.status === 'COMPLETED' || order.status === 'DELIVERED') ? 'COMPLETED' : (order.status === 'CANCELLED' ? 'CANCELLED' : 'CONFIRMED')}
+                        {(order.status === 'COMPLETED' || order.status === 'DELIVERED') ? 'COMPLETED' : (order.status === 'CANCELLED' ? 'CANCELLED' : (order.status || 'CONFIRMED'))}
                       </span>
                     </td>
 
@@ -385,7 +385,7 @@ export default function OrdersTable({
                     </span>
                   </div>
                   <span className={`px-2 py-0.5 rounded-full text-[10px] uppercase border font-['Outfit'] ${getStatusBadge(order.status)}`}>
-                    {order.status === 'DELIVERED' ? 'DELIVERED' : (order.status === 'CANCELLED' ? 'CANCELLED' : 'CONFIRMED')}
+                    {(order.status === 'COMPLETED' || order.status === 'DELIVERED') ? 'COMPLETED' : (order.status === 'CANCELLED' ? 'CANCELLED' : (order.status || 'CONFIRMED'))}
                   </span>
                 </div>
 

@@ -3,11 +3,13 @@ import pg from 'pg';
 
 const { Pool } = pg;
 
+export const SUPABASE_DIRECT_URL = 'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
+
 export function getDatabaseUrl() {
   let url = process.env.DATABASE_URL || 
             process.env.POSTGRES_URL || 
             process.env.VITE_DATABASE_URL || 
-            'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
+            SUPABASE_DIRECT_URL;
 
   if (url) {
     url = url.trim();
@@ -16,7 +18,13 @@ export function getDatabaseUrl() {
       url = url.slice(1, -1).trim();
     }
   }
-  return url;
+
+  // If env variable is still set to legacy Neon database on Vercel, direct to active Supabase database
+  if (url.includes('neon.tech')) {
+    url = SUPABASE_DIRECT_URL;
+  }
+
+  return url || SUPABASE_DIRECT_URL;
 }
 
 const DATABASE_URL = getDatabaseUrl();
@@ -54,6 +62,27 @@ export function createUniversalSql(url) {
     sqlFunc.query = async (text, params) => {
       const res = await poolInstance.query(text, params);
       return res.rows;
+    };
+    sqlFunc.transaction = async (queries) => {
+      const client = await poolInstance.connect();
+      try {
+        await client.query('BEGIN');
+        const results = [];
+        for (const q of queries) {
+          if (typeof q === 'function') {
+            results.push(await q(client));
+          } else {
+            results.push(await client.query(q));
+          }
+        }
+        await client.query('COMMIT');
+        return results;
+      } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+      } finally {
+        client.release();
+      }
     };
     return sqlFunc;
   }

@@ -21,9 +21,12 @@ export default async function handler(req, res) {
   }
 
   // Extract clean URL & pathname
-  const rawPath = req.headers['x-forwarded-uri'] || req.headers['x-matched-path'] || req.headers['x-vercel-matched-path'];
+  const rawPath = req.headers['x-forwarded-uri'] || 
+                  req.headers['x-vercel-original-uri'] || 
+                  req.headers['x-matched-path'] || 
+                  req.headers['x-vercel-matched-path'];
   let currentUrl = req.url || '';
-  if (currentUrl === '/api/index.js' || currentUrl.startsWith('/api/index.js?')) {
+  if (currentUrl === '/api/index.js' || currentUrl.startsWith('/api/index.js?') || currentUrl === '/api' || currentUrl.startsWith('/api?')) {
     if (rawPath) {
       currentUrl = rawPath;
     }
@@ -41,6 +44,13 @@ export default async function handler(req, res) {
     for (const [k, v] of params.entries()) {
       req.query[k] = v;
     }
+  }
+
+  // Ensure req.body is parsed if string
+  if (typeof req.body === 'string' && req.body.trim().startsWith('{')) {
+    try {
+      req.body = JSON.parse(req.body);
+    } catch {}
   }
 
   // 1. Auth routes

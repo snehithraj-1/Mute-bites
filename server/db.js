@@ -61,7 +61,7 @@ export function getDatabaseUrl() {
        || process.env.POSTGRES_URL 
        || process.env.VITE_DATABASE_URL 
        || process.env.DATABASE_PUBLIC_URL 
-       || '';
+       || 'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
   }
 
   if (url) {
@@ -74,6 +74,10 @@ export function getDatabaseUrl() {
     if ((url.startsWith('"') && url.endsWith('"')) || (url.startsWith("'") && url.endsWith("'"))) {
       url = url.slice(1, -1).trim();
     }
+  }
+
+  if (url && url.includes('neon.tech')) {
+    url = 'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
   }
 
   return url;

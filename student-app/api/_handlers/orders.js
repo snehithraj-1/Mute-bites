@@ -16,7 +16,10 @@ export default async function handler(req, res) {
   const [pathOnly] = rawUrl.split('?');
   const pathname = pathOnly.replace(/\/$/, '') || '/';
   const query = req.query || {};
-  const body = req.body || {};
+  let body = req.body || {};
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch {}
+  }
 
   // ----------------------------------------------------
   // 1. DELETE ORDER
@@ -43,7 +46,7 @@ export default async function handler(req, res) {
 
     try {
       await sql`DELETE FROM orders WHERE id = ${orderId} OR id LIKE ${orderId + '%'};`;
-      console.log(`[Neon DB] Order #${orderId} deleted.`);
+      console.log(`[Supabase DB] Order #${orderId} deleted.`);
       return res.status(200).json({ success: true, message: `Order #${orderId} permanently deleted.` });
     } catch (err) {
       console.error('[Orders Delete Error]:', err.message);
@@ -69,7 +72,16 @@ export default async function handler(req, res) {
 
     const orderId = body.orderId || body.id || query.id || query.orderId || urlOrderId;
     const rawStatus = (body.status || query.status || '').toUpperCase().trim();
-    const cleanStatus = (rawStatus === 'DELIVERED' || rawStatus === 'COMPLETED') ? 'COMPLETED' : (rawStatus === 'CANCELLED' ? 'CANCELLED' : 'CONFIRMED');
+    let cleanStatus = rawStatus;
+    if (rawStatus === 'DELIVERED' || rawStatus === 'COMPLETED') {
+      cleanStatus = 'COMPLETED';
+    } else if (rawStatus === 'CANCELLED') {
+      cleanStatus = 'CANCELLED';
+    } else if (['PREPARING', 'READY', 'OUT_FOR_DELIVERY', 'PENDING_CONFIRMATION', 'CONFIRMED'].includes(rawStatus)) {
+      cleanStatus = rawStatus;
+    } else {
+      cleanStatus = 'CONFIRMED';
+    }
 
     if (!orderId) {
       return res.status(400).json({ success: false, error: 'Order ID is required for status update.' });
@@ -100,7 +112,17 @@ export default async function handler(req, res) {
         `;
       }
 
-      console.log(`[Neon DB] Order #${orderId} status updated to: ${cleanStatus}`);
+      // Record in order_status_history
+      try {
+        await sql`
+          INSERT INTO order_status_history (order_id, status, changed_at)
+          VALUES (${orderId}, ${cleanStatus}, NOW());
+        `;
+      } catch (hErr) {
+        // history table insert non-blocking
+      }
+
+      console.log(`[Supabase DB] Order #${orderId} status updated to: ${cleanStatus}`);
       return res.status(200).json({ success: true, orderId, status: cleanStatus, order: result?.[0] });
     } catch (err) {
       console.error('[Orders Status Update Error]:', err.message);
