@@ -6,7 +6,7 @@ const { Pool } = pg;
 // Prevent Node TLS certificate chain verification rejection on cloud serverless runtimes
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-export const SUPABASE_DIRECT_URL = 'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
+export const SUPABASE_DIRECT_URL = 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
 
 export function getDatabaseUrl() {
   let url = process.env.DATABASE_URL || 
