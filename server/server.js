@@ -151,7 +151,10 @@ function getDatabaseUrl() {
   } catch (e) {}
 
   if (!url) {
-    url = process.env.DATABASE_URL || process.env.POSTGRES_URL || 'postgresql://neondb_owner:npg_1vc6drlGiWJT@ep-billowing-cake-b4cx6gae-pooler.c-6.us-east-2.aws.neon.tech/mute%20bites?sslmode=require&channel_binding=require';
+    url = process.env.DATABASE_URL || 
+          process.env.POSTGRES_URL || 
+          process.env.VITE_DATABASE_URL || 
+          'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
   }
 
   if (url) {
@@ -161,6 +164,12 @@ function getDatabaseUrl() {
       url = url.slice(1, -1).trim();
     }
   }
+
+  // Override legacy Neon database URL with Supabase
+  if (url && url.includes('neon.tech')) {
+    url = 'postgresql://postgres:Mutebites%40135@db.pxtizpwijvjzsmripmxy.supabase.co:5432/postgres';
+  }
+
   return url;
 }
 
@@ -1535,8 +1544,13 @@ const handleOrderStatusUpdate = async (req, res) => {
   const status = rawStatus === 'DELIVERED' ? 'COMPLETED' : rawStatus;
 
   const validStatuses = [
+    'PENDING_CONFIRMATION',
     'CONFIRMED',
+    'PREPARING',
+    'READY',
+    'OUT_FOR_DELIVERY',
     'COMPLETED',
+    'DELIVERED',
     'CANCELLED'
   ];
 

@@ -7,14 +7,33 @@ import { getVerifiedItemPrice } from './menuCatalog.js';
 
 const { Pool } = pg;
 
+// Prevent Node TLS certificate chain verification rejection on cloud serverless runtimes
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 export function createUniversalSql(url) {
   if (!url) return null;
   const isSupabaseOrPg = url.includes('supabase.co') || !url.includes('neon.tech');
   if (isSupabaseOrPg) {
-    const pool = new Pool({
-      connectionString: url,
-      ssl: { rejectUnauthorized: false }
-    });
+    let pool;
+    try {
+      const parsed = new URL(url);
+      pool = new Pool({
+        host: parsed.hostname,
+        port: parseInt(parsed.port || '5432', 10),
+        user: decodeURIComponent(parsed.username || 'postgres'),
+        password: decodeURIComponent(parsed.password || ''),
+        database: decodeURIComponent(parsed.pathname.replace(/^\//, '') || 'postgres'),
+        ssl: { rejectUnauthorized: false },
+        max: 10,
+        idleTimeoutMillis: 30000,
+        connectionTimeoutMillis: 10000
+      });
+    } catch (parseErr) {
+      pool = new Pool({
+        connectionString: url,
+        ssl: { rejectUnauthorized: false }
+      });
+    }
     const sqlFunc = async (strings, ...values) => {
       if (Array.isArray(strings)) {
         let query = '';
