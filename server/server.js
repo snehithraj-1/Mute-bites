@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import { neon } from '@neondatabase/serverless';
 import nodemailer from 'nodemailer';
 import { AUTHENTIC_MENU_ITEMS, AUTHENTIC_RESTAURANTS } from './authenticMenuData.js';
+import { createUniversalSql } from './db.js';
 
 // Bulletproof DNS resilience for Neon serverless PostgreSQL on local Windows
 // Falls back to Google (8.8.8.8) and Cloudflare (1.1.1.1) when local Wi-Fi router refuses query
@@ -169,10 +170,10 @@ let isNeonReady = false;
 
 if (DATABASE_URL) {
   try {
-    sql = neon(DATABASE_URL);
-    console.log('[Neon DB] Initializing connection to:', DATABASE_URL.replace(/:[^:@]+@/, ':****@'));
+    sql = createUniversalSql(DATABASE_URL);
+    console.log('[Database] Initializing connection to:', DATABASE_URL.replace(/:[^:@]+@/, ':****@'));
   } catch (err) {
-    console.error('[Neon DB Init Error]:', err.message);
+    console.error('[Database Init Error]:', err.message);
   }
 }
 

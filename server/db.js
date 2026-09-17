@@ -1,8 +1,43 @@
 import { neon } from '@neondatabase/serverless';
+import pg from 'pg';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { getVerifiedItemPrice } from './menuCatalog.js';
+
+const { Pool } = pg;
+
+export function createUniversalSql(url) {
+  if (!url) return null;
+  const isSupabaseOrPg = url.includes('supabase.co') || !url.includes('neon.tech');
+  if (isSupabaseOrPg) {
+    const pool = new Pool({
+      connectionString: url,
+      ssl: { rejectUnauthorized: false }
+    });
+    const sqlFunc = async (strings, ...values) => {
+      if (Array.isArray(strings)) {
+        let query = '';
+        for (let i = 0; i < strings.length; i++) {
+          query += strings[i];
+          if (i < values.length) {
+            query += '$' + (i + 1);
+          }
+        }
+        const res = await pool.query(query, values);
+        return res.rows;
+      }
+      const res = await pool.query(strings, values[0]);
+      return res.rows;
+    };
+    sqlFunc.query = async (text, params) => {
+      const res = await pool.query(text, params);
+      return res.rows;
+    };
+    return sqlFunc;
+  }
+  return neon(url);
+}
 
 // Resolve database URL from process.env or .env file with sanitization
 export function getDatabaseUrl() {
@@ -50,7 +85,7 @@ if (!DATABASE_URL) {
   console.warn('[Server DB] WARNING: DATABASE_URL is not set in environment variables!');
 }
 
-export const sql = neon(DATABASE_URL);
+export const sql = createUniversalSql(DATABASE_URL);
 
 // Health check function for /api/health diagnostic
 export async function checkDbHealth() {
