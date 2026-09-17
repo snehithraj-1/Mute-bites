@@ -80,7 +80,7 @@ export function getDatabaseUrl() {
        || process.env.POSTGRES_URL 
        || process.env.VITE_DATABASE_URL 
        || process.env.DATABASE_PUBLIC_URL 
-       || 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+       || 'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
   }
 
   if (url) {
@@ -95,8 +95,8 @@ export function getDatabaseUrl() {
     }
   }
 
-  if (url && url.includes('neon.tech')) {
-    url = 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+  if (url && (url.includes('neon.tech') || url.includes('db.wymxfaheyhvcqyahludl.supabase.co') || url.includes('pxtizpwijvjzsmripmxy'))) {
+    url = 'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
   }
 
   return url;

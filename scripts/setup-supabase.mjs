@@ -2,7 +2,7 @@ import pg from 'pg';
 import { AUTHENTIC_RESTAURANTS, AUTHENTIC_MENU_ITEMS } from '../server/authenticMenuData.js';
 
 const { Client } = pg;
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
 
 async function initSupabase() {
   const client = new Client({
@@ -11,7 +11,7 @@ async function initSupabase() {
   });
 
   try {
-    console.log('Connecting to Supabase PostgreSQL at db.wymxfaheyhvcqyahludl.supabase.co...');
+    console.log('Connecting to Supabase PostgreSQL at aws-0-ap-northeast-1.pooler.supabase.com...');
     await client.connect();
     console.log('✅ Connected successfully to Supabase PostgreSQL!');
 

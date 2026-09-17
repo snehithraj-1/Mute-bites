@@ -6,7 +6,7 @@ const { Pool } = pg;
 // Prevent Node TLS certificate chain verification rejection on cloud serverless runtimes
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-export const SUPABASE_DIRECT_URL = 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+export const SUPABASE_DIRECT_URL = 'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
 
 export function getDatabaseUrl() {
   let url = process.env.DATABASE_URL || 
@@ -23,7 +23,7 @@ export function getDatabaseUrl() {
   }
 
   // If env variable is still set to legacy Neon database on Vercel, direct to active Supabase database
-  if (url.includes('neon.tech')) {
+  if (url.includes('neon.tech') || url.includes('db.wymxfaheyhvcqyahludl.supabase.co') || url.includes('pxtizpwijvjzsmripmxy')) {
     url = SUPABASE_DIRECT_URL;
   }
 

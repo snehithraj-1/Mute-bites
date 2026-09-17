@@ -154,7 +154,7 @@ function getDatabaseUrl() {
     url = process.env.DATABASE_URL || 
           process.env.POSTGRES_URL || 
           process.env.VITE_DATABASE_URL || 
-          'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+          'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
   }
 
   if (url) {
@@ -165,9 +165,9 @@ function getDatabaseUrl() {
     }
   }
 
-  // Override legacy Neon database URL with Supabase
-  if (url && url.includes('neon.tech')) {
-    url = 'postgresql://postgres:Mutebites%40123@db.wymxfaheyhvcqyahludl.supabase.co:5432/postgres';
+  // Override legacy Neon or direct IPv6 URLs with Supabase IPv4 pooler
+  if (url && (url.includes('neon.tech') || url.includes('db.wymxfaheyhvcqyahludl.supabase.co') || url.includes('pxtizpwijvjzsmripmxy'))) {
+    url = 'postgresql://postgres.wymxfaheyhvcqyahludl:Mutebites%40123@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres';
   }
 
   return url;
